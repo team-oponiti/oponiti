@@ -22,16 +22,16 @@
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-    <dict>
-          <key>CFBundleTypeRole</key>
-          <string>Editor</string>
-          <key>CFBundleURLName</key>
-          <string>my</string>
-          <key>CFBundleURLSchemes</key>
-          <array>
-            <string>tamtalk-t</string>
-          </array>
-        </dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>my</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tamtalk-t</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -63,12 +63,12 @@
 			</dict>
 		</dict>
 	</dict>
-  <key>NSCameraUsageDescription</key>
-    <string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>어플리케이션은 전송하려는 사진을 선택하기 위해 사진 라이브러리 액세스 권한이 필요합니다</string>
+	<key>NSCameraUsageDescription</key>
+	<string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>어플리케이션은 전송하려는 사진을 선택하기 위해 사진 라이브러리 액세스 권한이 필요합니다</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
