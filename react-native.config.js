@@ -3,7 +3,7 @@ module.exports = {
       ios: {},
       android: {
         sourceDir: './android',
-        packageName: 'com.oponiti.tamtalk',
+        packageName: 'com.oponiti.tamtalk.biz',
       },
     },
   }
