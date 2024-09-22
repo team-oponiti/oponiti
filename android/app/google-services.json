@@ -79,42 +79,6 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487932198874:android:18c86412dce69713120ae3",
-        "android_client_info": {
-          "package_name": "com.oponiti.tamtalk"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "487932198874-9aof6u3inn9sfcoccamr7oko65mbnrbv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCA_3fZRbtDRy_-ViTIo_rGydFdjJ-SFaI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487932198874-9aof6u3inn9sfcoccamr7oko65mbnrbv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "487932198874-3sj0qpt5ad3lkb4jqkas6s3d1k9hu4tm.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.oponiti.tamtalk.biz"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:487932198874:android:1c5aa5829aef5030120ae3",
         "android_client_info": {
           "package_name": "com.oponiti.tamtalk.biz"

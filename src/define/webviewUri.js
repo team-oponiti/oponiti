@@ -1,10 +1,10 @@
-export const login =  "https://tamtalk.com/login/"
-export const detective = "https://tamtalk.com/detective/"
-export const message = "https://tamtalk.com/chat/"
+ 
+export const chat = "https://tamtalk.com/chat/"
+export const membership = "https://tamtalk.com/detective-membership/"
+export const account = "https://tamtalk.com/detective-account/"
+export const more = "https://tamtalk.com/detective-more/"
 export const blog = "https://tamtalk.com/blog/"
-export const more = "https://tamtalk.com/more/" 
-export const domain = "https://tamtalk.com"
 
- 
-
- 
+export const domain = "https://tamtalk.com/"
+export const login = "https://tamtalk.com/detective-login/"
+export const logout = "https://tamtalk.com/logout"

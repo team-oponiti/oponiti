@@ -2,22 +2,32 @@
 
 export default {
     ko: {
-        Detective: "탐정", 
-        Message: "채팅",
-        Blog: "커뮤니티",
-        More: "더보기", 
+        Comunity:  "커뮤니티",
+        Home: "채팅", 
+        Ticket: "멤버십",
+        Account: "내정보",
+        More: "더보기",
+        titleError: "An error occurred",
+        messageError: "Check your internet connection and try again",
+        buttonError: "Retry"
+    }, 
+    en: {
+        Home: "Home", 
+        Ticket: "Nearby",
+        Account: "Me",
+        More: "Order",
+        titleError: "An error occurred",
+        messageError: "Check your internet connection and try again",
+        buttonError: "Retry"
+    }, 
+    vi: {
+        Home: "Trang Chủ", 
+        Ticket: "Gần Tôi",
+        Account: "Đơn Hàng",
+        More: "Tôi",
         titleError: "An error occurred",
         messageError: "Check your internet connection and try again",
         buttonError: "Retry"
     },
-    en: {
-        Detective: "Detective", 
-        Message: "Message",
-        Blog: "Comunity",
-        More: "More", 
-        titleError: "An error occurred",
-        messageError: "Check your internet connection and try again",
-        buttonError: "Retry"
-    } 
+    
 }
- 

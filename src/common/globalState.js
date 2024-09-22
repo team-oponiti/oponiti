@@ -59,7 +59,6 @@ export function useGlobalState(globalState) {
 global.languageState = new GlobalState(global.language)
 global.tabBadeState = new GlobalState(global.tabBade)
 global.isLogin = new GlobalState(global.isLogin)
-global.userStoreState = new GlobalState(global.userStoreId) 
 
 export function useGlobalLanguage() {
     const [, setState2] = useState();
@@ -130,29 +129,6 @@ export function useGlobalLogin() {
 }
 
 
-export function useGlobalStoreId() {
-    const [, setState2] = useState();
-    const state = global.userStoreState.getValue();
-
-    function reRender(newState) {
-        setState2({});
-    }
-
-    useEffect(() => {
-        global.userStoreState.subscribe(reRender);
-
-        return () => {
-            global.userStoreState.unsubscribe(reRender);
-        }
-    })
-
-    function setState(newState) {
-        global.userStoreState.setValue(newState);
-    }
-
-    return [state, setState];
-}
-
 
 global.notiUpdate = new GlobalState(0)
 
@@ -203,7 +179,6 @@ export function useGlobalAppLifeState() {
     })
 
     function setState(newState) {
-        console.log("new value ", newState)
         global.appCurrentState.setValue(newState);
     }
 

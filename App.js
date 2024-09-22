@@ -7,43 +7,41 @@
  */
 
 import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
-
+import {AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
+import {domain} from "./src/define/webviewUri"
+ 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
+ 
 import {
     getLastBade,
-    getLastStoreId,
     getLastToken,
     getSaveCookie,
     jsonCookiesToCookieString,
-    saveLastStoreId,
     saveLastToken, setBade,
     getLanguage,
+    getDeviceInfo,
     getTabBadge,
-    getDeviceInfo
+    createChannel
 } from "./src/common/functions"
 
-//import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import { request, PERMISSIONS } from 'react-native-permissions';
+// import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import DashboardScreen from './src/screen/DashboardScreen';
 import WebviewScreen from './src/screen/WebviewScreen';
 import CookieManager from "@react-native-cookies/cookies";
-import { domain, login} from "./src/define/webviewUri"
-import { useGlobalLanguage, useGlobalBade, useGlobalStoreId, useGlobalAppLifeState } from "./src/common/globalState"
-import QrcodeScreen from './src/screen/QrcodeScreen';
-
+// import {login} from "react-native-zalo-kit";
 import messaging from '@react-native-firebase/messaging';
 
-
+import { useGlobalAppLifeState, useGlobalBade, useGlobalLanguage } from "./src/common/globalState"
+import * as urlconfigs from "./src/define/webviewUri"
+import { appPrimaryColor } from './src/define/config';
 if (Platform.OS == "android") {
     var Stack = createNativeStackNavigator();
 } else {
     var Stack = createStackNavigator();
 }
-
 
 const requestNotificationPermission = async () => {
     console.log("request permisison ", Platform.Version )
@@ -60,27 +58,28 @@ const requestNotificationPermission = async () => {
 }
 
 
+
 async function requestPermission() {
     if (Platform.OS === 'android') {
         await requestNotificationPermission() 
     }
     const granted = await messaging().requestPermission({
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: true,
-      provisional: false,
-      sound: true,
-    });
-  
-    try {
-      const fcmToken = await messaging().getToken();
-      global.pushToken = fcmToken
-    } catch (e) {
-      console.log("FCM", e)
-    } 
-  
-  }
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: true,
+    provisional: false,
+    sound: true,
+  });
+
+  try {
+    const fcmToken = await messaging().getToken();
+    global.pushToken = fcmToken
+  } catch (e) {
+    console.log("FCM", e)
+  } 
+
+}
 
 
 async function registerAppWithFCM() {
@@ -92,10 +91,7 @@ async function registerAppWithFCM() {
       console.log("errror == = = = = =", e)
     }
   
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
-    });
-  
+ 
     messaging().setBackgroundMessageHandler(async remoteMessage => {
       console.log('Message handled in the background!', remoteMessage);
     });
@@ -112,9 +108,8 @@ const App = () => {
     const [isLogin, setLogin] = useState(false);
     const appState = React.useRef(AppState.currentState);
     const timeSetLife = React.useRef(null);
-
     const [, updateState] = React.useState();
-    const [language, setLanguate] = useGlobalLanguage()
+    const [,setLanguage] = useGlobalLanguage();
     const [, setBadge] = useGlobalBade()
     const [, setLifeState] = useGlobalAppLifeState()
 
@@ -122,20 +117,15 @@ const App = () => {
         setLogin(true)
     }
 
-
-
-    
-
     const _handleAppStateChange = (nextAppState) => {
 
         if (timeSetLife.current != null) {
             clearTimeout(timeSetLife.current)
         }
-     
-        setLifeState(nextAppState )
+        
+        setLifeState(nextAppState)
         timeSetLife.current = null
 
-        
         if (
             appState.current.match(/inactive|background/) &&
             nextAppState === "active"
@@ -143,7 +133,6 @@ const App = () => {
             if (global.registReload != null) {
                 global.registReload()
             }
-            
             let timeEnd = global.endTime || Date.now()
             let timeCurrent = Date.now();
             let time = timeCurrent - timeEnd;
@@ -158,21 +147,19 @@ const App = () => {
             global.endTime = Date.now()
         } else {
             global.endTime = Date.now()
-            console.log("-App has come to the active!");
+            console.log("App has come to the active!");
         }
 
         getLastBade().then(m => {
-            //setBade(m)
+         //   setBade(m)
         })
         appState.current = nextAppState;
-        console.log("AppState", nextAppState);
+        console.log("AppState", appState.current);
     };
 
     const logout = async () => {
-        console.log("=>>>>>> do logout")
         setLogin(false)
-        saveLastToken(null)
-        saveLastStoreId(null) 
+        saveLastToken("")
         // try {
         //     if (await GoogleSignin.isSignedIn()) {
         //         await GoogleSignin.signOut();
@@ -185,7 +172,7 @@ const App = () => {
     const appProps = {
         openMain: openMain,
         logout: logout,
-    };
+    }
 
     const loadTabBadge = async () => {
         var badge = {}
@@ -195,13 +182,14 @@ const App = () => {
             badge[i] = null
           }
         }
-        setBadge(badge)
+       // setBadge(badge)
       }
 
     const getResource = async () => {
         try {
-            setLanguate(await getLanguage())
+            setLanguage(await getLanguage())
         } catch (e) {
+            console.log("errrorrrrr  ----------" + e)
         }
         try {
             await getSaveCookie()
@@ -209,28 +197,23 @@ const App = () => {
 
         }
         try {
-            await loadTabBadge()
+             await loadTabBadge()
              let data = await getDeviceInfo(null)
              if (data != null) {
                  global.appData = data
              }
         } catch (e) {
-            console.error("Error " , e)
+
         }
-    
         await checkCookie()
     }
 
     const checkCookie = async () => {
         var cookie = {}
         var lastToken = ""
-        try { 
-           // saveLastToken("!23123")
+        try {
             lastToken = await getLastToken();
             cookie = await CookieManager.get(domain, true)
-
-            global.userStoreId = await getLastStoreId()
-           
             let x2 = jsonCookiesToCookieString(cookie)
             let x = await CookieManager.setFromResponse(domain, x2)
             console.log("coookie ", x, cookie)
@@ -238,10 +221,8 @@ const App = () => {
             console.log(e)
         }
         try {
-          
-            if (lastToken != null && lastToken != "" ) {
-
-                setLogin(true) 
+            if (lastToken) {
+                setLogin(true)
                 return
             } else {
                 setLogin(false)
@@ -259,72 +240,68 @@ const App = () => {
     }
 
     useEffect(() => {
+       // Settings.setAppID('820978288984618');
+       // Settings.initializeSDK();
+        createChannel()
         getResource().then(async () => {
-
+            
              await requestPermission()
-             registerAppWithFCM()
+            registerAppWithFCM()
             // setupOneSignal()
 
-            if (Platform.OS == "android") {
-                setTimeout(() => {
-                    setLoading(false)
-                    if (isLogin) {
-                        // requestLocaitonPermision()
-                    }
-                }, 2000)
-            } else {
-                setLoading(false)
-                if (isLogin) {
-                    // requestLocaitonPermision()
-                }
-            }
+            // if (Platform.OS == "android") {
+            //     setTimeout(() => {
+            //         setLoading(false)
+            //         if (isLogin) {
+            //              requestLocaitonPermision()
+            //         }
+            //     }, 2000)
+            // } else {
+            //     setLoading(false)
+            //     if (isLogin) {
+            //          requestLocaitonPermision()
+            //     }
+            // }
         })
 
         setTimeout(() => {
             if (loading) {
                 setLoading(false)
             }
-        }, 5000)
+        }, 500)
 
-        var sub = AppState.addEventListener('change', _handleAppStateChange);
+        let sub = AppState.addEventListener('change', _handleAppStateChange);
         return () => {
-          sub.remove()
-            // OneSignal.clearHandlers();
+            sub.remove()
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect( () => {
-        const run = async () => {
-          // try {
-          //   let cookie = await CookieManager.get(domain, true)
-          //     console.log("eeee1", cookie)
-          // } catch (e) {
-          //     console.log("eeee", e)
-          // }
-          if (login != true) {
-              return
-          }
+        let run = async ()=>{
+            try {
+                let cookie = await CookieManager.get(domain, true)
+                console.log("eeee1", cookie)
+            } catch (e) {
+                console.log("eeee", e)
+            }
           
-          if (!loading) {
-              // requestLocaitonPermision()
-          }
+            if (!loading) {
+                //  requestLocaitonPermision()
+            }
         }
         run()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [login])
+    }, [isLogin])
 
     const renderLoading = useCallback(() => {
-       /* if (Platform.OS == "ios") {
-            return
-        }*/
         const windowWidth = Dimensions.get('window').width;
         const windowHeight = Dimensions.get('window').height;
         return <View style={[styles.flexContainer, {
             justifyContent: 'center',
             alignContent: 'center',
             alignItems: 'center',
-            backgroundColor: "#2367FD",
+            backgroundColor: "#2040AF",
             paddingBottom: 3.45 / 100 * windowHeight,
         }]}>
             <Image style={{width: windowWidth <= 365  ? 170 : 177, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
@@ -333,55 +310,54 @@ const App = () => {
 
     const renderDashboard = useCallback(() => {
         return (
-            <NavigationContainer key="dashboard">
-                <Stack.Navigator
-                  screenOptions={{
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName="Dashboard"   screenOptions={{
                     gestureEnabled: false
-                }}
-                initialRouteName={isLogin ? "Dashboard" : "Login"}>
-                    <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
-                    <Stack.Screen name="Dashboard" component={DashboardScreen}  initialParams={{appProps: appProps}} options={{headerShown: false}}/>
-                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps}}
+                }} >
+                    <Stack.Screen name="Dashboard" component={DashboardScreen} options={{headerShown: false}} initialParams={{appProps: appProps, isLogin}}/>
+                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps, isLogin}}
                                   options={{headerShown: false}}/>
-                    <Stack.Screen name="QRCodeScreen" component={QrcodeScreen} initialParams={{appProps: appProps}} options={{headerShown: false}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [appProps])
+    }, [appProps, isLogin])
 
+    
     const renderLogin = useCallback(() => {
-    return (
-      <NavigationContainer  key="login">
-        <Stack.Navigator initialRouteName="Login" >
-          <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
-          <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    )
-  }, [appProps])
+        return (
+          <NavigationContainer  key="login">
+            <Stack.Navigator   screenOptions={{
+                    gestureEnabled: false
+                }} >
+              <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login } }} options={{ headerShown: false }} />
+              <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        )
+      }, [appProps])
     const renderApp = () => {
- 
-          
+       
         if (loading) {
             return renderLoading()
         }
         if (!isLogin) {
-           return renderLogin()
-        } 
-        
+            return renderLogin()
+        }
         return renderDashboard()
 
     }
 
+    
     return (
-        <SafeAreaProvider>
-            
+       
+            <View style= {styles.flexContainer}>
+           
          <View style={[styles.flexContainer]}>
                 {renderApp()}
             </View> 
-        
-        </SafeAreaProvider>
+    
+            </View>
+       
     )
 
 };

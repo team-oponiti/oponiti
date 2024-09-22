@@ -1,30 +1,10 @@
 import React from 'react';
 import { NativeModules, Platform} from 'react-native';
 
-import { requestLocation } from "./functions";
-import NetInfo from "@react-native-community/netinfo";
+import { requestLocation } from "./functions"; 
 import { request, PERMISSIONS, openSettings , checkLocationAccuracy, requestLocationAccuracy, check, checkMultiple} from 'react-native-permissions';
  
-const {AppNativeModule} = NativeModules;
-
-export const getListWifi = async () => {
-    console.log("Your current  ",  AppNativeModule.getListWifi)
-
-   try {
-    if (AppNativeModule.getListWifi == null) {
-        return []
-    }
-
-    var result = await AppNativeModule.getListWifi() 
-    if (result == null) {
-        return []
-    }
-    return JSON.parse(result)  
-   } catch(e) {
-    return []
-   }
-}
-
+  
 export const anxData = (webview, data) => {
  
     const resultData = (out) => {
@@ -42,32 +22,14 @@ export const anxData = (webview, data) => {
         resultData({msg: data, error: true})
     }
     switch (data.name) {
-        case "getListWifi" : 
-             getListWifi().then(thenValue).catch(catchValue)
-            break;
+        
         case "getLocation":
+            console.log("GET LOCATION")
+            var permission = (Platform.OS == "android") ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+            request( permission )
             requestLocation().then(thenValue).catch(catchValue)
             break;
-        case "netInfo": 
-        NetInfo.configure({
-            shouldFetchWiFiSSID: true,
-        })
-        var requestPermission = null
-        if (Platform.OS == "android") {
-            requestPermission = request( PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
-        } else {
-            requestPermission = request( PERMISSIONS.IOS.LOCATION_ALWAYS)
-        }
-        requestPermission.then(() => {
-            if (Platform.OS == "android") {
-             NetInfo.fetch("wifi").then(thenValue).catch(catchValue)
-            } else {
-                NetInfo.fetch("wifi").then(thenValue).catch(catchValue)
-            }
-        })
-        .catch(catchValue)
-           
-            break;
+          
         case "getLocationPermission":
             
             try {

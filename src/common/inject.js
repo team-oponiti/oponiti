@@ -1,4 +1,4 @@
-export default `(function (window) {
+(function (window) {
  
   if (window.WebViewBridge) {
     return;
@@ -112,8 +112,8 @@ if (window.appBridge == null) {
     openLogin: function(){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"login"}))
     },
-    navigateTo: function(name, data){
-      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: name, params: data}))
+    navigateTo: function(name){
+      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: name}))
     },
     clearCache: function(){ 
       setCookie('test', "1", 1000); 
@@ -239,4 +239,3 @@ function __guidGenerator() {
 }
 
  
-`

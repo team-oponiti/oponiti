@@ -19,7 +19,7 @@ export default StyleSheet.create({
   },
   tabBarContainer: {
 
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#ffffff",
     height: 70,
     alignItems: "center",
     flexDirection: "row",
