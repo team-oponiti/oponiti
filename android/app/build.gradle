@@ -71,7 +71,11 @@ def enableProguardInReleaseBuilds = false
  * this variant is about 6MiB larger per architecture than default.
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
-
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
 android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -92,6 +96,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('release.keystore')
+            storePassword 'android'
+            keyAlias 'androidkeystore'
+            keyPassword 'android'
+        }
     }
     buildTypes {
         debug {
@@ -105,12 +115,22 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    // flavorDimensions "flavor"
+    //   productFlavors {
+    //     chplay {
+    //         dimension "flavor"
+    //         versionCode 12
+    //         versionName "1.0.5"
+    //         setProperty("archivesBaseName", "Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}")
+    //     }
+    // }
 }
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-
+     implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

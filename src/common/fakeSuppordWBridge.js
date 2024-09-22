@@ -1,0 +1,249 @@
+export default `(function (window) {
+  
+  if (window == null || window.WebViewBridge) {
+    return;
+  }
+
+  if (window.dataTask == null) {
+    window.dataTask = {}
+  }
+  var rnWebview = window.ReactNativeWebView
+  var doc = window.document;
+  doc.addEventListener("message", message => {
+      callFunc(WebViewBridge.onMessage, message.data);
+  });
+  function callFunc(func, message) {
+    if ('function' === typeof func) {
+      func(message);
+    }
+  }
+  
+  var WebViewBridge = {
+    send: function (message) {
+       
+      var rnWebview = window.ReactNativeWebView
+      if ('string' !== typeof message) {
+          callFunc(WebViewBridge.onError, "message is type '" + typeof message + "', and it needs to be string");
+          return;
+      }
+      if (rnWebview == null){ 
+      } else {
+       rnWebview.postMessage(message);
+      }
+    },
+    onMessage: null,
+    onError: null
+  };
+  window.WebViewBridge = WebViewBridge; 
+}(window)); 
+if (window.appBridge == null) {
+  function getcookie(name = '') {
+    let cookies = document.cookie;
+    let cookiestore = {};
+    
+    cookies = cookies.split(";");
+    
+    if (cookies[0] == "" && cookies[0][0] == undefined) {
+        return undefined;
+    }
+    
+    cookies.forEach(function(cookie) {
+        cookie = cookie.split(/=(.+)/);
+        if (cookie[0].substr(0, 1) == ' ') {
+            cookie[0] = cookie[0].substr(1);
+        }
+        cookiestore[cookie[0]] = cookie[1];
+    });
+    
+    return (name !== '' ? cookiestore[name] : cookiestore);
+}
+
+    function setCookie(cName, cValue, cDay)
+    {
+      var expire = new Date();
+          expire.setDate(expire.getDate() + cDay);
+          cookies = cName + '=' + escape(cValue) + '; path=/ '; // Ã­â€¢Å“ÃªÂ¸â‚¬ ÃªÂ¹Â¨Ã¬Â§ï¿½Ã¬ï¿½â€ž Ã«Â§â€°ÃªÂ¸Â°Ã¬Å“â€žÃ­â€¢Â´ escape(cValue)Ã«Â¥Â¼ Ã­â€¢Â©Ã«â€¹Ë†Ã«â€¹Â¤.
+          if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+          document.cookie = cookies;
+    }
+
+    var AppBridge = function (){
+    }
+    AppBridge.prototype = {
+    onDataFromTask: function (messages) {
+      var message = JSON.parse(messages)
+      var uuid = message.id
+      if ( window.dataTask[uuid]  == null ) {
+        return
+      }
+      var task =  window.dataTask[uuid] 
+      if (message.error) {
+        task.reject(message.msg)
+      } else {
+        task.resolve(message.data)
+      }
+    },
+    createDataTask: function (taskName, params, timeoutX = 10000) {
+       var uuid = __guidGenerator() 
+      
+       var promis = new Promise(function(resolve, reject) {
+        var timeout = setTimeout(function(){
+            window.dataTask[uuid] =  null
+            reject("timeout")
+        }, timeoutX)
+        
+        window.dataTask[uuid] = {resolve, reject, timeout} 
+      }) 
+      
+      window.WebViewBridge.send(JSON.stringify({type:"task",id:uuid, name: taskName, params: params})) 
+      return promis
+    },
+    setUserToken: function (value) {
+      setCookie('test', "2", 1000); 
+      window.WebViewBridge.send(JSON.stringify({type:"set-token",data:value}))
+    },
+    setStore: function(value) {
+      window.WebViewBridge.send(JSON.stringify({type:"set-store",data: value}))
+    },
+    openCart: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"cart"}))
+    },
+    loginSuccess:function(){
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"loginSuccess"}))
+    },
+    openLogin: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"login"}))
+    },
+    setEnableScroll: function(value){
+      window.WebViewBridge.send(JSON.stringify({type:"disableScroll",data: value}))
+    }, 
+    navigateTo: function(name){
+      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: name}))
+    },
+    clearCache: function(){ 
+      setCookie('test', "1", 1000); 
+      return true
+    },
+    badgeMain: function(value){
+      window.WebViewBridge.send(JSON.stringify({type:"badge-main",data:value}))
+    },
+    showTextBox: function(value){
+      window.WebViewBridge.send(JSON.stringify({type:"showTextBox",data:value}))
+    }, 
+    badgeTab: function(tab,value){
+    
+      window.WebViewBridge.send(JSON.stringify({type:"badge-tab",data:{tab,value}}))
+    },
+    close: function (data) {
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"close",params: data}))
+    },
+    startMain: function () {
+      setCookie('test', "2", 1000); 
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"main",cookie: document.cookie}))
+    },
+    qrCode: function (groupId, token) {
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"qrScane",params:{groupId, token}}))
+    },
+    openSetting: function () {
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"sys-setting",params:{}}))
+    },
+    setEnableInputBox: function(value) {
+      window.WebViewBridge.send(JSON.stringify({type:"setEnableInputBox",data: value,params:{}}))
+    },
+    logout: function () {
+      setCookie('test', "3", 1000); 
+      window.WebViewBridge.send(JSON.stringify({type:"logout",data:""}))
+    },
+    hideKeyboard: function() { 
+      window.WebViewBridge.send(JSON.stringify({type:"hideKeyboard"}))
+    },
+    setLanguage: function(local) {
+      setCookie('test', "4", 1000); 
+      window.WebViewBridge.send(JSON.stringify({type:"language",data:local}))
+    },clearCookie: function(){
+    //  window.WebViewBridge.send(JSON.stringify({type:"clearCookie",data:""}))
+    },socialLogin: function(type){
+      window.WebViewBridge.send(JSON.stringify({type:"socialLogin",data:type}))
+    },log: function(){ 
+      window.WebViewBridge.send(JSON.stringify({type:"log",data:JSON.stringify(arguments)}))
+    }, refresh: function(){ 
+      window.WebViewBridge.send(JSON.stringify({type:"refresh",data:""}))
+    }, getAppName: function(){ 
+      return window.kma.appName || window.giaynhap.appName 
+    }, getAppVersionCode: function(){
+      return window.kma.appVersionCode || window.giaynhap.appVersionCode 
+    }, getAppVersionName: function(){
+      return window.kma.appVersionName || window.giaynhap.appVersionName 
+    }, getOSName: function(){  
+      return window.kma.osName  || window.giaynhap.osName 
+    }, getOSType: function(){
+      return window.kma.osType || window.giaynhap.osType 
+    },getLatitude: function(){
+      return window.kma.lat || window.giaynhap.lat 
+    },getLongitude: function(){
+      return window.kma.lng || window.giaynhap.lng 
+    }, getLocation: function() {
+      return this.createDataTask("getLocation")
+    },
+    getLocationPermission: function() {
+      return this.createDataTask("getLocationPermission")
+    },
+    getNetInfo: function() {
+      return this.createDataTask("netInfo")
+    }
+    ,getDeviceID: function(){
+      return window.kma.deviceId || window.giaynhap.deviceId 
+    },getFcmToken: function(){
+      return window.kma.pushToken || window.giaynhap.pushToken || "Khong duoc"
+    },getLanguage: function(){
+      return window.kma.language || window.giaynhap.language || 'vi'
+    },getCountryCode: function(){
+      return window.kma.country  || window.giaynhap.country
+    },getTimeZone: function(){
+      return window.kma.timeZone || window.giaynhap.timeZone
+    },openLink: function(url){
+      window.WebViewBridge.send(JSON.stringify({type:"openLink",data: url}))
+    }
+    ,getUserToken: function(){
+      return getcookie("USER_TOKEN")
+    },getOSVersion: function(){ 
+      return window.kma.osVersion || window.giaynhap.osVersion
+    },openAppSetting: function(){ 
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"setting",cookie: document.cookie}))
+    },openApp: function(name){ 
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"app",name: name}))
+    },triggerSend: function(){ 
+      window.WebViewBridge.send(JSON.stringify({type:"trigger-send"}))
+    },setEnableWebHistory: function(value){ 
+      window.WebViewBridge.send(JSON.stringify({type:"enableWebHistory", data: value}))
+    }
+  }; 
+ if (window.kma == null) {  
+  window.kma = window.giaynhap || {}
+ }  
+  window.appBridge = new AppBridge();  
+  setCookie('test', "5", 1000); 
+}  
+if (window.navigator != null) {
+  window.navigator.share = function(param)  {
+    window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
+  };
+} else {
+  window.navigator = {
+    share: function(param)  {
+    window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
+  }
+};
+}
+
+
+function __guidGenerator() {
+  var S4 = function() {
+      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  };
+  return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+ 
+
+ 
+`

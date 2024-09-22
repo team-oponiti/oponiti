@@ -1,0 +1,396 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import React, {Node, useCallback, useEffect, useState} from 'react'
+import {AppState, Image, Platform, StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import {
+    getLastBade,
+    getLastStoreId,
+    getLastToken,
+    getSaveCookie,
+    jsonCookiesToCookieString,
+    saveLastStoreId,
+    saveLastToken, setBade,
+    getLanguage,
+    getTabBadge,
+    getDeviceInfo
+} from "./src/common/functions"
+
+//import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import DashboardScreen from './src/screen/DashboardScreen';
+import WebviewScreen from './src/screen/WebviewScreen';
+import CookieManager from "@react-native-cookies/cookies";
+import { domain, login} from "./src/define/webviewUri"
+import { useGlobalLanguage, useGlobalBade, useGlobalStoreId, useGlobalAppLifeState } from "./src/common/globalState"
+import QrcodeScreen from './src/screen/QrcodeScreen';
+
+import messaging from '@react-native-firebase/messaging';
+
+
+if (Platform.OS == "android") {
+    var Stack = createNativeStackNavigator();
+} else {
+    var Stack = createStackNavigator();
+}
+
+
+const requestNotificationPermission = async () => {
+    console.log("request permisison ", Platform.Version )
+    if (Platform.Version >= 33) {
+        try {
+        let value =   await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
+        )
+        console.log(value)
+        } catch (err) {
+        console.warn('requestNotificationPermission error: ', err)
+        }
+    }
+}
+
+
+async function requestPermission() {
+    if (Platform.OS === 'android') {
+        await requestNotificationPermission() 
+    }
+    const granted = await messaging().requestPermission({
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: true,
+      provisional: false,
+      sound: true,
+    });
+  
+    try {
+      const fcmToken = await messaging().getToken();
+      global.pushToken = fcmToken
+    } catch (e) {
+      console.log("FCM", e)
+    } 
+  
+  }
+
+
+async function registerAppWithFCM() {
+    try {
+      if (!messaging().isDeviceRegisteredForRemoteMessages) {
+        await messaging().registerDeviceForRemoteMessages();
+      }
+    } catch (e) {
+      console.log("errror == = = = = =", e)
+    }
+  
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+  
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background!', remoteMessage);
+    });
+  
+    messaging().subscribeToTopic('noti').then(() => console.log('Subscribed to topic!'));
+   
+  }
+  
+ 
+
+const App = () => {
+
+    const [loading, setLoading] = useState(true);
+    const [isLogin, setLogin] = useState(false);
+    const appState = React.useRef(AppState.currentState);
+    const timeSetLife = React.useRef(null);
+
+    const [, updateState] = React.useState();
+    const [language, setLanguate] = useGlobalLanguage()
+    const [, setBadge] = useGlobalBade()
+    const [, setLifeState] = useGlobalAppLifeState()
+
+    const openMain = () => {
+        setLogin(true)
+    }
+
+
+
+    
+
+    const _handleAppStateChange = (nextAppState) => {
+
+        if (timeSetLife.current != null) {
+            clearTimeout(timeSetLife.current)
+        }
+     
+        setLifeState(nextAppState )
+        timeSetLife.current = null
+
+        
+        if (
+            appState.current.match(/inactive|background/) &&
+            nextAppState === "active"
+        ) {
+            if (global.registReload != null) {
+                global.registReload()
+            }
+            
+            let timeEnd = global.endTime || Date.now()
+            let timeCurrent = Date.now();
+            let time = timeCurrent - timeEnd;
+            let elapsed = Math.floor(time / 1000)
+
+            if (elapsed > 20 * 60) {
+                setLoading(true)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 2000)
+            }
+            global.endTime = Date.now()
+        } else {
+            global.endTime = Date.now()
+            console.log("-App has come to the active!");
+        }
+
+        getLastBade().then(m => {
+            //setBade(m)
+        })
+        appState.current = nextAppState;
+        console.log("AppState", nextAppState);
+    };
+
+    const logout = async () => {
+        console.log("=>>>>>> do logout")
+        setLogin(false)
+        saveLastToken(null)
+        saveLastStoreId(null) 
+        // try {
+        //     if (await GoogleSignin.isSignedIn()) {
+        //         await GoogleSignin.signOut();
+        //     }
+        // } catch {
+        // }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const appProps = {
+        openMain: openMain,
+        logout: logout,
+    };
+
+    const loadTabBadge = async () => {
+        var badge = {}
+        for (var i = 0; i < 4; i++) {
+          badge[i] = await getTabBadge(i + "")
+          if (badge[i] == 0) {
+            badge[i] = null
+          }
+        }
+        setBadge(badge)
+      }
+
+    const getResource = async () => {
+        try {
+            setLanguate(await getLanguage())
+        } catch (e) {
+        }
+        try {
+            await getSaveCookie()
+        } catch (e) {
+
+        }
+        try {
+            await loadTabBadge()
+             let data = await getDeviceInfo(null)
+             if (data != null) {
+                 global.appData = data
+             }
+        } catch (e) {
+            console.error("Error " , e)
+        }
+    
+        await checkCookie()
+    }
+
+    const checkCookie = async () => {
+        var cookie = {}
+        var lastToken = ""
+        try { 
+           // saveLastToken("!23123")
+            lastToken = await getLastToken();
+            cookie = await CookieManager.get(domain, true)
+
+            global.userStoreId = await getLastStoreId()
+           
+            let x2 = jsonCookiesToCookieString(cookie)
+            let x = await CookieManager.setFromResponse(domain, x2)
+            console.log("coookie ", x, cookie)
+        } catch (e) {
+            console.log(e)
+        }
+        try {
+          
+            if (lastToken != null && lastToken != "" ) {
+
+                setLogin(true) 
+                return
+            } else {
+                setLogin(false)
+                return
+            }
+
+            // if (cookie["APP_LOGIN"] && cookie["APP_LOGIN"].value && (cookie["APP_LOGIN"].value == true || cookie["APP_LOGIN"].value == "true")) {
+            //     setLogin(true)
+            // } else {
+            //     setLogin(false)
+            // }
+        } catch (e) {
+
+        }
+    }
+
+    useEffect(() => {
+        getResource().then(async () => {
+
+             await requestPermission()
+             registerAppWithFCM()
+            // setupOneSignal()
+
+            if (Platform.OS == "android") {
+                setTimeout(() => {
+                    setLoading(false)
+                    if (isLogin) {
+                        // requestLocaitonPermision()
+                    }
+                }, 2000)
+            } else {
+                setLoading(false)
+                if (isLogin) {
+                    // requestLocaitonPermision()
+                }
+            }
+        })
+
+        setTimeout(() => {
+            if (loading) {
+                setLoading(false)
+            }
+        }, 5000)
+
+        AppState.addEventListener('change', _handleAppStateChange);
+        return () => {
+            AppState.removeEventListener('change', _handleAppStateChange);
+            // OneSignal.clearHandlers();
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect( () => {
+        const run = async () => {
+          // try {
+          //   let cookie = await CookieManager.get(domain, true)
+          //     console.log("eeee1", cookie)
+          // } catch (e) {
+          //     console.log("eeee", e)
+          // }
+          if (login != true) {
+              return
+          }
+          
+          if (!loading) {
+              // requestLocaitonPermision()
+          }
+        }
+        run()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [login])
+
+    const renderLoading = useCallback(() => {
+       /* if (Platform.OS == "ios") {
+            return
+        }*/
+        const windowWidth = Dimensions.get('window').width;
+        const windowHeight = Dimensions.get('window').height;
+        return <View style={[styles.flexContainer, {
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            backgroundColor: "#2367FD",
+            paddingBottom: 3.45 / 100 * windowHeight,
+        }]}>
+            <Image style={{width: windowWidth <= 365  ? 170 : 177, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
+        </View>
+    }, [])
+
+    const renderDashboard = useCallback(() => {
+        return (
+            <NavigationContainer key="dashboard">
+                <Stack.Navigator
+                  screenOptions={{
+                    gestureEnabled: false
+                }}
+                initialRouteName={isLogin ? "Dashboard" : "Login"}>
+                    <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
+                    <Stack.Screen name="Dashboard" component={DashboardScreen}  initialParams={{appProps: appProps}} options={{headerShown: false}}/>
+                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps}}
+                                  options={{headerShown: false}}/>
+                    <Stack.Screen name="QRCodeScreen" component={QrcodeScreen} initialParams={{appProps: appProps}} options={{headerShown: false}}/>
+                </Stack.Navigator>
+            </NavigationContainer>
+        )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [appProps])
+
+    const renderLogin = useCallback(() => {
+    return (
+      <NavigationContainer  key="login">
+        <Stack.Navigator initialRouteName="Login" >
+          <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
+          <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }, [appProps])
+    const renderApp = () => {
+ 
+          
+        if (loading) {
+            return renderLoading()
+        }
+        if (!isLogin) {
+           return renderLogin()
+        } 
+        
+        return renderDashboard()
+
+    }
+
+    return (
+        <SafeAreaProvider>
+            
+         <View style={[styles.flexContainer]}>
+                {renderApp()}
+            </View> 
+        
+        </SafeAreaProvider>
+    )
+
+};
+
+const styles = StyleSheet.create({
+    flexContainer: {
+        flex: 1,
+        backgroundColor: "#ffffff"
+    }
+});
+
+export default App;
