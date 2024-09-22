@@ -595,7 +595,7 @@
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = detective/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = detective;
+				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,7 +625,7 @@
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				INFOPLIST_FILE = detective/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = detective;
+				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
