@@ -1,4 +1,4 @@
-package com.detective
+package com.oponiti.tamtalk
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

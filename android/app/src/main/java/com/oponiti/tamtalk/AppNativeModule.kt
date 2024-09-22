@@ -1,4 +1,4 @@
-package com.detective
+package com.oponiti.tamtalk
 
 import android.content.Context
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.detective
+package com.oponiti.tamtalk
 
 import android.app.Application
 import com.facebook.react.PackageList

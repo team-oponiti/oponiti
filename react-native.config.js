@@ -3,7 +3,7 @@ module.exports = {
       ios: {},
       android: {
         sourceDir: './android',
-        packageName: 'com.detective',
+        packageName: 'com.oponiti.tamtalk',
       },
     },
   }

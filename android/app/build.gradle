@@ -82,9 +82,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.detective"
+    namespace "com.oponiti.tamtalk"
     defaultConfig {
-        applicationId "com.detective"
+        applicationId "com.oponiti.tamtalk"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

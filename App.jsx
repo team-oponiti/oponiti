@@ -11,7 +11,7 @@ import {AppState, Image, Platform, StyleSheet, View, Dimensions, PermissionsAndr
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createNativeStackNavigator} from 'react-native-screens/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
@@ -286,9 +286,9 @@ const App = () => {
             }
         }, 5000)
 
-        AppState.addEventListener('change', _handleAppStateChange);
+        var sub = AppState.addEventListener('change', _handleAppStateChange);
         return () => {
-            AppState.removeEventListener('change', _handleAppStateChange);
+          sub.remove()
             // OneSignal.clearHandlers();
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -493,8 +493,8 @@ const WebviewTab = (props) => {
         APP_VERSION_NAME: appInfo.appVersionName,
         APP_OS_VERSION: appInfo.osVersion,
         APP_PUSH_TOKEN: global.pushToken,
-        APP_DEVICE_ID: appInfo.deviceId,
-        APP_DEVICE_MODEL: appInfo.deviceModel,
+        APP_DEVICE_ID: appInfo.deviceId || "",
+        APP_DEVICE_MODEL: appInfo.deviceModel || "",
         app_language: language,
         APP_COUNTRY_CODE: appInfo.country,
         APP_TIMEZONE: appInfo.timeZone,
@@ -520,7 +520,7 @@ const WebviewTab = (props) => {
         fakeBridge = `window.giaynhap = {};` + ";\n" + supportWebViewBridge
     }
 
-   // console.log("refresh: \() " , header)
+    console.log("refresh: \() " , header)
 
     useEffect(() => {
 

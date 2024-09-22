@@ -1,4 +1,4 @@
-package com.detective
+package com.oponiti.tamtalk
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule

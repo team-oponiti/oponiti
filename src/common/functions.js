@@ -38,7 +38,7 @@ export const getItem = (icon, title, type = false) => {
 
 export const LoadingIndicatorView = () => {
     return (<View style={{position: "relative", top: 0, left: 0, width: "100%", height: 2}}>
-            <ProgressBar useNativeDriver={true} progress={100} height={2} backgroundColor= {appPrimaryColor}/>
+            <ProgressBar indeterminate  progress={100} height={2} backgroundColor= {appPrimaryColor}/>
         </View>);
 }
 
@@ -249,10 +249,11 @@ export const getDeviceInfoPM = () => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getUniqueIdSync()
+        console.log("deviceID", deviceID)
         model = DeviceInfo.getModel()
     } catch (e) {
-        alert(e)
+       console.log("gET DEVICE ERROR", e)
     }
 
     let osName = Platform.OS
@@ -325,10 +326,12 @@ export const getDeviceInfo = async (webview) => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getUniqueIdSync() || ""
         model = DeviceInfo.getModel()
+
+        console.log("deviceID", deviceID)
     } catch (e) {
-        alert(e)
+        console.log("GET DEVICE ERROR", e)
     }
 
     let osName = Platform.OS

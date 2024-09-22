@@ -1,4 +1,4 @@
-package com.detective
+package com.oponiti.tamtalk
 
 import android.app.NotificationManager
 import android.content.Context
