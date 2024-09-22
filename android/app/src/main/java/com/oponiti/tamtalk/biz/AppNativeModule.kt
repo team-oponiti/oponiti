@@ -1,4 +1,4 @@
-package com.oponiti.tamtalk
+package com.oponiti.tamtalk.biz
 
 import android.content.Context
 import android.content.Intent

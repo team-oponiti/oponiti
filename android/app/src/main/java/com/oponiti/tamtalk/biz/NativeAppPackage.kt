@@ -1,4 +1,4 @@
-package com.oponiti.tamtalk
+package com.oponiti.tamtalk.biz
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule

@@ -45,9 +45,8 @@
                     <category android:name="android.intent.category.DEFAULT" />
                     <category android:name="android.intent.category.BROWSABLE" /> 
                     <data android:scheme="detective"
-                        android:host="app" />  
-                <data android:host="oponiti.page.link" android:scheme="http"/>
-                <data android:host="oponiti.page.link" android:scheme="https"/>
+                        android:host="app" />   
+            <data android:host="tamtalk.page.link" android:scheme="https"/>
           </intent-filter>
             
 

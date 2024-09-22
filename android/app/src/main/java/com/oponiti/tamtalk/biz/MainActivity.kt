@@ -1,4 +1,4 @@
-package com.oponiti.tamtalk
+package com.oponiti.tamtalk.biz
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
