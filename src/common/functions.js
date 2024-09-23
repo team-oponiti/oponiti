@@ -244,7 +244,7 @@ export const getDeviceInfoPM = () => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getUniqueIdSync()
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
@@ -320,7 +320,7 @@ export const getDeviceInfo = async (webview) => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getUniqueIdSync()
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
