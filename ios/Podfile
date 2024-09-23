@@ -23,8 +23,7 @@ prepare_react_native_project!
 
 setup_permissions([
   'Camera',
-  'Microphone',
-  'MediaLibrary',
+  'Microphone'
 ])
 
 

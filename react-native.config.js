@@ -1,8 +1,7 @@
 module.exports = {
     project: {
       ios: {},
-      android: {
-        sourceDir: './android',
+      android: { 
         packageName: 'com.oponiti.tamtalk.biz',
       },
     },

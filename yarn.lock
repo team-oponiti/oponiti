@@ -5030,6 +5030,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"detective@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "detective@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@babel/preset-env": ^7.20.0
+    "@babel/runtime": ^7.20.0
+    "@react-native-community/async-storage": ^1.12.1
+    "@react-native-community/netinfo": ^11.4.1
+    "@react-native-community/push-notification-ios": ^1.11.0
+    "@react-native-cookies/cookies": ^6.2.1
+    "@react-native-firebase/app": ^20.5.0
+    "@react-native-firebase/dynamic-links": ^20.5.0
+    "@react-native-firebase/messaging": ^20.5.0
+    "@react-native/babel-preset": 0.75.2
+    "@react-native/eslint-config": 0.75.2
+    "@react-native/metro-config": 0.75.2
+    "@react-native/typescript-config": 0.75.2
+    "@react-navigation/bottom-tabs": ^6.6.1
+    "@react-navigation/native": ^6.1.18
+    "@react-navigation/native-stack": ^6.11.0
+    "@react-navigation/stack": ^6.4.1
+    "@types/react": ^18.2.6
+    "@types/react-test-renderer": ^18.0.0
+    babel-jest: ^29.6.3
+    eslint: ^8.19.0
+    jest: ^29.6.3
+    jwt-decode: ^4.0.0
+    prettier: 2.8.8
+    react: 18.3.1
+    react-native: 0.75.3
+    react-native-animatable: ^1.4.0
+    react-native-animated-progress: ^1.0.2
+    react-native-camera: ^4.2.1
+    react-native-device-info: ^13.0.0
+    react-native-gesture-handler: ^2.19.0
+    react-native-localize: ^3.2.1
+    react-native-permissions: ^4.1.5
+    react-native-push-notification: ^8.1.1
+    react-native-qrcode-scanner: ^1.5.5
+    react-native-safe-area-context: ^4.11.0
+    react-native-screens: ^3.34.0
+    react-native-vector-icons: ^10.2.0
+    react-native-webview: ^13.12.2
+    react-test-renderer: 18.3.1
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
+
 "diff-sequences@npm:^29.6.3":
   version: 29.6.3
   resolution: "diff-sequences@npm:29.6.3"
@@ -10974,52 +11023,3 @@ __metadata:
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
   languageName: node
   linkType: hard
-
-"탐정톡@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "탐정톡@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@babel/preset-env": ^7.20.0
-    "@babel/runtime": ^7.20.0
-    "@react-native-community/async-storage": ^1.12.1
-    "@react-native-community/netinfo": ^11.4.1
-    "@react-native-community/push-notification-ios": ^1.11.0
-    "@react-native-cookies/cookies": ^6.2.1
-    "@react-native-firebase/app": ^20.5.0
-    "@react-native-firebase/dynamic-links": ^20.5.0
-    "@react-native-firebase/messaging": ^20.5.0
-    "@react-native/babel-preset": 0.75.2
-    "@react-native/eslint-config": 0.75.2
-    "@react-native/metro-config": 0.75.2
-    "@react-native/typescript-config": 0.75.2
-    "@react-navigation/bottom-tabs": ^6.6.1
-    "@react-navigation/native": ^6.1.18
-    "@react-navigation/native-stack": ^6.11.0
-    "@react-navigation/stack": ^6.4.1
-    "@types/react": ^18.2.6
-    "@types/react-test-renderer": ^18.0.0
-    babel-jest: ^29.6.3
-    eslint: ^8.19.0
-    jest: ^29.6.3
-    jwt-decode: ^4.0.0
-    prettier: 2.8.8
-    react: 18.3.1
-    react-native: 0.75.3
-    react-native-animatable: ^1.4.0
-    react-native-animated-progress: ^1.0.2
-    react-native-camera: ^4.2.1
-    react-native-device-info: ^13.0.0
-    react-native-gesture-handler: ^2.19.0
-    react-native-localize: ^3.2.1
-    react-native-permissions: ^4.1.5
-    react-native-push-notification: ^8.1.1
-    react-native-qrcode-scanner: ^1.5.5
-    react-native-safe-area-context: ^4.11.0
-    react-native-screens: ^3.34.0
-    react-native-vector-icons: ^10.2.0
-    react-native-webview: ^13.12.2
-    react-test-renderer: 18.3.1
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
