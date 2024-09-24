@@ -2,12 +2,12 @@
 import React, {useEffect, useState} from 'react';
 import {BackHandler, Image, Text, View, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import styles from "../common/styles"
-import { getText, getLanguage , onQRScan} from "../common/functions"
+import styles from "../common/styles";
+import { getText, getLanguage , onQRScan} from "../common/functions";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import WebviewScreen from "../screen/WebviewScreen"
-import { blog, detective, message, more } from "../define/webviewUri"
-import { useGlobalBade, useGlobalLanguage, useGlobalRefresh } from "../common/globalState"
+import WebviewScreen from "../screen/WebviewScreen";
+import { blog, detective, message, more } from "../define/webviewUri";
+import { useGlobalBade, useGlobalLanguage, useGlobalRefresh } from "../common/globalState";
 import { Platform } from '../common/platform';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import messaging from '@react-native-firebase/messaging';
@@ -17,7 +17,7 @@ import dynamicLinks from '@react-native-firebase/dynamic-links';
 const Tab = createBottomTabNavigator();
 const NOOP = () => null;
 
-var activeTab = {}
+var activeTab = {};
 
 const mainTabs = [
 
@@ -42,7 +42,7 @@ const mainTabs = [
         icon: "more",
         href: more,
     }
-]
+];
 
 var icons = {
     "Detective": {
@@ -61,43 +61,43 @@ var icons = {
         normal: require("../asset/images/ic_more.png"),
         active: require("../asset/images/ic_more_active.png"),
     }
-}
+};
 
 const Dashboard = (props) => {
-    var appProps = (props.route && props.route.params && props.route.params.appProps) || {}
+    var appProps = (props.route && props.route.params && props.route.params.appProps) || {};
     const insets = useSafeAreaInsets();
-    const [appData, setAppData] = useState([])
-    const [language,] = useGlobalLanguage()
-    const [badge, setBadge]= useGlobalBade()
-    const [, setGlobalRefresh ] = useGlobalRefresh()
+    const [appData, setAppData] = useState([]);
+    const [language,] = useGlobalLanguage();
+    const [badge, setBadge]= useGlobalBade();
+    const [, setGlobalRefresh ] = useGlobalRefresh();
 
 
     var navigation = useNavigation();
 
     function handleBackButtonClick() {
         if (activeTab.name != "Detective") {
-            navigation.navigate("Detective")
+            navigation.navigate("Detective");
         } else {
-            BackHandler.exitApp()
+            BackHandler.exitApp();
         }
-        return true
+        return true;
     }
 
     appProps.openCart = () => {
      //   navigation.navigate({name: "Category", merge: true});
-    }
+    };
 
     appProps.openHome = () => {
-        navigation.navigate("Detective")
-    }
+        navigation.navigate("Detective");
+    };
 
     const navigateToUrl = (url) => {
 
-    }
+    };
     
     const handleDynamicLink = (link)=> {
-        navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps }) 
-      }
+        navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps }); 
+      };
 
 
     useEffect(() => {
@@ -110,7 +110,7 @@ const Dashboard = (props) => {
 
 
         const unsubscribe2 = messaging().onMessage(async remoteMessage => {
-            setGlobalRefresh(1)
+            setGlobalRefresh(1);
         });
 
         messaging().getInitialNotification().then(initialMessage => {
@@ -118,15 +118,15 @@ const Dashboard = (props) => {
                 var link = initialMessage.data["contentUrl"];
                 if (link && link != "" && link != "#") { 
                     if (link == detective) {
-                        navigation.navigate("Detective")
+                        navigation.navigate("Detective");
                     }  else {
-                        navigation.push("WebviewScreen", {data: {href: initialMessage.data["contentUrl"] }, appProps: appProps}) 
+                        navigation.push("WebviewScreen", {data: {href: initialMessage.data["contentUrl"] }, appProps: appProps}); 
                     } 
                 } else {
-                    navigation.navigate("Detective")
+                    navigation.navigate("Detective");
                 }
             } 
-         }) 
+         }); 
       
          const unsubscribe3 = messaging().onNotificationOpenedApp(remoteMessage => { 
           if (remoteMessage && remoteMessage.data["contentUrl"]) {
@@ -134,18 +134,18 @@ const Dashboard = (props) => {
             if (link && link != "" && link != "#") { 
 
                 if (link == detective) {
-                    navigation.navigate("Detective")
+                    navigation.navigate("Detective");
                 }  
                 else {
-                    navigation.push("WebviewScreen", {data: {href: remoteMessage.data["contentUrl"] }, appProps: appProps}) 
+                    navigation.push("WebviewScreen", {data: {href: remoteMessage.data["contentUrl"] }, appProps: appProps}); 
                 }
             } else {
-                navigation.navigate("Detective")
+                navigation.navigate("Detective");
             }
         } 
         });
 
-        var data = []
+        var data = [];
         for (var tab of mainTabs) {
             var xtab = {
                 props: {
@@ -154,37 +154,37 @@ const Dashboard = (props) => {
                     disableHandleBackPress: true
                 },
                 name: tab.name,
-            }
-            data.push(xtab)
+            };
+            data.push(xtab);
         }
  
 
-        setAppData(data)
+        setAppData(data);
 
         return () => { 
-            unsubscribe2 && unsubscribe2()
-            unsubscribe3 && unsubscribe3()      
-            unsubscribe && unsubscribe()
+            unsubscribe2 && unsubscribe2();
+            unsubscribe3 && unsubscribe3();      
+            unsubscribe && unsubscribe();
 
         }; 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     if (appData.length < 1) {
-        return <View></View>
+        return <View></View>;
     }
 
     const activeTabEvent = (data) => {
-        activeTab = data
-        console.log("active", data)
-        console.log(activeTab)
-    }
+        activeTab = data;
+        console.log("active", data);
+        console.log(activeTab);
+    };
 
     const onScanQr = () => {
         if (global.currentPageView  != null) { 
-            onQRScan(global.currentPageView ,navigation,{})
+            onQRScan(global.currentPageView ,navigation,{});
         }
-    }
+    };
 
     return (
         <Tab.Navigator
@@ -194,26 +194,28 @@ const Dashboard = (props) => {
             backBehavior={"none"}
             initialRouteName={"Detective"}
             screenOptions={({route}) => ({ 
+                // eslint-disable-next-line react/no-unstable-nested-components
                 tabBarLabel: ({focused, color, size}) => {
-                    return <Text style={{ fontSize: Platform.SizeScale(10),
-                    color: focused ? appPrimaryColor: "#181E32",
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    return <Text style={{ fontSize: 12,
+                    color: focused ? appPrimaryColor : "#333333",
                     padding: 0,
                     fontWeight: focused ? 'bold' : 'normal',
                     marginTop: Platform.SizeScale(6),
                     marginBottom: Platform.SizeScale(12) }}>{
                         getText(route.name, language)
-                    }</Text>
+                    }</Text>;
                 },
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
-                    iconName = focused ? icons[route.name].active : icons[route.name].normal
+                    iconName = focused ? icons[route.name].active : icons[route.name].normal;
                     return    <Image source={iconName} style={{
                         width: Platform.SizeScale(24),
                         height: Platform.SizeScale(24),
                         marginTop: Platform.SizeScale(8),
                         marginBottom: 0,
                         borderRadius: 0
-                    }}></Image>
+                    }}></Image>;
                     
                 },
                 tabBarStyle: {
@@ -242,7 +244,7 @@ const Dashboard = (props) => {
             }}
         >
             {appData.map((m, index) => { 
-                let getBadge =  (badge || {})[index + ""]
+                let getBadge =  (badge || {})[index + ""];
                 return (
                     <Tab.Screen
                     key = {m.name}
@@ -252,7 +254,7 @@ const Dashboard = (props) => {
                     options={{ tabBarBadge:  getBadge == 0 ? null : getBadge, tabBarBadgeStyle: { backgroundColor: appPrimaryColor }, headerShown: false}}
                     
                     />
-                )
+                );
             }
                 )}
         </Tab.Navigator>
