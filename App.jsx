@@ -36,6 +36,7 @@ import { useGlobalLanguage, useGlobalBade, useGlobalStoreId, useGlobalAppLifeSta
 import QrcodeScreen from './src/screen/QrcodeScreen';
 
 import messaging from '@react-native-firebase/messaging';
+import WebViewWithBackButton from './src/screen/WebViewWithBackButton';
 
 
 if (Platform.OS == "android") {
@@ -344,6 +345,8 @@ const App = () => {
                     <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps}}
                                   options={{headerShown: false}}/>
                     <Stack.Screen name="QRCodeScreen" component={QrcodeScreen} initialParams={{appProps: appProps}} options={{headerShown: false}}/>
+                    <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+              
                 </Stack.Navigator>
             </NavigationContainer>
         )
@@ -356,6 +359,8 @@ const App = () => {
         <Stack.Navigator initialRouteName="Login" >
           <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
           <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+          <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+              
         </Stack.Navigator>
       </NavigationContainer>
     )

@@ -164,6 +164,10 @@ const WebviewTab = (props) => {
         var hasAction = false
         for (var index in checkUrl) {
             let param = checkUrl[index]
+            if (param == "appt=W") {
+                navigation.push("Preview",  {data: {href:url}} )
+                return false
+            } else
             if (param == "appt=N") {
                 navigation.push("WebviewScreen", {data: {href: url}, appProps: appProps})
                 open = false
