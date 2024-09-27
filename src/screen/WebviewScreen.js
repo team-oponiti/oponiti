@@ -1,12 +1,12 @@
-/* eslint-disable prettier/prettier */
+ 
 import React, {useCallback, useEffect, useState} from 'react';
-import {BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking, Platform, SafeAreaView, StatusBar, View, Share} from 'react-native';
+import {BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking,  Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity} from 'react-native';
 import {useIsFocused, useNavigation, useScrollToTop} from '@react-navigation/native';
 import CookieManager from '@react-native-cookies/cookies';
 import {WebView} from "react-native-webview";
 import styles from "../common/styles"
 import queryString from 'query-string';
-import {cart, home, more, search, talk, login, logout} from "../define/webviewUri"
+import {cart, home, more, search, talk, login, logout, environment} from "../define/webviewUri"
  
 import { anxData } from '../common/asyncdataload';
 import jsText from '../common/webviewScript'
@@ -148,7 +148,12 @@ const WebviewTab = (props) => {
         var hasAction = false
         for (var index in checkUrl) {
             let param = checkUrl[index]
-            if (param == "appt=N") {
+           
+            if (param == "appt=W") {
+                navigation.push("Preview",  {data: {href:url}} )
+                return false
+            }
+             else if (param == "appt=N") {
                 navigation.push("WebviewScreen", {data: {href: url}, appProps: appProps})
                 open = false
                 break
@@ -547,9 +552,10 @@ const WebviewTab = (props) => {
             {
                 (isSpecial || forceColor !=  null) ? <StatusBar backgroundColor={forceColor || appPrimaryColor}/> : null
              }   
-              <SafeAreaView  />
-            {webLoading ? <LoadingIndicatorView/> : null} 
-
+ <SafeAreaView  />
+             
+             
+            {webLoading ? <LoadingIndicatorView/> : null}  
            {isHideWebView ? renderLoading() : null}
             <KeyboardAvoidingView
              style={[

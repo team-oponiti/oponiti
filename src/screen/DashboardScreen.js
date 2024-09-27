@@ -1,5 +1,4 @@
-/* eslint-disable quotes */
-/* eslint-disable prettier/prettier */
+/* eslint-disable quotes */ 
 import React, {useEffect, useState} from 'react';
 import {BackHandler, Image, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';

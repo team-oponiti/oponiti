@@ -37,6 +37,7 @@ import messaging from '@react-native-firebase/messaging';
 import { useGlobalAppLifeState, useGlobalBade, useGlobalLanguage } from "./src/common/globalState"
 import * as urlconfigs from "./src/define/webviewUri"
 import { appPrimaryColor } from './src/define/config';
+import WebViewWithBackButton from './src/screen/WebViewWithBackButton';
 if (Platform.OS == "android") {
     var Stack = createNativeStackNavigator();
 } else {
@@ -317,6 +318,8 @@ const App = () => {
                     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{headerShown: false}} initialParams={{appProps: appProps, isLogin}}/>
                     <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps, isLogin}}
                                   options={{headerShown: false}}/>
+                    <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+
                 </Stack.Navigator>
             </NavigationContainer>
         )
@@ -329,8 +332,12 @@ const App = () => {
             <Stack.Navigator   screenOptions={{
                     gestureEnabled: false
                 }} >
+                    
+                 
               <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login } }} options={{ headerShown: false }} />
               <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+              <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+
             </Stack.Navigator>
           </NavigationContainer>
         )

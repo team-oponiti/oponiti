@@ -29,6 +29,12 @@ class AppNativeModule(context: ReactApplicationContext) : ReactContextBaseJavaMo
         currentActivity?.startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
     }
 
+    override fun getConstants(): Map<String, Any> {
+        val constants = mutableMapOf<String, Any>()
+        constants["env"] = "prod"
+        return constants
+    }
+
     @ReactMethod
     fun getListWifi(promise: Promise) {
         try {
