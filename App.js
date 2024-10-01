@@ -305,7 +305,7 @@ const App = () => {
             backgroundColor: "#2367FD",
             paddingBottom: 3.45 / 100 * windowHeight,
         }]}>
-            <Image style={{width: windowWidth <= 365  ? 170 : 177, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
+            <Image style={{width: windowWidth <= 365  ?  227 : 230, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
         </View>
     }, [])
 

@@ -160,7 +160,7 @@ const WebviewTab = (props) => {
             } else if (param == "appt=D") { 
                 open = false
                 Linking.openURL(url)
-                return true
+                return false
             } else if (param == "appt=X") {
                 let params = queryString.parseUrl(url)
                 global.data = params.query['data']
@@ -536,7 +536,7 @@ const WebviewTab = (props) => {
             height: '100%',
             zIndex: 10
         }]}>
-           <Image style={{width: windowWidth <= 365  ? 170 : 177, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("../asset/images/logo1.png"): require("../asset/images/logo2.png")}></Image>
+           <Image style={{width: windowWidth <= 365  ?  227 : 230, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("../asset/images/logo1.png"): require("../asset/images/logo2.png")}></Image>
         </View>
     }, [])
     if (viewRefresh) {
