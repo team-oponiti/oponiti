@@ -27,7 +27,6 @@
 		B8DAAA0B2CA66669005F9941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
 		B8DAAA0C2CA66669005F9941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		B8DAAA0D2CA66669005F9941 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */; };
-		B8DAAA132CA66669005F9941 /* NotiService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B82A3EFB2CA064CE00D46100 /* NotiService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +38,6 @@
 			remoteInfo = detective;
 		};
 		B82A3F002CA064CE00D46100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B82A3EFA2CA064CE00D46100;
-			remoteInfo = NotiService;
-		};
-		B8DAAA012CA66669005F9941 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
@@ -72,7 +64,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B8DAAA132CA66669005F9941 /* NotiService.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -343,7 +334,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B8DAAA002CA66669005F9941 /* PBXTargetDependency */,
 			);
 			name = dev;
 			productName = detective;
@@ -709,11 +699,6 @@
 			isa = PBXTargetDependency;
 			target = B82A3EFA2CA064CE00D46100 /* NotiService */;
 			targetProxy = B82A3F002CA064CE00D46100 /* PBXContainerItemProxy */;
-		};
-		B8DAAA002CA66669005F9941 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B82A3EFA2CA064CE00D46100 /* NotiService */;
-			targetProxy = B8DAAA012CA66669005F9941 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1096,7 +1081,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1135,7 +1120,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
