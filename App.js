@@ -347,9 +347,9 @@ const App = () => {
         if (loading) {
             return renderLoading()
         }
-        if (!isLogin) {
-            return renderLogin()
-        }
+        // if (!isLogin) {
+        //     return renderLogin()
+        // }
         return renderDashboard()
 
     }

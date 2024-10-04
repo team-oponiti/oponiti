@@ -177,14 +177,16 @@ const Dashboard = (props) => {
             initialRouteName={"Home"}
             screenOptions={({route}) => ({
                 tabBarLabel: ({focused, color, size}) => {
-                    return <Text style={{ fontSize: 12,
+                    return <View>
+                        <Text style={{ fontSize: 11,
                         color: focused ? appPrimaryColor: "#444444",
                         padding: 0,
                         fontWeight: focused ? "bold": "normal",
                         marginTop: 6,
-                        marginBottom: 12 }}>{
+                        marginBottom: 14 }}>{
                             getText(route.name, language)
                         }</Text>
+                    </View>
                 },
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
@@ -192,14 +194,17 @@ const Dashboard = (props) => {
                     return <Image source={iconName} style={{
                         width: 24,
                         height: 24,
-                        marginTop: 10,
+                        marginTop: 12,
                         marginBottom: 0,
                         borderRadius: 0
                     }}></Image>
                 },
                 tabBarStyle: {
                     paddingTop: 0,
-                    height: 65 + insets.bottom,
+                    paddingBottom: Math.min(21, insets.bottom),
+                    height: 65 + Math.min(21, insets.bottom),
+                    paddingLeft: 4, 
+                    paddingRight: 4,
                 },
                 tabBarHideOnKeyboard: true
             })}
@@ -212,7 +217,7 @@ const Dashboard = (props) => {
               //  activeTintColor: '#EEFAFC',
                 showLabel: true,
                 labelStyle: {
-                    fontSize: 14,
+                    fontSize: 11,
                     fontStyle: "normal",
                     padding: 0,
                 },
