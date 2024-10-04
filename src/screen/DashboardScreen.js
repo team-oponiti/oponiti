@@ -221,8 +221,8 @@ const Dashboard = (props) => {
                     paddingTop: 0,
                     paddingBottom: Math.min(21, insets.bottom),
                     height: 65 + Math.min(21, insets.bottom),
-                    paddingLeft: 4, 
-                    paddingRight: 4,
+                    paddingLeft: 0, 
+                    paddingRight: 0,
                 },
                 tabBarHideOnKeyboard: true
             })}
@@ -246,14 +246,14 @@ const Dashboard = (props) => {
             }}
         >
             {appData.map((m, index) => { 
-                let getBadge =  (badge || {})[index + ""];
+                let getBadge = (badge || {})[index + ""];
                 return (
                     <Tab.Screen
                     key = {m.name}
                     name={m.name}
                     component={WebviewScreen}
                     initialParams={{...m.props, activeTab: activeTabEvent}}
-                    options={{ tabBarBadge:  getBadge == 0 ? null : getBadge, tabBarBadgeStyle: { backgroundColor: appPrimaryColor }, headerShown: false}}
+                    options={{ tabBarBadge:  getBadge == 0 ? null : getBadge, tabBarBadgeStyle: {fontSize: 9,fontWeight: 600, marginTop: 2 ,backgroundColor: appPrimaryColor }, headerShown: false}}
                     
                     />
                 );
