@@ -233,7 +233,7 @@ const Dashboard = (props) => {
                     name={m.name}
                     component={WebviewScreen}
                     initialParams={{...m.props, activeTab: activeTabEvent, isLogin}}
-                    options={{ tabBarBadge:  getBadge == 0 ? null : getBadge, tabBarBadgeStyle: { backgroundColor: appPrimaryColor }, headerShown: false}}
+                    options={{ tabBarBadge:  getBadge == 0 ? null : getBadge, tabBarBadgeStyle: {fontSize: 9,fontWeight: 600, marginTop: 2 ,backgroundColor: appPrimaryColor }, headerShown: false}}
                     
                     />
             }
