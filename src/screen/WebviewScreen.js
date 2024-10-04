@@ -294,15 +294,15 @@ const WebviewTab = (props) => {
         } else if (message.type == "set-token") {
             saveLastToken(message.data) 
         } else if (message.type == "logout") {
-            // global.userToken = ""
-            // appProps.logout && appProps.logout()
-            // setTimeout(()=> {
-            //     setHookIsLogin(false)
-            // navigation.reset({
-            //     index: 0,
-            //     routes: [{ name: 'Dashboard' }]
-            // })
-            // }, 200)
+            global.userToken = ""
+            appProps.logout && appProps.logout()
+            setTimeout(()=> {
+                setHookIsLogin(false)
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Dashboard' }]
+            })
+            }, 200)
         } else if (message.type == "socialLogin") {
             socialLogin(message.data, webviewRef)
         } else if (message.type == "log") {
