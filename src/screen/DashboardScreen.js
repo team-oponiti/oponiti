@@ -193,38 +193,40 @@ const Dashboard = (props) => {
             style={styles.flexContainer}
             backBehavior={"none"}
             initialRouteName={"Detective"}
-            screenOptions={({route}) => ({ 
-                // eslint-disable-next-line react/no-unstable-nested-components
+            screenOptions={({route}) => ({
                 tabBarLabel: ({focused, color, size}) => {
-                    // eslint-disable-next-line react-native/no-inline-styles
-                    return <Text style={{ fontSize: 12,
-                    color: focused ? appPrimaryColor : "#333333",
-                    padding: 0,
-                    fontWeight: focused ? 'bold' : 'normal',
-                    marginTop: Platform.SizeScale(6),
-                    marginBottom: Platform.SizeScale(12) }}>{
-                        getText(route.name, language)
-                    }</Text>;
+                    return <View>
+                        <Text style={{ fontSize: 11,
+                        color: focused ? appPrimaryColor: "#444444",
+                        padding: 0,
+                        fontWeight: focused ? "bold": "normal",
+                        marginTop: 6,
+                        marginBottom: 14 }}>{
+                            getText(route.name, language)
+                        }</Text>
+                    </View>
                 },
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
-                    iconName = focused ? icons[route.name].active : icons[route.name].normal;
-                    return    <Image source={iconName} style={{
-                        width: Platform.SizeScale(24),
-                        height: Platform.SizeScale(24),
-                        marginTop: Platform.SizeScale(8),
+                    iconName = focused ? icons[route.name].active : icons[route.name].normal
+                    return <Image source={iconName} style={{
+                        width: 24,
+                        height: 24,
+                        marginTop: 12,
                         marginBottom: 0,
                         borderRadius: 0
-                    }}></Image>;
-                    
+                    }}></Image>
                 },
                 tabBarStyle: {
-                    paddingBottom: Math.max(5,  insets.bottom - (Platform.OS == "android" ? 0 : 15)),
-                    paddingTop: Platform.SizeScale(0),
-                    height: Platform.SizeScale(60) +  Math.max(5, insets.bottom - 15),
+                    paddingTop: 0,
+                    paddingBottom: Math.min(21, insets.bottom),
+                    height: 65 + Math.min(21, insets.bottom),
+                    paddingLeft: 4, 
+                    paddingRight: 4,
                 },
                 tabBarHideOnKeyboard: true
             })}
+ 
 
             tabBarOptions={{
                 tabBarHideOnKeyboard: true,
