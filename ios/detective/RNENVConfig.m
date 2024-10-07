@@ -37,7 +37,7 @@ RCT_EXPORT_MODULE();
   };
 #else
   return @{
-    @"env": @"dev",
+    @"env": @"prod",
     @"login": @"https://tamtalk.com/login/",
     @"detective": @"https://tamtalk.com/detective/",
     @"message": @"https://tamtalk.com/chat/",
