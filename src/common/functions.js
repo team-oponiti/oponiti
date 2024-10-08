@@ -12,6 +12,7 @@ import  AsyncStorage  from '@react-native-community/async-storage';
 // import * as KakaoKit from '@react-native-seoul/kakao-login'
 //import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 // import {appleAuth} from '@invertase/react-native-apple-authentication';
+import remoteConfig from '@react-native-firebase/remote-config';
 
 import * as DeviceInfo from "react-native-device-info"
 
@@ -414,6 +415,24 @@ export const getLanguage = async () => {
     return global.language
 }
 
+export const setHideComunity = async (comunity) => {
+    global.comunity = (comunity == "") ? false : true
+    console.log("SET global.comunity", global.comunity, comunity)
+    await AsyncStorage.setItem('comunity', comunity || "");
+}
+
+export const getHideComunity = async () => {
+    global.comunity = await AsyncStorage.getItem('comunity') || "";
+    console.log("GET global.comunity", global.comunity)
+    if ( global.comunity == "" ) {
+        global.comunity = false
+    } else {
+        global.comunity = true
+    }
+    return global.comunity
+}
+
+
 
 export const saveCookie = async (cookie) => {
 
@@ -471,3 +490,20 @@ export const openSetting = async (webviewRef) => {
 export async function requestLocaitonPermision() {
  
 }   
+
+
+export async function setupRemoteConfig() {
+    try {
+        await remoteConfig().fetchAndActivate()
+    } catch(e) {
+        console.log("remoteConfig().get", e)
+    }
+    console.log(`remoteConfig().getString("review") `, remoteConfig().getString("review"))
+    if (remoteConfig().getString("review") == "1.0.1"){
+        setHideComunity("true")
+    } else {
+        setHideComunity("")
+    }
+    
+    
+}

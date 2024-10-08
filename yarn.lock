@@ -2966,6 +2966,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/remote-config@npm:^21.0.0":
+  version: 21.0.0
+  resolution: "@react-native-firebase/remote-config@npm:21.0.0"
+  peerDependencies:
+    "@react-native-firebase/analytics": 21.0.0
+    "@react-native-firebase/app": 21.0.0
+  checksum: 8d0a595caf745f84931ab3b1e5ed23a0277d951cfbc645f22aeb405f34536e5b041538b1205c04affdde3c7b3a22f93bfd66091662cbc8e4b275178038beb384
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.75.3":
   version: 0.75.3
   resolution: "@react-native/assets-registry@npm:0.75.3"
@@ -5044,6 +5054,7 @@ __metadata:
     "@react-native-firebase/app": ^20.5.0
     "@react-native-firebase/dynamic-links": ^20.5.0
     "@react-native-firebase/messaging": ^20.5.0
+    "@react-native-firebase/remote-config": ^21.0.0
     "@react-native/babel-preset": 0.75.2
     "@react-native/eslint-config": 0.75.2
     "@react-native/metro-config": 0.75.2

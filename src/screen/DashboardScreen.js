@@ -155,6 +155,11 @@ const Dashboard = (props) => {
                 },
                 name: tab.name,
             };
+
+            console.log(" global.comunity ",  global.comunity )
+            if ( global.comunity == true && tab.name == "Blog") {
+                continue
+            }
             data.push(xtab);
         }
  

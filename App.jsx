@@ -24,7 +24,9 @@ import {
     saveLastToken, setBade,
     getLanguage,
     getTabBadge,
-    getDeviceInfo
+    getDeviceInfo,
+    getHideComunity,
+    setupRemoteConfig
 } from "./src/common/functions"
 
 //import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -259,7 +261,9 @@ const App = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(() => { 
+        getHideComunity()
+        setupRemoteConfig()
         getResource().then(async () => {
 
              await requestPermission()
