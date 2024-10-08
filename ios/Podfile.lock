@@ -15,6 +15,11 @@ PODS:
   - Firebase/Messaging (10.29.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.29.0)
+  - Firebase/RemoteConfig (10.29.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 10.29.0)
+  - FirebaseABTesting (10.29.0):
+    - FirebaseCore (~> 10.0)
   - FirebaseAnalytics (10.29.0):
     - FirebaseAnalytics/AdIdSupport (= 10.29.0)
     - FirebaseCore (~> 10.0)
@@ -57,6 +62,16 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30911.0, >= 2.30908.0)
+  - FirebaseRemoteConfig (10.29.0):
+    - FirebaseABTesting (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - FirebaseRemoteConfigInterop (~> 10.23)
+    - FirebaseSharedSwift (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - "GoogleUtilities/NSData+zlib (~> 7.8)"
+  - FirebaseRemoteConfigInterop (10.29.0)
+  - FirebaseSharedSwift (10.29.0)
   - fmt (9.1.0)
   - glog (0.3.5)
   - GoogleAppMeasurement (10.29.0):
@@ -1680,6 +1695,10 @@ PODS:
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
+  - RNFBRemoteConfig (21.0.0):
+    - Firebase/RemoteConfig (= 10.29.0)
+    - React-Core
+    - RNFBApp
   - RNGestureHandler (2.19.0):
     - DoubleConversion
     - glog
@@ -1756,8 +1775,11 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - Firebase
+  - FirebaseABTesting
   - FirebaseCore
   - FirebaseCoreInternal
+  - FirebaseInstallations
+  - FirebaseRemoteConfig
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - GoogleUtilities
@@ -1830,6 +1852,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
@@ -1840,6 +1863,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Firebase
+    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreExtension
@@ -1847,6 +1871,9 @@ SPEC REPOS:
     - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseMessaging
+    - FirebaseRemoteConfig
+    - FirebaseRemoteConfigInterop
+    - FirebaseSharedSwift
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -2000,6 +2027,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/dynamic-links"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNFBRemoteConfig:
+    :path: "../node_modules/@react-native-firebase/remote-config"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNLocalize:
@@ -2018,6 +2047,7 @@ SPEC CHECKSUMS:
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 7b438dceb9f904bd85ca3c31d64cce32a035472b
   Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
+  FirebaseABTesting: d87f56707159bae64e269757a6e963d490f2eebe
   FirebaseAnalytics: 23717de130b779aa506e757edb9713d24b6ffeda
   FirebaseCore: 30e9c1cbe3d38f5f5e75f48bfcea87d7c358ec16
   FirebaseCoreExtension: 705ca5b14bf71d2564a0ddc677df1fc86ffa600f
@@ -2025,6 +2055,9 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: 83c278fcae48ac2cf8c3fb10f64f3d469dadcf9b
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
   FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
+  FirebaseRemoteConfig: 48ef3f243742a8d72422ccfc9f986e19d7de53fd
+  FirebaseRemoteConfigInterop: 6efda51fb5e2f15b16585197e26eaa09574e8a4d
+  FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
@@ -2099,6 +2132,7 @@ SPEC CHECKSUMS:
   RNFBApp: 5f87753a8d8b37d229adf85cd0ff37709ffdf008
   RNFBDynamicLinks: 0be04fa60c7d96437588fd4a5ae37334ba49db34
   RNFBMessaging: 3fa1114c0868dd21f20dfe186adf42297ea316b1
+  RNFBRemoteConfig: 25e9e33afee0e56ff2d1a3f51558d8a817fe5003
   RNGestureHandler: 3b6fa2bfa341c413d3d08444b838515b58e48ee7
   RNLocalize: 4f22418187ecd5ca693231093ff1d912d1b3c9bc
   RNPermissions: f61ebf52bb670809d522bba0b09b3e6a9ea5ab7e
@@ -2107,6 +2141,6 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 4ef80d96a5534f0e01b3055f17d1e19a9fc61b63
 
-PODFILE CHECKSUM: ba34306dcc3b680af8e0508b4f4164582c4a1e1b
+PODFILE CHECKSUM: 2d2a139bb6a1ca27e918341b3529b249c81eb1c0
 
 COCOAPODS: 1.15.2
