@@ -31,7 +31,30 @@ class AppNativeModule(context: ReactApplicationContext) : ReactContextBaseJavaMo
 
     override fun getConstants(): Map<String, Any> {
         val constants = mutableMapOf<String, Any>()
-        constants["env"] = "prod"
+        if (BuildConfig.FLAVOR == "dev") {
+            constants["env"] = "dev"
+            constants["chat"] = "http://43.203.213.15/chat/"
+            constants["membership"] = "http://43.203.213.15/detective-membership/" 
+            constants["account"] = "http://43.203.213.15/detective-account/"
+            constants["more"] = "http://43.203.213.15/detective-more/" 
+            constants["blog"] = "http://43.203.213.15/blog/" 
+            constants["domain"] = "43.203.213.15" 
+            constants["login"] = "http://43.203.213.15/detective-login/"
+            constants["logout"] = "http://43.203.213.15/logout" 
+    
+        } else {
+            constants["env"] = "prod"
+            constants["chat"] = "https://tamtalk.com/chat/"
+            constants["membership"] = "https://tamtalk.com/detective-membership/" 
+            constants["account"] = "https://tamtalk.com/detective-account/"
+            constants["more"] = "https://tamtalk.com/detective-more/" 
+            constants["blog"] = "https://tamtalk.com/blog/" 
+            constants["domain"] = "tamtalk.com" 
+            constants["login"] = "https://tamtalk.com/detective-login/"
+            constants["logout"] = "https://tamtalk.com/logout" 
+    
+        }
+       
         return constants
     }
 
