@@ -309,7 +309,12 @@ const WebviewTab = (props) => {
             console.log(message.data)
         } else if (message.type == "refresh") {
             setFirstLoad(true)
-            webviewRef.current && webviewRef.current.reload()
+       
+            setViewRefresh(true)
+            setTimeout(() => {
+                setViewRefresh(false)
+            }, 250)
+         
         } else if (message.type == "language") {
             setLanguage(message.data)
             changeLanguage(message.data)
