@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import android.provider.Settings
+import android.os.Build
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.NativeModule
 import com.facebook.react.bridge.Promise
@@ -30,7 +31,21 @@ class AppNativeModule(context: ReactApplicationContext) : ReactContextBaseJavaMo
     }
     override fun getConstants(): Map<String, Any> {
         val constants = mutableMapOf<String, Any>()
-        constants["env"] = "prod"
+
+        if (BuildConfig.FLAVOR == "dev") {
+            constants["env"] = "dev"
+            constants["detective"] = "http://43.203.213.15/detective/"
+            constants["message"] = "http://43.203.213.15/chat/"
+            constants["more"] = "http://43.203.213.15/more/"
+            constants["blog"] = "http://43.203.213.15/blog/"
+            constants["domain"] = "43.203.213.15" 
+            constants["login"] = "http://43.203.213.15/login/"
+            constants["logout"] = "http://43.203.213.15/logout" 
+    
+        } else {
+            constants["env"] = "prod"
+        }
+
         return constants
     }
 

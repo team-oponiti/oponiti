@@ -6,6 +6,8 @@
         </trust-anchors>
     </base-config>
     <domain-config cleartextTrafficPermitted="true">
+    
+     <domain includeSubdomains="true">43.203.213.15</domain>
         <domain includeSubdomains="true">blue-dragon.bi</domain>
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">10.0.2.2</domain>

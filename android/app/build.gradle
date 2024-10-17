@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk"
     defaultConfig {
-        applicationId "com.oponiti.tamtalk"
+        applicationId "com.oponiti"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 16
@@ -118,15 +118,26 @@ android {
         }
     }
 
-    // flavorDimensions "flavor"
-    //   productFlavors {
-    //     chplay {
-    //         dimension "flavor"
-    //         versionCode 12
-    //         versionName "1.0.5"
-    //         setProperty("archivesBaseName", "Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}")
-    //     }
-    // }
+    flavorDimensions "flavor"
+      productFlavors {
+            create("dev") {  
+            applicationIdSuffix ".dev"
+            dimension "flavor"
+            versionCode 16
+            versionName "1.0.5"
+            setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        } 
+
+        //    create("chplay") { 
+        //     getIsDefault().set(true)
+        //     applicationIdSuffix ".tamtalk"
+        //     dimension "flavor"
+        //     versionCode 12
+        //     versionName "1.0.5"
+        //     setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        // } 
+
+    }
 }
 
 dependencies {

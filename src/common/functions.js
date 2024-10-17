@@ -503,7 +503,5 @@ export async function setupRemoteConfig() {
         setHideComunity("true")
     } else {
         setHideComunity("")
-    }
-    
-    
+    } 
 }

@@ -337,8 +337,14 @@ const WebviewTab = (props) => {
         } else if (message.type == "log") {
             console.log(message.data)
         } else if (message.type == "refresh") {
+            // setFirstLoad(true)
+            // webviewRef.current && webviewRef.current.reload()
             setFirstLoad(true)
-            webviewRef.current && webviewRef.current.reload()
+            setViewRefresh(true)
+            setTimeout(() => {
+                setViewRefresh(false)
+            }, 250) 
+
         } else if (message.tympe == "language") {
             setLanguage(message.data)
             changeLanguage(message.data)
