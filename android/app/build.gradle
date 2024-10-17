@@ -120,13 +120,13 @@ android {
 
     flavorDimensions "flavor" 
       productFlavors {
-             create("dev") { 
-            applicationIdSuffix ".dev"
-            dimension "flavor"
-            versionCode 12
-            versionName "1.0.6"
-            setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        }
+        //      create("dev") { 
+        //     applicationIdSuffix ".dev"
+        //     dimension "flavor"
+        //     versionCode 12
+        //     versionName "1.0.6"
+        //     setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        // }
         create("chplay") { 
             getIsDefault().set(true)
             applicationIdSuffix ".biz"
