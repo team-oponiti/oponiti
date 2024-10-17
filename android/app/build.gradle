@@ -120,22 +120,22 @@ android {
 
     flavorDimensions "flavor"
       productFlavors {
-            create("dev") {  
-            applicationIdSuffix ".dev"
-            dimension "flavor"
-            versionCode 16
-            versionName "1.0.5"
-            setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        } 
-
-        //    create("chplay") { 
-        //     getIsDefault().set(true)
-        //     applicationIdSuffix ".tamtalk"
+        //     create("dev") {  
+        //     applicationIdSuffix ".dev"
         //     dimension "flavor"
-        //     versionCode 12
+        //     versionCode 16
         //     versionName "1.0.5"
-        //     setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        //     setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         // } 
+
+           create("chplay") { 
+            getIsDefault().set(true)
+            applicationIdSuffix ".tamtalk"
+            dimension "flavor"
+            versionCode 17
+            versionName "1.0.5"
+            setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        } 
 
     }
 }
