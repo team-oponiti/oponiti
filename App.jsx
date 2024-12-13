@@ -104,7 +104,7 @@ async function registerAppWithFCM() {
     });
   
     messaging().subscribeToTopic('noti').then(() => console.log('Subscribed to topic!'));
-   
+    messaging().subscribeToTopic('user').then(() => console.log('Subscribed to topic!'));
   }
   
  

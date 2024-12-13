@@ -169,6 +169,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				B8DAA9FA2CA66438005F9941 /* Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -241,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				B8DAA9F92CA66438005F9941 /* GoogleService-Info.plist */,
-				B8DAA9FA2CA66438005F9941 /* Info.plist */,
 			);
 			name = dev;
 			path = detective/dev;
