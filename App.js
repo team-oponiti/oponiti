@@ -6,14 +6,14 @@
  * @flow strict-local
  */
 
-import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
-import {domain} from "./src/define/webviewUri"
- 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createNativeStackNavigator} from 'react-native-screens/native-stack';
- 
+import React, { Node, useCallback, useEffect, useRef, useState } from 'react'
+import { AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid } from 'react-native';
+import { domain } from "./src/define/webviewUri"
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+
 import {
     getLastBade,
     getLastToken,
@@ -23,7 +23,8 @@ import {
     getLanguage,
     getDeviceInfo,
     getTabBadge,
-    createChannel
+    createChannel,
+    WEBLoading
 } from "./src/common/functions"
 
 import { request, PERMISSIONS } from 'react-native-permissions';
@@ -45,15 +46,15 @@ if (Platform.OS == "android") {
 }
 
 const requestNotificationPermission = async () => {
-    console.log("request permisison ", Platform.Version )
+    console.log("request permisison ", Platform.Version)
     if (Platform.Version >= 33) {
         try {
-        let value =   await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
-        )
-        console.log(value)
+            let value = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
+            )
+            console.log(value)
         } catch (err) {
-        console.warn('requestNotificationPermission error: ', err)
+            console.warn('requestNotificationPermission error: ', err)
         }
     }
 }
@@ -62,47 +63,47 @@ const requestNotificationPermission = async () => {
 
 async function requestPermission() {
     if (Platform.OS === 'android') {
-        await requestNotificationPermission() 
+        await requestNotificationPermission()
     }
     const granted = await messaging().requestPermission({
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: true,
-    provisional: false,
-    sound: true,
-  });
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: true,
+        provisional: false,
+        sound: true,
+    });
 
-  try {
-    const fcmToken = await messaging().getToken();
-    global.pushToken = fcmToken
-  } catch (e) {
-    console.log("FCM", e)
-  } 
+    try {
+        const fcmToken = await messaging().getToken();
+        global.pushToken = fcmToken
+    } catch (e) {
+        console.log("FCM", e)
+    }
 
 }
 
 
 async function registerAppWithFCM() {
     try {
-      if (!messaging().isDeviceRegisteredForRemoteMessages) {
-        await messaging().registerDeviceForRemoteMessages();
-      }
+        if (!messaging().isDeviceRegisteredForRemoteMessages) {
+            await messaging().registerDeviceForRemoteMessages();
+        }
     } catch (e) {
-      console.log("errror == = = = = =", e)
+        console.log("errror == = = = = =", e)
     }
-  
- 
+
+
     messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
+        console.log('Message handled in the background!', remoteMessage);
     });
-  
+
     messaging().subscribeToTopic('noti').then(() => console.log('Subscribed to topic!'));
     messaging().subscribeToTopic('detective').then(() => console.log('Subscribed to topic!'));
 
-  }
-  
- 
+}
+
+
 
 const App = () => {
 
@@ -111,20 +112,48 @@ const App = () => {
     const appState = React.useRef(AppState.currentState);
     const timeSetLife = React.useRef(null);
     const [, updateState] = React.useState();
-    const [,setLanguage] = useGlobalLanguage();
+    const [, setLanguage] = useGlobalLanguage();
     const [, setBadge] = useGlobalBade()
     const [, setLifeState] = useGlobalAppLifeState()
 
+    const [startAnimation, setStartAnimation] = React.useState();
+
+    const animationRef = useRef(new Animated.Value(0)).current;
+    const animationRef2 = useRef(new Animated.Value(0)).current;
+ 
+    const easingFunction = startAnimation ? Easing.inOut(Easing.linear) : Easing.out(Easing.linear);
+
+
+  
     const openMain = () => {
         setLogin(true)
     }
 
+
+    useEffect(()=>{
+        Animated.timing(animationRef, {
+            toValue: -828 ,  
+            duration: 40000,  
+            easing: easingFunction,  
+            useNativeDriver: true, 
+          }).start();
+    }, [animationRef, startAnimation])
+    useEffect(()=>{
+        Animated.timing(animationRef2, {
+            toValue: 830 ,  
+            duration: 40000,  
+            easing: easingFunction,  
+            useNativeDriver: true, 
+          }).start();
+    }, [animationRef2, startAnimation])
+    
+    
     const _handleAppStateChange = (nextAppState) => {
 
         if (timeSetLife.current != null) {
             clearTimeout(timeSetLife.current)
         }
-        
+
         setLifeState(nextAppState)
         timeSetLife.current = null
 
@@ -153,7 +182,7 @@ const App = () => {
         }
 
         getLastBade().then(m => {
-         //   setBade(m)
+            //   setBade(m)
         })
         appState.current = nextAppState;
         console.log("AppState", appState.current);
@@ -179,13 +208,13 @@ const App = () => {
     const loadTabBadge = async () => {
         var badge = {}
         for (var i = 0; i < 4; i++) {
-          badge[i] = await getTabBadge(i + "")
-          if (badge[i] == 0) {
-            badge[i] = null
-          }
+            badge[i] = await getTabBadge(i + "")
+            if (badge[i] == 0) {
+                badge[i] = null
+            }
         }
-       // setBadge(badge)
-      }
+        // setBadge(badge)
+    }
 
     const getResource = async () => {
         try {
@@ -199,11 +228,11 @@ const App = () => {
 
         }
         try {
-             await loadTabBadge()
-             let data = await getDeviceInfo(null)
-             if (data != null) {
-                 global.appData = data
-             }
+            await loadTabBadge()
+            let data = await getDeviceInfo(null)
+            if (data != null) {
+                global.appData = data
+            }
         } catch (e) {
 
         }
@@ -242,12 +271,12 @@ const App = () => {
     }
 
     useEffect(() => {
-       // Settings.setAppID('820978288984618');
-       // Settings.initializeSDK();
+        // Settings.setAppID('820978288984618');
+        // Settings.initializeSDK();
         createChannel()
         getResource().then(async () => {
-            
-             await requestPermission()
+
+            await requestPermission()
             registerAppWithFCM()
             // setupOneSignal()
 
@@ -279,21 +308,21 @@ const App = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useEffect( () => {
-        let run = async ()=>{
+    useEffect(() => {
+        let run = async () => {
             try {
                 let cookie = await CookieManager.get(domain, true)
                 console.log("eeee1", cookie)
             } catch (e) {
                 console.log("eeee", e)
             }
-          
+
             if (!loading) {
                 //  requestLocaitonPermision()
             }
         }
         run()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLogin])
 
     const renderLoading = useCallback(() => {
@@ -303,69 +332,135 @@ const App = () => {
             justifyContent: 'center',
             alignContent: 'center',
             alignItems: 'center',
-            backgroundColor: "#2367FD",
-            paddingBottom: 3.45 / 100 * windowHeight,
+            backgroundColor: "#DCF1F5",
+            marginBottom: 5 / 100 * windowHeight,
         }]}>
-            <Image style={{width: windowWidth <= 365  ?  227 : 230, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
+            <Image style={{ width: 105, height: 90, resizeMode: 'contain', marginBottom: 20 }} source={require("./src/asset/images/logo.png")}></Image>
+            <Text
+                style={{
+                    fontSize: 20,
+                    fontWeight: 'semibold'
+                }}
+            >전문가가 필요한 순간, 똑똑</Text>
+            
+            <View style={{
+                marginTop: 60,
+                position: 'relative',
+                height: 200,
+                width: windowWidth
+            }}>
+               
+
+<Animated.View style={{ transform: [{ translateX: animationRef }], position: 'relative', width: 830 * 2, height: 64}}>
+            <Image style={{
+                                left: 0,
+                                top: 0,
+                                width: 836, 
+                                height: 64, 
+                                resizeMode: 'cover',
+                                position: 'absolute' }} source={require("./src/asset/images/p1.png")}></Image> 
+
+            <Image style={{
+                                left: 846,
+                                top: 0,
+                                width: 836, 
+                                height: 64, 
+                                resizeMode: 'cover',
+                                position: 'absolute' }} source={require("./src/asset/images/p1.png")}></Image> 
+    </Animated.View>
+
+
+    <Animated.View style={{ transform: [{ translateX: animationRef2 }], position: 'relative', width: 828 * 2, height: 64, top: 20}}>
+    <Image style={{
+         top: 0,
+                     left: 0, 
+                      width: 828, 
+                      height: 64, 
+                     resizeMode: 'cover',
+                      position: 'absolute' }} source={require("./src/asset/images/p2.png")}></Image> 
+
+<Image style={{
+    top: 0,
+                     left: -838, 
+                      width: 828, 
+                      height: 64, 
+                     resizeMode: 'cover',
+                      position: 'absolute' }} source={require("./src/asset/images/p2.png")}></Image> 
+    </Animated.View>
+
+
+            </View>
+
+                <Image source={require("./src/asset/images/logox.png")} style={{
+                    position: 'absolute',
+                    width: 500,
+                    height: 500,
+                    top: windowHeight - 140,
+                }}></Image>
         </View>
     }, [])
-
+    //<Image style={{width: windowWidth <= 365  ?  227 : 230, resizeMode: 'contain'}} source={ windowWidth <= 365  ? require("./src/asset/images/logo1.png"): require("./src/asset/images/logo2.png")}></Image>
     const renderDashboard = useCallback(() => {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Dashboard"   screenOptions={{
+                <Stack.Navigator initialRouteName="Dashboard" screenOptions={{
                     gestureEnabled: false
                 }} >
-                    <Stack.Screen name="Dashboard" component={DashboardScreen} options={{headerShown: false}} initialParams={{appProps: appProps, isLogin}}/>
-                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps, isLogin}}
-                                  options={{headerShown: false}}/>
-                    <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+                    <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} initialParams={{ appProps: appProps, isLogin }} />
+                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps, isLogin }}
+                        options={{ headerShown: false }} />
+                    <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
 
                 </Stack.Navigator>
             </NavigationContainer>
         )
     }, [appProps, isLogin])
 
-    
+
     const renderLogin = useCallback(() => {
         return (
-          <NavigationContainer  key="login">
-            <Stack.Navigator   screenOptions={{
+            <NavigationContainer key="login">
+                <Stack.Navigator screenOptions={{
                     gestureEnabled: false
-                }} >
-                    
-                 
-              <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login } }} options={{ headerShown: false }} />
-              <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
-              <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps}} options={{ headerShown: false }} />
+                }} > 
 
-            </Stack.Navigator>
-          </NavigationContainer>
+                    <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login } }} options={{ headerShown: false }} />
+                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+                    <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+
+                </Stack.Navigator>
+            </NavigationContainer>
         )
-      }, [appProps])
+    }, [appProps])
     const renderApp = () => {
-       
-        if (loading) {
-            return renderLoading()
-        }
-        if (!isLogin) {
-            return renderLogin()
-        }
-        return renderDashboard()
+
+        // return <WEBLoading
+        //  i1 = {require("./src/asset/images/p1.png")}
+        //  i2 = {require("./src/asset/images/p2.png")}
+        //  i3 = {require("./src/asset/images/logox.png")}
+        //  logo={ require("./src/asset/images/logo.png")}/>
+        // if (loading) {
+        // return renderLoading()
+        // }
+        // if (!isLogin) {
+          
+        // }
+        // return renderDashboard()
+        return renderLogin()
 
     }
 
-    
+
     return (
-       
-            <View style= {styles.flexContainer}>
-           
-         <View style={[styles.flexContainer]}>
+
+        <View style={styles.flexContainer}>
+
+            <View style={[styles.flexContainer]}>
                 {renderApp()}
-            </View> 
-    
             </View>
-       
+
+        </View>
+
     )
 
 };

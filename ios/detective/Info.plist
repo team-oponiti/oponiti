@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>탐정톡</string>
+	<string>Ddokddok</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,24 +20,42 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-  <key>ITSAppUsesNonExemptEncryption</key><false/>
+  <key>KAKAO_APP_KEY</key>
+   <string>347ba7aaa45fe27178ba8b372f7b2557</string>
+   <key>KAKAO_APP_SCHEME</key>
+   <string>kakao347ba7aaa45fe27178ba8b372f7b2557</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>my</string>
+			<string>kakao</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tamtalk-t</string>
+				<string>kakao-347ba7aaa45fe27178ba8b372f7b2557</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ddokddok.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ddokddok</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+    <string>kakaokompassauth</string>
+    <string>storykompassauth</string>
+    <string>kakaolink</string>
 		<string>kakaoopen</string>
 		<string>tel</string>
 		<string>mail</string>

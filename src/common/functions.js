@@ -1,7 +1,9 @@
  
 // import ZaloKit from 'react-native-zalo-kit';
-import React from 'react';
-import { NativeModules, Platform, Text, TouchableOpacity, View, Linking} from 'react-native';
+import React, { Node, useCallback, useEffect, useRef, useState } from 'react';
+ 
+import {NativeModules, TouchableOpacity,  Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid } from 'react-native';
+
 import AsyncStorage from "@react-native-community/async-storage"
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
@@ -472,3 +474,118 @@ export const createChannel = () => {
     console.log(e)
    }
 }
+
+ export const WEBLoading = ({
+    logo,
+    i1,
+    i2, 
+    i3
+ }) => {
+
+       
+           const [startAnimation, setStartAnimation] = React.useState();
+       
+           const animationRef = useRef(new Animated.Value(0)).current;
+           const animationRef2 = useRef(new Animated.Value(0)).current;
+        
+           const easingFunction = startAnimation ? Easing.inOut(Easing.linear) : Easing.out(Easing.linear);
+        
+            useEffect(()=>{
+                Animated.timing(animationRef, {
+                    toValue: -828 ,  
+                    duration: 40000,  
+                    easing: easingFunction,  
+                    useNativeDriver: true, 
+                  }).start();
+            }, [animationRef, startAnimation])
+            useEffect(()=>{
+                Animated.timing(animationRef2, {
+                    toValue: 830 ,  
+                    duration: 40000,  
+                    easing: easingFunction,  
+                    useNativeDriver: true, 
+                  }).start();
+            }, [animationRef2, startAnimation])
+            
+
+        const windowWidth = Dimensions.get('window').width;
+        const windowHeight = Dimensions.get('window').height;
+     
+        return <View style={[styles.flexContainer, {
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            backgroundColor: "#DCF1F5",
+            paddingBottom: 5 / 100 * windowHeight,
+            // position: 'absolute',
+            left: 0,
+            top: 0,
+            height: windowHeight,
+            width: '100%'
+        }]}>
+            <Image 
+            style={{ width: 105, height: 90, resizeMode: 'contain', marginBottom: 20 }} 
+            source={logo}
+            ></Image>
+            <Text
+                style={{
+                    fontSize: 20,
+                    fontWeight: 'semibold'
+                }}
+            >전문가가 필요한 순간, 똑똑</Text>
+            
+            <View style={{
+                marginTop: 60,
+                position: 'relative',
+                height: 200,
+                width: windowWidth
+            }}>
+               
+
+ <Animated.View style={{ transform: [{ translateX: animationRef }], position: 'relative', width: 830 * 2, height: 64}}>
+            <Image style={{
+                                left: 0,
+                                top: 0,
+                                width: 836, 
+                                height: 64, 
+                                resizeMode: 'cover',
+                                position: 'absolute' }} source={i1}></Image> 
+
+            <Image style={{
+                                left: 846,
+                                top: 0,
+                                width: 836, 
+                                height: 64, 
+                                resizeMode: 'cover',
+                                position: 'absolute' }} source={i1}></Image> 
+    </Animated.View>
+
+
+    <Animated.View style={{ transform: [{ translateX: animationRef2 }], position: 'relative', width: 828 * 2, height: 64, top: 20}}>
+    <Image style={{
+         top: 0,
+                     left: 0, 
+                      width: 828, 
+                      height: 64, 
+                     resizeMode: 'cover',
+                      position: 'absolute' }} source={i2}></Image> 
+
+<Image style={{
+    top: 0,
+                     left: -838, 
+                      width: 828, 
+                      height: 64, 
+                     resizeMode: 'cover',
+                      position: 'absolute' }} source={i2}></Image> 
+    </Animated.View> 
+
+
+            </View> 
+                <Image source={i3} style={{
+                    position: 'absolute',
+                    width: 500,
+                    height: 500,
+                    top: windowHeight - 140,
+                }}></Image> 
+        </View>
+    }

@@ -1,3 +1,3 @@
  
 
- export const appPrimaryColor = "#2367FD"
+ export const appPrimaryColor = "#FFF230"

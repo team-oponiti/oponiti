@@ -17,10 +17,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8446049C8910084BCF74481B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */; };
 		B82A3EDE2CA0641000D46100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
-		B82A3EFE2CA064CE00D46100 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A3EFD2CA064CE00D46100 /* NotificationService.swift */; };
-		B82A3F022CA064CE00D46100 /* NotiService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B82A3EFB2CA064CE00D46100 /* NotiService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B82A3F072CA089FC00D46100 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = B82A3F062CA089FC00D46100 /* sound.caf */; };
-		B82A3F082CA089FC00D46100 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = B82A3F062CA089FC00D46100 /* sound.caf */; };
 		B8DAA9DD2CA653EA005F9941 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		B8DAA9DE2CA653EA005F9941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B8DAA9E22CA653EA005F9941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -41,13 +38,6 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = detective;
 		};
-		B82A3F002CA064CE00D46100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B82A3EFA2CA064CE00D46100;
-			remoteInfo = NotiService;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +47,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B82A3F022CA064CE00D46100 /* NotiService.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -97,9 +86,6 @@
 		B82A3EDF2CA0643700D46100 /* detective.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = detective.entitlements; path = detective/detective.entitlements; sourceTree = "<group>"; };
 		B82A3EE52CA064AA00D46100 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		B82A3EE72CA064AA00D46100 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		B82A3EFB2CA064CE00D46100 /* NotiService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotiService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B82A3EFD2CA064CE00D46100 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		B82A3EFF2CA064CE00D46100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B82A3F062CA089FC00D46100 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = detective/sound.caf; sourceTree = "<group>"; };
 		B8DAA9D62CA653C0005F9941 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8DAA9F02CA653EA005F9941 /* dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,13 +113,6 @@
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-detective.a in Frameworks */,
 				E4972E23AFDF071DC190364A /* libPods-detective.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B82A3EF82CA064CE00D46100 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +191,6 @@
 				13B07FAE1A68108700A75B9A /* detective */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* detectiveTests */,
-				B82A3EFC2CA064CE00D46100 /* NotiService */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -227,19 +205,9 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* detective.app */,
 				00E356EE1AD99517003FC87E /* detectiveTests.xctest */,
-				B82A3EFB2CA064CE00D46100 /* NotiService.appex */,
 				B8DAA9F02CA653EA005F9941 /* dev.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B82A3EFC2CA064CE00D46100 /* NotiService */ = {
-			isa = PBXGroup;
-			children = (
-				B82A3EFD2CA064CE00D46100 /* NotificationService.swift */,
-				B82A3EFF2CA064CE00D46100 /* Info.plist */,
-			);
-			path = NotiService;
 			sourceTree = "<group>";
 		};
 		B8DAA9D72CA653C0005F9941 /* dev */ = {
@@ -306,29 +274,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				B82A3F012CA064CE00D46100 /* PBXTargetDependency */,
 			);
 			name = detective;
 			productName = detective;
 			productReference = 13B07F961A680F5B00A75B9A /* detective.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B82A3EFA2CA064CE00D46100 /* NotiService */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B82A3F032CA064CE00D46100 /* Build configuration list for PBXNativeTarget "NotiService" */;
-			buildPhases = (
-				B82A3EF72CA064CE00D46100 /* Sources */,
-				B82A3EF82CA064CE00D46100 /* Frameworks */,
-				B82A3EF92CA064CE00D46100 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NotiService;
-			productName = NotiService;
-			productReference = B82A3EFB2CA064CE00D46100 /* NotiService.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		B8DAA9D82CA653EA005F9941 /* dev */ = {
 			isa = PBXNativeTarget;
@@ -368,9 +318,6 @@
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
 					};
-					B82A3EFA2CA064CE00D46100 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "detective" */;
@@ -388,7 +335,6 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* detective */,
 				00E356ED1AD99517003FC87E /* detectiveTests */,
-				B82A3EFA2CA064CE00D46100 /* NotiService */,
 				B8DAA9D82CA653EA005F9941 /* dev */,
 			);
 		};
@@ -411,14 +357,6 @@
 				B82A3F072CA089FC00D46100 /* sound.caf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				8446049C8910084BCF74481B /* PrivacyInfo.xcprivacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B82A3EF92CA064CE00D46100 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B82A3F082CA089FC00D46100 /* sound.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,14 +609,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B82A3EF72CA064CE00D46100 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B82A3EFE2CA064CE00D46100 /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8DAA9DC2CA653EA005F9941 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -696,11 +626,6 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* detective */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-		B82A3F012CA064CE00D46100 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B82A3EFA2CA064CE00D46100 /* NotiService */;
-			targetProxy = B82A3F002CA064CE00D46100 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -768,7 +693,8 @@
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = detective/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
+				INFOPLIST_KEY_CFBundleDisplayName = Ddokddok;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -779,7 +705,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.app;
 				PRODUCT_NAME = detective;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -798,7 +724,8 @@
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				INFOPLIST_FILE = detective/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
+				INFOPLIST_KEY_CFBundleDisplayName = Ddokddok;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -809,7 +736,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.app;
 				PRODUCT_NAME = detective;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -976,87 +903,6 @@
 			};
 			name = Release;
 		};
-		B82A3F042CA064CE00D46100 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = Z59VCCA327;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotiService/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotiService;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.app.NotificationService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B82A3F052CA064CE00D46100 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Z59VCCA327;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotiService/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotiService;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.app.NotificationService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		B8DAA9EE2CA653EA005F9941 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A64C736D01D6B6BEE7BA9F97 /* Pods-detective-dev.debug.xcconfig */;
@@ -1066,7 +912,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
 				CURRENT_PROJECT_VERSION = 17;
-				DEVELOPMENT_TEAM = Z59VCCA327;
+				DEVELOPMENT_TEAM = WAN6Y987S4;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1089,7 +935,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG DEV";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1107,7 +953,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
 				CURRENT_PROJECT_VERSION = 17;
-				DEVELOPMENT_TEAM = Z59VCCA327;
+				DEVELOPMENT_TEAM = WAN6Y987S4;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1129,7 +975,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.detectivex.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_VERSION = 5.0;
@@ -1163,15 +1009,6 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B82A3F032CA064CE00D46100 /* Build configuration list for PBXNativeTarget "NotiService" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B82A3F042CA064CE00D46100 /* Debug */,
-				B82A3F052CA064CE00D46100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
