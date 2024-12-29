@@ -84,11 +84,11 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com.oponiti.tamtalk"
+        applicationId "com.ddokddok.blue"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 18
-        versionName "1.0.10"
+        versionCode 1
+        versionName "1.0.0"
          missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
@@ -127,12 +127,12 @@ android {
     //         versionName "1.0.6"
     //         setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
     //     }
-        create("chplay") { 
+        create("dev") { 
             getIsDefault().set(true)
-            applicationIdSuffix ".biz"
+            applicationIdSuffix ".test"
             dimension "flavor"
-            versionCode 19
-            versionName "1.0.10"
+            versionCode 1
+            versionName "1.0.1"
             setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         
