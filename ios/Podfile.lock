@@ -152,6 +152,7 @@ PODS:
     - nanopb/encode (= 2.30910.0)
   - nanopb/decode (2.30910.0)
   - nanopb/encode (2.30910.0)
+  - naveridlogin-sdk-ios (4.2.3)
   - PromisesObjC (2.4.0)
   - RCT-Folly (2024.01.01.00):
     - boost
@@ -1720,6 +1721,28 @@ PODS:
     - Yoga
   - RNLocalize (3.2.1):
     - React-Core
+  - RNNaverLogin (4.0.4):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - naveridlogin-sdk-ios (= 4.2.3)
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNPermissions (4.1.5):
     - React-Core
   - RNScreens (3.34.0):
@@ -1850,6 +1873,7 @@ DEPENDENCIES:
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - "RNNaverLogin (from `../node_modules/@react-native-seoul/naver-login`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -1873,6 +1897,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - nanopb
+    - naveridlogin-sdk-ios
     - PromisesObjC
     - SocketRocket
 
@@ -2028,6 +2053,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNNaverLogin:
+    :path: "../node_modules/@react-native-seoul/naver-login"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
   RNScreens:
@@ -2061,6 +2088,7 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: d57127c339fc79e73aa8b236a4c77211c29924f1
   KakaoSDKUser: 043bcd7e91454ebf3bf64f150c430e6f65f0a08d
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
+  naveridlogin-sdk-ios: d9d46d02119d303023d7000cd5963864d5bb89e5
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: 4464f4d875961fce86008d45f4ecf6cef6de0740
   RCTDeprecation: 4191f6e64b72d9743f6fe1a8a16e89e868f5e9e7
@@ -2130,6 +2158,7 @@ SPEC CHECKSUMS:
   RNFBMessaging: 3fa1114c0868dd21f20dfe186adf42297ea316b1
   RNGestureHandler: 3b6fa2bfa341c413d3d08444b838515b58e48ee7
   RNLocalize: 4f22418187ecd5ca693231093ff1d912d1b3c9bc
+  RNNaverLogin: 5558e71bd0faa39b67ded6daedb855b0f638e967
   RNPermissions: f61ebf52bb670809d522bba0b09b3e6a9ea5ab7e
   RNScreens: 19719a9c326e925498ac3b2d35c4e50fe87afc06
   RNVectorIcons: 6382277afab3c54658e9d555ee0faa7a37827136

@@ -13,7 +13,7 @@ import { domain } from "./src/define/webviewUri"
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-
+import NaverLogin from '@react-native-seoul/naver-login';
 import {
     getLastBade,
     getLastToken,
@@ -44,6 +44,12 @@ if (Platform.OS == "android") {
 } else {
     var Stack = createStackNavigator();
 }
+
+const consumerKey = 'ncFgRshfpLt5daIklEIC';
+const consumerSecret = 'PbPEwWGVLm';
+const appName = 'ddokddok';
+const serviceUrlSchemeIOS = "ddokddokauth"
+
 
 const requestNotificationPermission = async () => {
     console.log("request permisison ", Platform.Version)
@@ -271,6 +277,15 @@ const App = () => {
     }
 
     useEffect(() => {
+
+        NaverLogin.initialize({
+            appName,
+            consumerKey,
+            consumerSecret,
+            serviceUrlSchemeIOS,
+            disableNaverAppAuthIOS: true,
+          });
+
         // Settings.setAppID('820978288984618');
         // Settings.initializeSDK();
         createChannel()
@@ -433,12 +448,13 @@ const App = () => {
         )
     }, [appProps])
     const renderApp = () => {
-
-        // return <WEBLoading
-        //  i1 = {require("./src/asset/images/p1.png")}
-        //  i2 = {require("./src/asset/images/p2.png")}
-        //  i3 = {require("./src/asset/images/logox.png")}
-        //  logo={ require("./src/asset/images/logo.png")}/>
+        if (loading) {
+        return <WEBLoading
+         i1 = {require("./src/asset/images/p1.png")}
+         i2 = {require("./src/asset/images/p2.png")}
+         i3 = {require("./src/asset/images/logox.png")}
+         logo={ require("./src/asset/images/logo.png")}/>
+        }
         // if (loading) {
         // return renderLoading()
         // }

@@ -935,7 +935,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG DEV";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -975,7 +975,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.blue.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_VERSION = 5.0;

@@ -46,6 +46,16 @@
 				<string>ddokddok</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>ddokddokauth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ddokddokauth</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -53,6 +63,8 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+	<string>naversearchapp</string>
+	<string>naversearchthirdlogin</string>
     <string>kakaokompassauth</string>
     <string>storykompassauth</string>
     <string>kakaolink</string>

@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-community/async-storage"
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
 
-// import * as KakaoKit from '@react-native-seoul/kakao-login'
+import * as KakaoKit from '@react-native-seoul/kakao-login'
 //import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 
@@ -28,7 +28,7 @@ import { appPrimaryColor } from '../define/config';
 import PushNotification, {Importance} from "react-native-push-notification";
 
 import * as AppBadge from './badge_module'
-
+import NaverLogin from '@react-native-seoul/naver-login';
 const iconSize = 20
 const normalColor = "#9e9e9e"
 const selectedColor = "#0000ff"
@@ -176,19 +176,33 @@ export const socialLogin = async (type, webviewRef) => {
     //          excuteString("callbackLoginFail(`" + e + "`)")
     //      }
     // }
-    //  else if (type == "K") {   // kakaotalk
-    //     try {
-    //         let key = await KakaoKit.login();
-    //         let token = key.accessToken
+    else if (type == "N") {
+        const { failureResponse, successResponse } = await NaverLogin.login();
 
-    //         setTimeout(() => {
-    //             excuteString("callbackLoginSuccess(\"" + type + "\",`" + token + "`,``)")
-    //         }, 400);
-    //     } catch (e) {
-    //         console.log(e)
-    //         excuteString("callbackLoginFail(`" + e + "`)")
-    //     }
-    // } 
+        console.log(failureResponse, successResponse)
+        if (failureResponse != null) {
+            excuteString("callbackLoginFail(`" + JSON.stringify(failureResponse) + "`)")
+            return 
+        }
+
+
+        let accessToken =  successResponse.accessToken
+        excuteString("callbackLoginSuccess(\"" + type + "\",`" + accessToken + "`,`tokenType:" + successResponse.tokenType + "`)")
+
+
+    } else if (type == "K") {   // kakaotalk
+        try {
+            let key = await KakaoKit.login();
+            let token = key.accessToken
+
+            setTimeout(() => {
+                excuteString("callbackLoginSuccess(\"" + type + "\",`" + token + "`,``)")
+            }, 400);
+        } catch (e) {
+            console.log(e)
+            excuteString("callbackLoginFail(`" + e + "`)")
+        }
+    } 
     else if (type == "A") {
         try {
             const appleAuthRequestResponse = await appleAuth.performRequest({
@@ -530,7 +544,8 @@ export const createChannel = () => {
             <Text
                 style={{
                     fontSize: 20,
-                    fontWeight: 'semibold'
+                    fontWeight: 'semibold',
+                    color:"black"
                 }}
             >전문가가 필요한 순간, 똑똑</Text>
             

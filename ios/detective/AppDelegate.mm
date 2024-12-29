@@ -3,6 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <Firebase.h>
 #import <RNKakaoLogins.h>
+#import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
 
 @implementation AppDelegate
 
@@ -29,6 +30,10 @@
         }
       });
   });
+
+  if ([url.scheme isEqualToString:@"ddokddokauth"]) {
+    return [[NaverThirdPartyLoginConnection getSharedInstance] application:application openURL:url options:options];
+  }
 
 //  if ([[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options]) {
 //    return YES;
