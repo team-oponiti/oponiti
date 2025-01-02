@@ -29,14 +29,14 @@ RCT_EXPORT_MODULE();
   
   return @{
     @"env": @"prod",
-    @"chat": @"http://43.203.213.15/chat/",
-    @"membership": @"http://43.203.213.15/detective-membership/",
-    @"account": @"http://43.203.213.15/detective-account/",
-    @"more": @"http://43.203.213.15/detective-more/",
-    @"blog": @"http://43.203.213.15/blog/",
-    @"domain": @"43.203.213.15",
-    @"login": @"http://43.203.213.15/detective-login/",
-    @"logout": @"http://43.203.213.15/logout",
+    @"chat": @"http://43.203.213.150/chat/",
+    @"membership": @"http://43.203.213.150/detective-membership/",
+    @"account": @"http://43.203.213.150/detective-account/",
+    @"more": @"http://43.203.213.150/detective-more/",
+    @"blog": @"http://43.203.213.150/blog/",
+    @"domain": @"43.203.213.150",
+    @"login": @"http://43.203.213.150/detective-login/",
+    @"logout": @"http://43.203.213.150/logout",
   };
 #else
   return @{
