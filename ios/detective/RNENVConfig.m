@@ -26,13 +26,13 @@ RCT_EXPORT_MODULE();
   
   return @{
     @"env": @"dev",
-    @"login": @"http://43.203.213.15/login/",
-    @"detective": @"http://43.203.213.15/detective/",
-    @"message": @"http://43.203.213.15/chat/",
-    @"more": @"http://43.203.213.15/more/",
-    @"blog": @"http://43.203.213.15/blog/",
-    @"domain": @"43.203.213.15",
-    @"logout": @"http://43.203.213.15/logout",
+    @"login": @"http://43.203.234.150/login/",
+    @"detective": @"http://43.203.213.150/detective/",
+    @"message": @"http://43.203.213.150/chat/",
+    @"more": @"http://43.203.213.150/more/",
+    @"blog": @"http://43.203.213.150/blog/",
+    @"domain": @"43.203.234.150",
+    @"logout": @"http://43.203.234.150/logout",
  
   };
 #else
