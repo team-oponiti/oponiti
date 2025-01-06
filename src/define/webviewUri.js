@@ -6,7 +6,7 @@ import { NativeModules} from 'react-native';
 // export const more = NativeModules.AppNativeModule.more ||  "https://tamtalk.com/detective-more/"
 // export const blog = NativeModules.AppNativeModule.blog ||  "https://tamtalk.com/blog/"
 export const domain =   "expert.ddokddok.co"
-export const login =   "https://expert.ddokddok.co"
-export const logout =   "https://expert.ddokddok.co"
+export const login =   "https://expert.ddokddok.co/expert"
+export const logout =   "https://expert.ddokddok.co/expert"
 export const environment = NativeModules.AppNativeModule.env; 
 // /http://43.203.213.15/ 
