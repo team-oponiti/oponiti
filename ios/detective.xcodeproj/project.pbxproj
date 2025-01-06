@@ -98,6 +98,7 @@
 		B82A3EFB2CA064CE00D46100 /* NotiService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotiService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82A3EFD2CA064CE00D46100 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B82A3EFF2CA064CE00D46100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B86A6BBA2D2C580500FE83F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DAA9F92CA66438005F9941 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8DAA9FA2CA66438005F9941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DAA9FC2CA66442005F9941 /* RNENVConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNENVConfig.m; path = detective/RNENVConfig.m; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				B8DAA9F92CA66438005F9941 /* GoogleService-Info.plist */,
+				B86A6BBA2D2C580500FE83F3 /* Info.plist */,
 			);
 			name = dev;
 			path = detective/dev;
@@ -881,10 +883,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -957,10 +956,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1069,6 +1065,7 @@
 					"PB_ENABLE_MALLOC=1",
 					DEV,
 				);
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = detective/dev/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1076,6 +1073,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.8;
+				NEW_SETTING = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1108,6 +1106,7 @@
 					"PB_ENABLE_MALLOC=1",
 					DEV,
 				);
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = detective/dev/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "탐정톡";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1115,6 +1114,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.8;
+				NEW_SETTING = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

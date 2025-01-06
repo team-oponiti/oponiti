@@ -54,23 +54,8 @@
 		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>43.203.213.15</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
