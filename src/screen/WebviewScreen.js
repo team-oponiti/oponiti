@@ -465,10 +465,14 @@ const WebviewTab = (props) => {
 
 
     const handleDynamicLink = (link)=> {
-        navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps })
-        console.log("handle link", link);
-       }
+        handleNavigateTolink(link)
+        
+      } 
 
+    const handleNavigateTolink = (link) => {  
+        navigation.push("WebviewScreen", { data: { href: link }, appProps: appProps }) 
+    }
+  
     useEffect(() => { 
 
         if (!data.isRoot) {
