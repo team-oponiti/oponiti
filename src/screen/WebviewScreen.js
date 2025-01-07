@@ -477,7 +477,9 @@ const WebviewTab = (props) => {
       
 
     useEffect(() => { 
-
+            if (!data.isRoot) {
+                return
+            }
         messaging().getInitialNotification().then( (initialMessage) => {
             if (initialMessage && initialMessage.data["contentUrl"]) {
                 var link = initialMessage.data["contentUrl"];
