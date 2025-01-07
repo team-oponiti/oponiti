@@ -1,43 +1,45 @@
 {
   "project_info": {
-    "project_number": "487932198874",
-    "project_id": "detective-46229",
-    "storage_bucket": "detective-46229.appspot.com"
+    "project_number": "57540010007",
+    "project_id": "toktok-6f987",
+    "storage_bucket": "toktok-6f987.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487932198874:android:a2cfd4ec68b7d910120ae3",
+        "mobilesdk_app_id": "1:57540010007:android:f706c004574aa4432ffc52",
         "android_client_info": {
           "package_name": "com.ddokddok.blue.test"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "487932198874-28bjeqvvocmennhvftqs5v2240o8ugoc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCA_3fZRbtDRy_-ViTIo_rGydFdjJ-SFaI"
+          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487932198874-28bjeqvvocmennhvftqs5v2240o8ugoc.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "487932198874-3sj0qpt5ad3lkb4jqkas6s3d1k9hu4tm.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ddokddok.blue.test"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57540010007:android:ab37b66020a07b8d2ffc52",
+        "android_client_info": {
+          "package_name": "com.ddokddok2.blue.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }
