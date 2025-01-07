@@ -7,6 +7,7 @@ import { WebView } from "react-native-webview";
 import styles from "../common/styles"
 import queryString from 'query-string';
 import { cart, home, more, search, talk, login, logout, environment } from "../define/webviewUri"
+import messaging from '@react-native-firebase/messaging';
 
 import { anxData } from '../common/asyncdataload';
 import jsText from '../common/webviewScript'
@@ -462,6 +463,84 @@ const WebviewTab = (props) => {
 
     }, [currentAppLifeState])
 
+
+    const handleDynamicLink = (link)=> {
+        navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps })
+        console.log("handle link", link);
+       }
+
+    useEffect(() => { 
+
+        if (!data.isRoot) {
+            return 
+        }
+        
+        messaging().getInitialNotification().then( (initialMessage) => {
+            if (initialMessage && initialMessage.data["contentUrl"]) {
+                var link = initialMessage.data["contentUrl"];
+                if (link && link != "" && link != "#") { 
+                    handleDynamicLink(link)
+                }
+            } 
+         }) 
+    
+         const unsubscribe3 =  messaging().onNotificationOpenedApp(remoteMessage => {
+            if (remoteMessage && remoteMessage.data["contentUrl"]) {
+                var link = remoteMessage.data["contentUrl"];
+                if (link && link != "" && link != "#") { 
+                    handleDynamicLink(link)
+                }
+            } 
+          });
+          
+        const unsubscribe2 = messaging().onMessage(async remoteMessage => {
+            // setGlobalRefresh(1)
+        });
+
+
+            Linking.getInitialURL().then((url) => {
+                if (url) {
+                Linking.canOpenURL(url).then((supported) => {
+                    if (supported) {
+                    handleDynamicLink(url)
+                    }
+                }); 
+                }
+            })
+            .catch((err) => {
+                console.warn('An error occurred', err);
+            });
+
+            
+            const handleEventLink = (event)=> {
+                console.log("event", event)
+
+                if (event.url == null || !event.url.startsWith("https")) {
+                return
+                }
+
+                Linking.canOpenURL(event.url).then((supported) => {
+                if (supported) {
+                    handleDynamicLink(event.url)
+                }
+                });
+            
+            }
+
+            var event =  Linking.addEventListener('url',handleEventLink); 
+           
+          
+        
+        return () => { 
+            unsubscribe2 && unsubscribe2()
+            unsubscribe3 && unsubscribe3()
+            event && event.remove && event.remove()
+        }; 
+
+
+      }, [])
+
+
     const triggetSend = () => {
         if (bottomTextRef.current == null) {
             return
@@ -524,7 +603,7 @@ const WebviewTab = (props) => {
     let isSpecial = specialUrls.indexOf(source.uri) >= 0;
 
     let [isHideWebView, setHideWebView] = useState(isSpecial)
-
+  
 
 
     if (viewRefresh) {
