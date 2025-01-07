@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>CLIENT_ID</key>
-  <string>487932198874-7vn3ugm3lis4dkqedp9aq3hktu3eavga.apps.googleusercontent.com</string>
-  <key>REVERSED_CLIENT_ID</key>
-  <string>com.googleusercontent.apps.487932198874-7vn3ugm3lis4dkqedp9aq3hktu3eavga</string>
-  <key>ANDROID_CLIENT_ID</key>
-  <string>487932198874-a0g8v8m4vcrmt4oise75dq2orrmnk9al.apps.googleusercontent.com</string>
   <key>API_KEY</key>
-  <string>AIzaSyDnFsieGnRVse1y7ksZzs-LiMtXFrcNfGs</string>
+  <string>AIzaSyDaQRQEA2G1W6sEvXYMu7RJeJW49_RbYUI</string>
   <key>GCM_SENDER_ID</key>
-  <string>487932198874</string>
+  <string>57540010007</string>
   <key>PLIST_VERSION</key>
   <string>1</string>
   <key>BUNDLE_ID</key>
-  <string>com.detectivex.dev</string>
+  <string>com.ddokddok2.blue.dev</string>
   <key>PROJECT_ID</key>
-  <string>detective-46229</string>
+  <string>toktok-6f987</string>
   <key>STORAGE_BUCKET</key>
-  <string>detective-46229.appspot.com</string>
+  <string>toktok-6f987.firebasestorage.app</string>
   <key>IS_ADS_ENABLED</key>
   <false></false>
   <key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +25,6 @@
   <key>IS_SIGNIN_ENABLED</key>
   <true></true>
   <key>GOOGLE_APP_ID</key>
-  <string>1:487932198874:ios:16176f5a48488844120ae3</string>
+  <string>1:57540010007:ios:16be2ca01ea989be2ffc52</string>
 </dict>
 </plist>

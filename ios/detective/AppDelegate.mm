@@ -3,6 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <Firebase.h>
 #import <RNKakaoLogins.h>
+#import <React/RCTLinkingManager.h>
 
 @implementation AppDelegate
 
@@ -34,12 +35,23 @@
 //    return YES;
 //  }
 //
-//  if ([RCTLinkingManager application:application openURL:url options:options]) {
-//    return YES;
-//  }
- 
+  if ([RCTLinkingManager application:application openURL:url options:options]) {
+    return YES;
+  }
+   
   return NO;
 }
+
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity
+ restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
+{
+ return [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                    restorationHandler:restorationHandler];
+}
+ 
+
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
   return [self bundleURL];

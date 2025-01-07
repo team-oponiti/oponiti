@@ -7,6 +7,7 @@ import { WebView } from "react-native-webview";
 import styles from "../common/styles"
 import queryString from 'query-string';
 import { cart, home, more, search, talk, login, logout, environment } from "../define/webviewUri"
+import messaging from '@react-native-firebase/messaging';
 
 import { anxData } from '../common/asyncdataload';
 import jsText from '../common/webviewScript'
@@ -463,6 +464,84 @@ const WebviewTab = (props) => {
 
     }, [currentAppLifeState])
 
+
+    const handleDynamicLink = (link)=> {
+        handleNavigateTolink(link)
+        
+      } 
+
+    const handleNavigateTolink = (link) => {  
+        navigation.push("WebviewScreen", { data: { href: link }, appProps: appProps }) 
+    }
+  
+      
+
+    useEffect(() => { 
+
+        messaging().getInitialNotification().then( (initialMessage) => {
+            if (initialMessage && initialMessage.data["contentUrl"]) {
+                var link = initialMessage.data["contentUrl"];
+                if (link && link != "" && link != "#") { 
+                    handleDynamicLink(link)
+                }
+            } 
+         }) 
+    
+         const unsubscribe3 =  messaging().onNotificationOpenedApp(remoteMessage => {
+            if (remoteMessage && remoteMessage.data["contentUrl"]) {
+                var link = remoteMessage.data["contentUrl"];
+                if (link && link != "" && link != "#") { 
+                    handleDynamicLink(link)
+                }
+            } 
+          });
+          
+        const unsubscribe2 = messaging().onMessage(async remoteMessage => {
+            // setGlobalRefresh(1)
+        });
+
+
+            Linking.getInitialURL().then((url) => {
+                if (url) {
+                Linking.canOpenURL(url).then((supported) => {
+                    if (supported) {
+                    handleDynamicLink(url)
+                    }
+                }); 
+                }
+            })
+            .catch((err) => {
+                console.warn('An error occurred', err);
+            });
+
+            
+            const handleEventLink = (event)=> {
+                console.log("event", event)
+
+                if (event.url == null || !event.url.startsWith("https")) {
+                return
+                }
+
+                Linking.canOpenURL(event.url).then((supported) => {
+                if (supported) {
+                    handleDynamicLink(event.url)
+                }
+                });
+            
+            }
+
+            var event =  Linking.addEventListener('url',handleEventLink); 
+           
+          
+        
+        return () => { 
+            unsubscribe2 && unsubscribe2()
+            unsubscribe3 && unsubscribe3()
+            event && event.remove && event.remove()
+        }; 
+      }, [])
+    
+
     const triggetSend = () => {
         if (bottomTextRef.current == null) {
             return
@@ -521,7 +600,7 @@ const WebviewTab = (props) => {
     var source = { uri: overrideUrl || data.href, headers: header }
 
     const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
-    let specialUrls = ["https://tamtalk.com/detective-login/", "https://tamtalk.com/detective-login"]
+    let specialUrls = ["https://expert.ddokddok.co/expert"]
     let isSpecial = specialUrls.indexOf(source.uri) >= 0;
 
     let [isHideWebView, setHideWebView] = useState(isSpecial)
@@ -536,10 +615,10 @@ const WebviewTab = (props) => {
             style={[
 
                 styles.flexContainer,
-                { backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white") }
+                { backgroundColor: forceColor ||  "white" }
             ]}>
             {
-                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || appPrimaryColor} /> : null
+                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} /> : null
             }
 
             {isHideWebView ? <View style={{ width: "100%", height: "100%" }}>
@@ -559,7 +638,7 @@ const WebviewTab = (props) => {
                 style={[
 
                     styles.flexContainer,
-                    { backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white") }
+                    { backgroundColor: forceColor ||  "white" }
                 ]}
                 behavior={Platform.select({ ios: "padding", android: null })}
                 enabled
@@ -567,7 +646,7 @@ const WebviewTab = (props) => {
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
             >
                 <WebView
-                    style={{ backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white"), opacity: isHideWebView ? 0 : 1 }}
+                    style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
                     scrollEnabled={canScroll}
                     useWebKit
                     cacheEnabled={true}

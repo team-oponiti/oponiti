@@ -424,7 +424,7 @@ const App = () => {
                     gestureEnabled: false
                 }} > 
 
-                    <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login } }} options={{ headerShown: false }} />
+                    <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login, first : true } }} options={{ headerShown: false }} />
                     <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
                     <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
 
@@ -435,13 +435,13 @@ const App = () => {
     const renderApp = () => {
 
        
-        if (loading) {
-           return <WEBLoading
-        i1 = {require("./src/asset/images/p1.png")}
-        i2 = {require("./src/asset/images/p2.png")}
-        i3 = {require("./src/asset/images/logox.png")}
-        logo={ require("./src/asset/images/logo.png")}/>
-        }
+        // if (loading) {
+        //    return <WEBLoading
+        // i1 = {require("./src/asset/images/p1.png")}
+        // i2 = {require("./src/asset/images/p2.png")}
+        // i3 = {require("./src/asset/images/logox.png")}
+        // logo={ require("./src/asset/images/logo.png")}/>
+        // }
         // if (!isLogin) {
           
         // }
@@ -449,6 +449,9 @@ const App = () => {
         return renderLogin()
 
     }
+
+
+    
 
 
     return (
