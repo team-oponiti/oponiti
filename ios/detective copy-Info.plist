@@ -26,17 +26,17 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>my</string>
+			<string>tamtalk</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tamtalk-t</string>
+				<string>tamtalk-u</string>
 			</array>
 		</dict>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaoopen</string>
@@ -51,12 +51,14 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>43.203.234.150</key>
+			<key>43.203.213.15</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
@@ -74,6 +76,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>어플리케이션은 전송하려는 사진을 찍기 위해 카메라 액세스 권한이 필요합니다</string>
 	<key>NSPhotoLibraryUsageDescription</key>
