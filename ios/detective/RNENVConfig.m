@@ -27,10 +27,10 @@ RCT_EXPORT_MODULE();
   return @{
     @"env": @"dev",
     @"login": @"http://43.203.234.150/login/",
-    @"detective": @"http://43.203.213.150/detective/",
-    @"message": @"http://43.203.213.150/chat/",
-    @"more": @"http://43.203.213.150/more/",
-    @"blog": @"http://43.203.213.150/blog/",
+    @"detective": @"http://43.203.234.150/detective/",
+    @"message": @"http://43.203.234.150/chat/",
+    @"more": @"http://43.203.234.150/more/",
+    @"blog": @"http://43.203.234.150/blog/",
     @"domain": @"43.203.234.150",
     @"logout": @"http://43.203.234.150/logout",
  
