@@ -414,7 +414,6 @@ const WebviewTab = (props) => {
                     } else {
                         appProps.goBack && appProps.goBack()
                     }
-
                 }
                 return true
 
@@ -521,7 +520,7 @@ const WebviewTab = (props) => {
     var source = { uri: overrideUrl || data.href, headers: header }
 
     const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
-    let specialUrls = ["https://tamtalk.com/detective-login/", "https://tamtalk.com/detective-login"]
+    let specialUrls = ["https://ddokddok.co"]
     let isSpecial = specialUrls.indexOf(source.uri) >= 0;
 
     let [isHideWebView, setHideWebView] = useState(isSpecial)
@@ -529,17 +528,17 @@ const WebviewTab = (props) => {
 
 
     if (viewRefresh) {
-        return <View style={{ backgroundColor: "gray" }}></View>
+        return <View style={{ backgroundColor: "white" }}></View>
     }
     return (
         <View
             style={[
 
                 styles.flexContainer,
-                { backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white") }
+                { backgroundColor: forceColor ||   "white"}
             ]}>
             {
-                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || appPrimaryColor} /> : null
+                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} /> : null
             }
 
             {isHideWebView ? <View style={{ width: "100%", height: "100%" }}>
@@ -559,15 +558,15 @@ const WebviewTab = (props) => {
                 style={[
 
                     styles.flexContainer,
-                    { backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white") }
+                    { backgroundColor: forceColor || "white" }
                 ]}
                 behavior={Platform.select({ ios: "padding", android: null })}
                 enabled
                 contentContainerStyle={{ flex: 1 }}
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
             >
-                <WebView
-                    style={{ backgroundColor: forceColor || ((isSpecial) ? appPrimaryColor : "white"), opacity: isHideWebView ? 0 : 1 }}
+                <WebView 
+                    style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
                     scrollEnabled={canScroll}
                     useWebKit
                     cacheEnabled={true}

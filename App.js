@@ -448,13 +448,13 @@ const App = () => {
         )
     }, [appProps])
     const renderApp = () => {
-        if (loading) {
-        return <WEBLoading
-         i1 = {require("./src/asset/images/p1.png")}
-         i2 = {require("./src/asset/images/p2.png")}
-         i3 = {require("./src/asset/images/logox.png")}
-         logo={ require("./src/asset/images/logo.png")}/>
-        }
+        // if (loading) {
+        // return <WEBLoading
+        //  i1 = {require("./src/asset/images/p1.png")}
+        //  i2 = {require("./src/asset/images/p2.png")}
+        //  i3 = {require("./src/asset/images/logox.png")}
+        //  logo={ require("./src/asset/images/logo.png")}/>
+        // }
         // if (loading) {
         // return renderLoading()
         // }
