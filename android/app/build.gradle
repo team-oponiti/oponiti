@@ -133,7 +133,7 @@ android {
             dimension "flavor"
             versionCode 1
             versionName "1.0.1"
-            setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+            setProperty("archivesBaseName", "DDOK_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         
     }
