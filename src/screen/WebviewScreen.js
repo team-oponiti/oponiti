@@ -553,13 +553,13 @@ const WebviewTab = (props) => {
 
     //console.log("refresh: \() " + language)
     let header = {
-        APP_NAME: "DETECTIVE-BIZ",
+        APP_NAME: "DDOK-BIZ",
         APP_OS_NAME: appInfo.osName,
         APP_OS_TYPE: appInfo.osType,
         APP_VERSION_CODE: appInfo.appVersionCode,
         APP_VERSION_NAME: appInfo.appVersionName,
         APP_OS_VERSION: appInfo.osVersion,
-        APP_PUSH_TOKEN: appInfo.pushToken,
+        APP_FCM: appInfo.pushToken,
         APP_DEVICE_ID: appInfo.deviceId,
         APP_DEVICE_MODEL: appInfo.deviceModel,
         app_language: language,
