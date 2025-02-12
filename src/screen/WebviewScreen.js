@@ -50,6 +50,7 @@ const WebviewTab = (props) => {
     const [forceColor, setForceColor] = React.useState(null);
     const [isShowTextbox, setIsShowTextBox] = React.useState(false);
     const [isEnableInputBox, setIsEnableInputBox] = React.useState(false);
+    const [didLoadFcm, setDidLoadFCM] = React.useState(false);
 
     const [hookTabBade, setHookTabBade] = useGlobalBade()
     const [hookLogin, setHookIsLogin] = useGlobalLogin()
@@ -434,6 +435,14 @@ const WebviewTab = (props) => {
     }
     useEffect(() => {
         let tx = async () => {
+
+            try {
+                const fcmToken = await messaging().getToken();
+                global.pushToken = fcmToken
+            } catch (e) {
+                console.log("FCM", e)
+            }
+
             try {
                 console.log(" GET DEVICE INFO")
                 let data = await getDeviceInfo(webviewRef.current)
@@ -442,8 +451,9 @@ const WebviewTab = (props) => {
                 }
             } catch (e) {
                 alert("123", e)
-            }
-        }
+            } 
+            setDidLoadFCM(true)
+        } 
         tx()
     }, [])
 
@@ -559,7 +569,7 @@ const WebviewTab = (props) => {
         APP_VERSION_CODE: appInfo.appVersionCode,
         APP_VERSION_NAME: appInfo.appVersionName,
         APP_OS_VERSION: appInfo.osVersion,
-        APP_FCM: appInfo.pushToken,
+        APP_PUSH_TOKEN: appInfo.pushToken,
         APP_DEVICE_ID: appInfo.deviceId,
         APP_DEVICE_MODEL: appInfo.deviceModel,
         app_language: language,
@@ -634,7 +644,7 @@ const WebviewTab = (props) => {
             <SafeAreaView />
 
 
-            {webLoading ? <LoadingIndicatorView /> : null}
+            {(webLoading || didLoadFcm) ? <LoadingIndicatorView /> : null}
 
             <KeyboardAvoidingView
                 style={[
@@ -647,7 +657,8 @@ const WebviewTab = (props) => {
                 contentContainerStyle={{ flex: 1 }}
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
             >
-                <WebView
+                {
+                    didLoadFcm && <WebView
                     style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
                     scrollEnabled={canScroll}
                     useWebKit
@@ -697,6 +708,7 @@ const WebviewTab = (props) => {
                     }
 
                 />
+}
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
