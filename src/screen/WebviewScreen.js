@@ -50,6 +50,7 @@ const WebviewTab = (props) => {
     const [forceColor, setForceColor] = React.useState(null);
     const [isShowTextbox, setIsShowTextBox] = React.useState(false);
     const [isEnableInputBox, setIsEnableInputBox] = React.useState(false);
+    const [didLoadFcm, setDidLoadFCM] = React.useState(false);
 
     const [hookTabBade, setHookTabBade] = useGlobalBade()
     const [hookLogin, setHookIsLogin] = useGlobalLogin()
@@ -433,6 +434,15 @@ const WebviewTab = (props) => {
     }
     useEffect(() => {
         let tx = async () => {
+
+            try {
+                const fcmToken = await messaging().getToken();
+                global.pushToken = fcmToken
+            } catch (e) {
+                console.log("FCM", e)
+            }
+
+            
             try {
                 console.log(" GET DEVICE INFO")
                 let data = await getDeviceInfo(webviewRef.current)
@@ -440,8 +450,10 @@ const WebviewTab = (props) => {
                     global.appData = data
                 }
             } catch (e) {
-                alert("123", e)
+                alert("Error", e)
             }
+
+             setDidLoadFCM(true)
         }
         tx()
     }, [])
@@ -624,7 +636,7 @@ const WebviewTab = (props) => {
                 (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} /> : null
             }
 
-            {isHideWebView ? <View style={{ width: "100%", height: "100%" }}>
+            {(isHideWebView || !didLoadFcm) ? <View style={{ width: "100%", height: "100%" }}>
                 <WEBLoading
                     i1={require("../asset/images/p1.png")}
                     i2={require("../asset/images/p2.png")}
@@ -648,56 +660,58 @@ const WebviewTab = (props) => {
                 contentContainerStyle={{ flex: 1 }}
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
             >
-                <WebView 
-                    style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
-                    scrollEnabled={canScroll}
-                    useWebKit
-                    cacheEnabled={true}
-                    thirdPartyCookiesEnabled={true}
-                    sharedCookiesEnabled={Platform.OS == 'android'}
-                    onMessage={onMessageFromWebview}
-                    ref={webviewRef}
-                    source={source}
-                    renderLoading={() => {
-                        <View></View>
-                    }}
-                    startInLoadingState={false}
-                    injectedJavaScriptBeforeContentLoaded={fakeBridge}
-                    allowsBackForwardNavigationGestures
-                    onNavigationStateChange={onNavigationStateChange}
-                    onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-                    onLoadStart={() => setWebLoading(true)}
-                    onLoadEnd={() => setWebLoading(false)}
-                    onLoad={() => {
-                        setTimeout(() => {
-                            setHideWebView(false)
-                        }, 200)
-                    }}
-                    allowFileAccess={true}
-                    allowFileAccessFromFileURLs={true}
-                    allowUniversalAccessFromFileURLs={true}
-                    javaScriptEnabled={true}
-                    scalesPageToFit={true}
-                    showsHorizontalScrollIndicator={false}
-                    showsVerticalScrollIndicator={false}
-                    bounces={true}
-                    userAgent={"Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.2 Mobile/15E148 Safari/604.1 " + appAgent}
-                    originWhitelist={["zalo://", "https://*", "http://*", "file://*", "sms://*", "tel://*", "mail://*", "tg://*"]}
+             {
+                 didLoadFcm &&  <WebView 
+                 style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
+                 scrollEnabled={canScroll}
+                 useWebKit
+                 cacheEnabled={true}
+                 thirdPartyCookiesEnabled={true}
+                 sharedCookiesEnabled={Platform.OS == 'android'}
+                 onMessage={onMessageFromWebview}
+                 ref={webviewRef}
+                 source={source}
+                 renderLoading={() => {
+                     <View></View>
+                 }}
+                 startInLoadingState={false}
+                 injectedJavaScriptBeforeContentLoaded={fakeBridge}
+                 allowsBackForwardNavigationGestures
+                 onNavigationStateChange={onNavigationStateChange}
+                 onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+                 onLoadStart={() => setWebLoading(true)}
+                 onLoadEnd={() => setWebLoading(false)}
+                 onLoad={() => {
+                     setTimeout(() => {
+                         setHideWebView(false)
+                     }, 200)
+                 }}
+                 allowFileAccess={true}
+                 allowFileAccessFromFileURLs={true}
+                 allowUniversalAccessFromFileURLs={true}
+                 javaScriptEnabled={true}
+                 scalesPageToFit={true}
+                 showsHorizontalScrollIndicator={false}
+                 showsVerticalScrollIndicator={false}
+                 bounces={true}
+                 userAgent={"Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.2 Mobile/15E148 Safari/604.1 " + appAgent}
+                 originWhitelist={["zalo://", "https://*", "http://*", "file://*", "sms://*", "tel://*", "mail://*", "tg://*"]}
 
-                    renderError={
-                        (domain, errorCode, errorDescs) => {
-                            return <ErrorWebviewScreen
-                                button={getText("buttonError", language)}
-                                title={getText("titleError", language)}
-                                message={getText("messageError", language)}
-                                onRefresh={() => {
-                                    setFirstLoad(true)
-                                    webviewRef.current && webviewRef.current.reload()
-                                }}></ErrorWebviewScreen>
-                        }
-                    }
+                 renderError={
+                     (domain, errorCode, errorDescs) => {
+                         return <ErrorWebviewScreen
+                             button={getText("buttonError", language)}
+                             title={getText("titleError", language)}
+                             message={getText("messageError", language)}
+                             onRefresh={() => {
+                                 setFirstLoad(true)
+                                 webviewRef.current && webviewRef.current.reload()
+                             }}></ErrorWebviewScreen>
+                     }
+                 }
 
-                />
+             />
+             }
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
