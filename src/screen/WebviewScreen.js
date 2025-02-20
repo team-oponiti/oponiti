@@ -28,7 +28,8 @@ import {
     openSetting,
     getText,
     clearBadge,
-    WEBLoading
+    WEBLoading,
+    setCurrentWebview
 } from "../common/functions"
 import supportWebViewBridge from '../common/fakeSuppordWBridge'
 import { useGlobalAppLifeState, useGlobalBade, useGlobalLanguage, useGlobalLogin, useGlobalRefresh } from "../common/globalState"
@@ -457,6 +458,14 @@ const WebviewTab = (props) => {
         }
         tx()
     }, [])
+
+
+    useEffect(()=> {
+        if (webviewRef.current && force ) {
+            setCurrentWebview(webviewRef)
+        } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [force, webviewRef.current])
 
     useEffect(() => {
 

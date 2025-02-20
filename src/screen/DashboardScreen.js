@@ -9,7 +9,7 @@ import { account, blog, chat, membership, more } from "../define/webviewUri"
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import messaging from '@react-native-firebase/messaging';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { getText } from '../common/functions';
+import { getCurrentWebview, getText } from '../common/functions';
 import { appPrimaryColor } from '../define/config';
 import { useGlobalBade, useGlobalRefresh } from '../common/globalState';
 
@@ -117,7 +117,18 @@ const Dashboard = (props) => {
     const handleDynamicLink = (link)=> {
        // navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps })
        // console.log("handle link", link);
-      }
+       let webview =  getCurrentWebview()
+       if (webview == null || webview.current == null) {
+          setTimeout(()=> {
+              let webview =  getCurrentWebview()
+              webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+
+          }, 2000)
+       } else {
+          webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+       }
+       
+    }
       
   useEffect(() => { 
 
@@ -125,7 +136,18 @@ const Dashboard = (props) => {
         if (initialMessage && initialMessage.data["contentUrl"]) {
             var link = initialMessage.data["contentUrl"];
             if (link && link != "" && link != "#") { 
-                navigation.push("WebviewScreen", {data: {href: initialMessage.data["contentUrl"] }, appProps: appProps}) 
+             //   navigation.push("WebviewScreen", {data: {href: initialMessage.data["contentUrl"] }, appProps: appProps}) 
+
+             let webview =  getCurrentWebview()
+             if (webview == null || webview.current == null) {
+                setTimeout(()=> {
+                    let webview =  getCurrentWebview()
+                    webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+
+                }, 2000)
+             } else {
+                webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+             }
             }
         } 
      }) 
@@ -134,7 +156,17 @@ const Dashboard = (props) => {
         if (remoteMessage && remoteMessage.data["contentUrl"]) {
             var link = remoteMessage.data["contentUrl"];
             if (link && link != "" && link != "#") { 
-                navigation.push("WebviewScreen", {data: {href: remoteMessage.data["contentUrl"] }, appProps: appProps}) 
+               // navigation.push("WebviewScreen", {data: {href: remoteMessage.data["contentUrl"] }, appProps: appProps}) 
+               let webview =  getCurrentWebview()
+               if (webview == null || webview.current == null) {
+                  setTimeout(()=> {
+                      let webview =  getCurrentWebview()
+                      webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+  
+                  }, 2000)
+               } else {
+                  webview.current && webview.current.injectJavaScript(`window.location.href="${link}"`)
+               }
             }
         } 
       });
