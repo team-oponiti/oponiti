@@ -604,3 +604,14 @@ export const createChannel = () => {
                 }}></Image> 
         </View>
     }
+
+
+ var webview;
+
+ export const getCurrentWebview = () => {
+    return webview
+ }
+
+ export const setCurrentWebview = (v) => {
+    webview  = v
+ }
