@@ -541,7 +541,7 @@ const WebviewTab = (props) => {
                 console.log("event", event)
 
                 if (event.url == null || !event.url.startsWith("https")) {
-                return
+                return false
                 }
 
                 Linking.canOpenURL(event.url).then((supported) => {
@@ -552,7 +552,7 @@ const WebviewTab = (props) => {
             
             }
 
-            var event =  Linking.addEventListener('url',handleEventLink); 
+             var event =  Linking.addEventListener('url',handleEventLink); 
            
           
         
@@ -575,7 +575,7 @@ const WebviewTab = (props) => {
 
     //console.log("refresh: \() " + language)
     let header = {
-        APP_NAME: "DETECTIVE-BIZ",
+        APP_NAME: "DDOK",
         APP_OS_NAME: appInfo.osName,
         APP_OS_TYPE: appInfo.osType,
         APP_VERSION_CODE: appInfo.appVersionCode,

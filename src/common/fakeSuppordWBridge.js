@@ -209,6 +209,10 @@ if (window.appBridge == null) {
       window.WebViewBridge.send(JSON.stringify({type:"clear-badge"}))
     },triggerSend: function(){ 
       window.WebViewBridge.send(JSON.stringify({type:"trigger-send"}))
+    }, setStorageData: function(key, value){
+      return this.createDataTask("setStorageData", {key, value})
+    }, getStorageData: function(key){
+      return this.createDataTask("getStorageData", {key}) 
     }
   }; 
  if (window.kma == null) {  
@@ -237,4 +241,14 @@ function __guidGenerator() {
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 } 
+
+setTimeout(()=> {
+  appBridge.setStorageData("data", 'o kok 1234').then(()=> {
+    
+    appBridge.getStorageData("data").then((rt)=>{
+      appBridge.log("result " + rt)
+    })
+  })
+  }, 1000)
+
 `

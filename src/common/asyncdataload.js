@@ -3,7 +3,8 @@ import { NativeModules, Platform} from 'react-native';
 
 import { requestLocation } from "./functions"; 
 import { request, PERMISSIONS, openSettings , checkLocationAccuracy, requestLocationAccuracy, check, checkMultiple} from 'react-native-permissions';
- 
+import AsyncStorage from "@react-native-community/async-storage"
+
   
 export const anxData = (webview, data) => {
  
@@ -14,15 +15,25 @@ export const anxData = (webview, data) => {
       })+"`)")
     }
 
-    const thenValue = (data)=> {
-        console.log(data)
+    const thenValue = (data)=> { 
         resultData({data: data, error: false})
     }
     const catchValue = (data)=> {
+      
         resultData({msg: data, error: true})
     }
     switch (data.name) {
-        
+        case "setStorageData":
+            if (data.params.value == null) {
+                AsyncStorage.removeItem(data.params.key).then(thenValue).catch(catchValue);
+                return;
+            }
+            AsyncStorage.setItem(data.params.key, data.params.value).then(thenValue).catch(catchValue);
+            break;
+        case "getStorageData": 
+            console.log("get", data.params.key)
+            AsyncStorage.getItem(data.params.key).then(thenValue).catch(catchValue);
+            break
         case "getLocation":
             console.log("GET LOCATION")
             var permission = (Platform.OS == "android") ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
