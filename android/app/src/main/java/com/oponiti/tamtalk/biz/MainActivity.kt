@@ -1,5 +1,5 @@
 package com.oponiti.tamtalk.biz
-
+import android.util.Log
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -19,4 +19,11 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+  
+    override fun onResume() {
+      super.onResume()
+      Log.e("Tag", "getSHA1: ${getSHA1()}")
+      Log.e("Tag", "getSHA1: ${getSHA256()}")
+      Log.e("Tag", "keyhash: ${getHashKey()}")
+  }
 }
