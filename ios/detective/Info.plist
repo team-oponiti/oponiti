@@ -39,7 +39,17 @@
 			<string>com.ddokddok.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ddokddok</string>
+				<string>ddokexpert</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>ddokexpertauth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ddokexpertauth</string>
 			</array>
 		</dict>
 	</array>
@@ -53,8 +63,8 @@
 	<string>kakao0135a68454e79158e6ef1f8fb42f49ac</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-    <string>naversearchapp</string>
-      <string>naversearchthirdlogin</string>
+		<string>naversearchapp</string>
+		<string>naversearchthirdlogin</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakaolink</string>

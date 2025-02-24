@@ -39,6 +39,14 @@ import { useGlobalAppLifeState, useGlobalBade, useGlobalLanguage } from "./src/c
 import * as urlconfigs from "./src/define/webviewUri"
 import { appPrimaryColor } from './src/define/config';
 import WebViewWithBackButton from './src/screen/WebViewWithBackButton';
+import NaverLogin from '@react-native-seoul/naver-login';
+
+
+const consumerKey = 'PjFvTuK2e1I_VvKLOg9v';
+const consumerSecret = '3mdLXbwDAv';
+const appName = 'ddokddok';
+const serviceUrlSchemeIOS = "ddokexpertauth"
+
 if (Platform.OS == "android") {
     var Stack = createNativeStackNavigator();
 } else {

@@ -4,6 +4,7 @@
 #import <Firebase.h>
 #import <RNKakaoLogins.h>
 #import <React/RCTLinkingManager.h>
+#import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
 
 @implementation AppDelegate
 
@@ -38,6 +39,10 @@
   if ([RCTLinkingManager application:application openURL:url options:options]) {
     return YES;
   }
+  
+  if ([url.scheme isEqualToString:@"ddokexpertauth"]) {
+     return [[NaverThirdPartyLoginConnection getSharedInstance] application:application openURL:url options:options];
+   }
    
   return NO;
 }
