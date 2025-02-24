@@ -241,14 +241,6 @@ function __guidGenerator() {
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 } 
-
-setTimeout(()=> {
-  appBridge.setStorageData("data", 'o kok 1234').then(()=> {
-    
-    appBridge.getStorageData("data").then((rt)=>{
-      appBridge.log("result " + rt)
-    })
-  })
-  }, 1000)
+ 
 
 `

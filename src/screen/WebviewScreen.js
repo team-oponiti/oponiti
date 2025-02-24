@@ -491,7 +491,14 @@ const WebviewTab = (props) => {
       } 
 
     const handleNavigateTolink = (link) => {  
-        navigation.push("WebviewScreen", { data: { href: link }, appProps: appProps }) 
+       //navigation.push("WebviewScreen", { data: { href: link }, appProps: appProps })
+        if (  webviewRef.current == null) {
+                 setTimeout(()=> {
+                    webviewRef.current && webviewRef.current.injectJavaScript(`window.location.href="${link}"`)
+                 }, 2000)
+              } else {
+                webviewRef.current && webviewRef.current.injectJavaScript(`window.location.href="${link}"`)
+              } 
     }
   
     useEffect(() => { 
