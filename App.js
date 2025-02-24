@@ -271,6 +271,13 @@ const App = () => {
     }
 
     useEffect(() => {
+        NaverLogin.initialize({
+            appName,
+            consumerKey,
+            consumerSecret,
+            serviceUrlSchemeIOS,
+            disableNaverAppAuthIOS: true,
+          });
         // Settings.setAppID('820978288984618');
         // Settings.initializeSDK();
         createChannel()
