@@ -29,7 +29,7 @@
 			<string>kakao</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao-0135a68454e79158e6ef1f8fb42f49ac</string>
+				<string>kakao0135a68454e79158e6ef1f8fb42f49ac</string>
 			</array>
 		</dict>
 		<dict>
@@ -48,11 +48,13 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>KAKAO_APP_KEY</key>
-	<string>347ba7aaa45fe27178ba8b372f7b2557</string>
+	<string>0135a68454e79158e6ef1f8fb42f49ac</string>
 	<key>KAKAO_APP_SCHEME</key>
-	<string>kakao347ba7aaa45fe27178ba8b372f7b2557</string>
+	<string>kakao0135a68454e79158e6ef1f8fb42f49ac</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+    <string>naversearchapp</string>
+      <string>naversearchthirdlogin</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakaolink</string>
