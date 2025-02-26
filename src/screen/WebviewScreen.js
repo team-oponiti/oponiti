@@ -651,7 +651,7 @@ const WebviewTab = (props) => {
             <SafeAreaView />
 
 
-            {(webLoading || didLoadFcm) ? <LoadingIndicatorView /> : null}
+        {(webLoading) ? <LoadingIndicatorView /> : null} 
 
             <KeyboardAvoidingView
                 style={[
