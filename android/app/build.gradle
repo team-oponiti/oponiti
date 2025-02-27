@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com.ddokddok.blue"
+        applicationId "com.ddokddok"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -120,21 +120,21 @@ android {
 
     flavorDimensions "flavor" 
       productFlavors {
-    //          create("dev") { 
-    //         applicationIdSuffix ".dev"
-    //         dimension "flavor"
-    //         versionCode 12
-    //         versionName "1.0.6"
-    //         setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-    //     }
-        create("dev") { 
-            getIsDefault().set(true)
-            applicationIdSuffix ".test"
+             create("chplay") { 
+            applicationIdSuffix ".app"
             dimension "flavor"
             versionCode 1
-            versionName "1.0.1"
-            setProperty("archivesBaseName", "DDOK_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        } 
+            versionName "1.0.0"
+            setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        }
+        // create("dev") { 
+        //     getIsDefault().set(true)
+        //     applicationIdSuffix ".blue.test"
+        //     dimension "flavor"
+        //     versionCode 1
+        //     versionName "1.0.1"
+        //     setProperty("archivesBaseName", "DDOK_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        // } 
         
     }
 }

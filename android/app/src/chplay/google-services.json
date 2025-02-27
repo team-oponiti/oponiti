@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:57540010007:android:7b4dde2cae38d6812ffc52",
+        "android_client_info": {
+          "package_name": "com.ddokddok.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:57540010007:android:f706c004574aa4432ffc52",
         "android_client_info": {
           "package_name": "com.ddokddok.blue.test"
