@@ -195,7 +195,11 @@ const WebviewTab = (props) => {
         const { data } = event.nativeEvent;
         console.log("=========> event", data)
         let message = onMessage(data)
-        if (message.type == "navigate") {
+
+        
+        if (message.type == "open-expert") {
+            Linking.openURL("ddokddokbiz://")
+        } else if (message.type == "navigate") {
             global.data = message.params
             navigation.navigate({ name: message.data, merge: true });
         }

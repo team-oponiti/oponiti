@@ -213,6 +213,8 @@ if (window.appBridge == null) {
       return this.createDataTask("setStorageData", {key, value})
     }, getStorageData: function(key){
       return this.createDataTask("getStorageData", {key}) 
+    }, openExpert: function(key){
+      window.WebViewBridge.send(JSON.stringify({type:"open-expert"})) 
     }
   }; 
  if (window.kma == null) {  
