@@ -576,7 +576,7 @@ const WebviewTab = (props) => {
         APP_VERSION_CODE: appInfo.appVersionCode,
         APP_VERSION_NAME: appInfo.appVersionName,
         APP_OS_VERSION: appInfo.osVersion,
-        APP_PUSH_TOKEN: appInfo.pushToken,
+        APP_PUSH_TOKEN: global.pushToken,
         APP_DEVICE_ID: appInfo.deviceId,
         APP_DEVICE_MODEL: appInfo.deviceModel,
         app_language: language,

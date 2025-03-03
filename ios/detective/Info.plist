@@ -39,7 +39,7 @@
 			<string>com.ddokddok.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ddokexpert</string>
+				<string>ddokddokbiz</string>
 			</array>
 		</dict>
 		<dict>
