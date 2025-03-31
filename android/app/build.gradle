@@ -127,21 +127,21 @@ android {
     //         versionName "1.0.6"
     //         setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
     //     }
-    //  create("chplay") {  
-    //         applicationIdSuffix ".ddokddok.expert"
-    //         dimension "flavor"
-    //         versionCode 1
-    //         versionName "1.0.0"
-    //         setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-    //     } 
-        create("dev") { 
-            getIsDefault().set(true)
-            applicationIdSuffix ".ddokddok2.blue.dev"
+     create("chplay") {  
+            applicationIdSuffix ".ddokddok.expert"
             dimension "flavor"
             versionCode 1
             versionName "1.0.0"
             setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
+        // create("dev") { 
+        //     getIsDefault().set(true)
+        //     applicationIdSuffix ".ddokddok2.blue.dev"
+        //     dimension "flavor"
+        //     versionCode 2
+        //     versionName "1.0.0"
+        //     setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        // } 
         
     }
 }
