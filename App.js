@@ -423,7 +423,7 @@ const App = () => {
                 }} >
                     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} initialParams={{ appProps: appProps, isLogin }} />
                     <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps, isLogin }}
-                        options={{ headerShown: false }} />
+                        options={{ headerShown: false , gestureEnabled: false}} />
                     <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
 
                 </Stack.Navigator>
@@ -440,7 +440,7 @@ const App = () => {
                 }} > 
 
                     <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: urlconfigs.login, isRoot: true } }} options={{ headerShown: false }} />
-                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+                    <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false , gestureEnabled: false}} />
                     <Stack.Screen name="Preview" component={WebViewWithBackButton} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
 
                 </Stack.Navigator>

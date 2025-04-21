@@ -46,6 +46,8 @@ const WebviewTab = (props) => {
     var [webLoading, setWebLoading] = React.useState(true);
     var [overrideUrl, setOverrideUrl] = React.useState(null);
 
+    const [canBack, setCanback] = React.useState(true);
+
     const [language, changeLanguage] = useGlobalLanguage()
     const [canScroll, setCanScroll] = React.useState(true);
     const [forceColor, setForceColor] = React.useState(null);
@@ -203,6 +205,12 @@ const WebviewTab = (props) => {
             global.data = message.params
             navigation.navigate({ name: message.data, merge: true });
         }
+        else if (message.type == "allowBack") {
+            setCanback(true)
+        }
+        else if (message.type == "cancelBack") { 
+            setCanback(false)
+        }
         else if (message.type == "disableScroll") {
             // anxData(webviewRef.current || webviewRef, message)
             setCanScroll(message.data)
@@ -254,6 +262,8 @@ const WebviewTab = (props) => {
                     appProps.openHome && appProps.openHome()
                 } else if (message.data == "main") {
                     appProps.openMain && appProps.openMain()
+                } else if (message.data == "exit") {
+                    BackHandler.exitApp() 
                 } else if (message.data == "close") {
                     console.log("=========> CLOSE")
                     global.data = message.params
@@ -410,7 +420,9 @@ const WebviewTab = (props) => {
                 return
             }
             var handleBackButtonClick = function () {
-
+                if (!canBack) {
+                    return
+                }
                 if (canGoBackRef.current) {
                     webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
                 } else if (!disableHandleBackPress && hasNavigation && navigation.canGoBack()) {
@@ -687,6 +699,7 @@ const WebviewTab = (props) => {
                  useWebKit
                  cacheEnabled={true}
                  thirdPartyCookiesEnabled={true}
+                 allowsBackForwardNavigationGestures={canBack}
                  sharedCookiesEnabled={Platform.OS == 'android'}
                  onMessage={onMessageFromWebview}
                  ref={webviewRef}
@@ -695,8 +708,7 @@ const WebviewTab = (props) => {
                      <View></View>
                  }}
                  startInLoadingState={false}
-                 injectedJavaScriptBeforeContentLoaded={fakeBridge}
-                 allowsBackForwardNavigationGestures
+                 injectedJavaScriptBeforeContentLoaded={fakeBridge} 
                  onNavigationStateChange={onNavigationStateChange}
                  onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                  onLoadStart={() => setWebLoading(true)}

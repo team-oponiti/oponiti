@@ -137,6 +137,9 @@ if (window.appBridge == null) {
     close: function (data) {
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"close",params: data}))
     },
+    exitApp: function (data) {
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"exit",params: data}))
+    },
     startMain: function () {
       setCookie('test', "2", 1000); 
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"main",cookie: document.cookie}))
@@ -179,6 +182,10 @@ if (window.appBridge == null) {
       return window.kma.lat || window.giaynhap.lat 
     },getLongitude: function(){
       return window.kma.lng || window.giaynhap.lng 
+    },allowBack: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"allowBack"}))
+    },cancelBack: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"cancelBack"}))
     },
     setEnableScroll: function(value){
       window.WebViewBridge.send(JSON.stringify({type:"disableScroll",data: value}))
@@ -243,6 +250,5 @@ function __guidGenerator() {
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 } 
- 
-
+  
 `
