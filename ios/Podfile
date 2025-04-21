@@ -33,7 +33,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'detective' do
+target '똑똑' do
   config = use_native_modules!
 
   pod 'Firebase', :modular_headers => true
