@@ -141,6 +141,9 @@ if (window.appBridge == null) {
       setCookie('test', "2", 1000); 
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"main",cookie: document.cookie}))
     },
+     exitApp: function () {  
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"exitapp",cookie: document.cookie}))
+    },
     qrCode: function (groupId, token) {
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"qrScane",params:{groupId, token}}))
     },
@@ -179,6 +182,10 @@ if (window.appBridge == null) {
       return window.kma.lat || window.giaynhap.lat 
     },getLongitude: function(){
       return window.kma.lng || window.giaynhap.lng 
+    }, allowBack: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"allowBack"}))
+    },cancelBack: function(){
+      window.WebViewBridge.send(JSON.stringify({type:"cancelBack"}))
     },
     setEnableScroll: function(value){
       window.WebViewBridge.send(JSON.stringify({type:"disableScroll",data: value}))

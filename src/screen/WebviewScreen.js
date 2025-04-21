@@ -44,6 +44,7 @@ const WebviewTab = (props) => {
     var [viewRefresh, setViewRefresh] = React.useState(false);
     var [webLoading, setWebLoading] = React.useState(true);
     var [overrideUrl, setOverrideUrl] = React.useState(null);
+    const [canback, setCanback] = React.useState(true);
 
     const [language, changeLanguage] = useGlobalLanguage()
     const [canScroll, setCanScroll] = React.useState(true);
@@ -208,6 +209,12 @@ const WebviewTab = (props) => {
         else if (message.type == "openLink") {
             Linking.openURL(message.data)
         }
+        else if (message.type == "allowBack") {
+           setCanback(true)
+        }
+        else if (message.type == "cancelBack") {
+            setCanback(false)
+        }
         else if (message.type == "task") {
             anxData(webviewRef.current || webviewRef, message)
         } else
@@ -245,6 +252,9 @@ const WebviewTab = (props) => {
                     if (message.data == "qrScane") {
                         onQRScan(webviewRef, navigation, message.params)
                     }
+                    if (message.data == "exitapp") {
+                        BackHandler.exitApp()
+                    } else 
                 if (message.data == "home") {
                     appProps.openHome && appProps.openHome()
                 } else if (message.data == "main") {
@@ -405,7 +415,9 @@ const WebviewTab = (props) => {
                 return
             }
             var handleBackButtonClick = function () {
-
+                if (!canback) {
+                    return
+                }
                 if (canGoBackRef.current) {
                     webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
                 } else if (!disableHandleBackPress && hasNavigation && navigation.canGoBack()) {
@@ -680,7 +692,7 @@ const WebviewTab = (props) => {
                     }}
                     startInLoadingState={false}
                     injectedJavaScriptBeforeContentLoaded={fakeBridge}
-                    allowsBackForwardNavigationGestures
+                    allowsBackForwardNavigationGestures={canback}
                     onNavigationStateChange={onNavigationStateChange}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                     onLoadStart={() => setWebLoading(true)}
