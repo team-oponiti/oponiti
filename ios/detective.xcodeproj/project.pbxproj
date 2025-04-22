@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* detectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* detectiveTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-detective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		479AB11EC2DCD961AE6BAAD3 /* libPods-detective-detectiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3720AD1E87A1A1F51F0C4F24 /* libPods-detective-detectiveTests.a */; };
-		6E5DB5A52830CE245AA703A8 /* libPods-detective-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFBFC41C382520A996F3F4 /* libPods-detective-dev.a */; };
+		18AF85B6F73028754AFF9EB0 /* libPods-똑똑.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B03DC303CF259E4E548F2C /* libPods-똑똑.a */; };
+		3022F2D50C86CE023B2BA6A4 /* libPods-똑똑-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE1140D982BAE560369C163 /* libPods-똑똑-dev.a */; };
+		3DFE10465E32D3D9D21C474E /* libPods-똑똑-detectiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF29AB7FC6C6865DD13F0184 /* libPods-똑똑-detectiveTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8446049C8910084BCF74481B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */; };
 		B82A3EDE2CA0641000D46100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
@@ -27,7 +27,6 @@
 		B8DAA9F22CA65424005F9941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8DAA9D62CA653C0005F9941 /* GoogleService-Info.plist */; };
 		B8DAA9F72CA65613005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9F62CA65610005F9941 /* RNENVConfig.m */; };
 		B8DAA9F82CA65614005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9F62CA65610005F9941 /* RNENVConfig.m */; };
-		E4972E23AFDF071DC190364A /* libPods-detective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,12 +74,15 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = detective/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-dev.release.xcconfig"; path = "Target Support Files/Pods-detective-dev/Pods-detective-dev.release.xcconfig"; sourceTree = "<group>"; };
-		3720AD1E87A1A1F51F0C4F24 /* libPods-detective-detectiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-detective-detectiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-detective.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.debug.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.debug.xcconfig"; sourceTree = "<group>"; };
+		6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.release.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.release.xcconfig"; sourceTree = "<group>"; };
+		760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = detective/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889935ECEE9B7BE6D34A6559 /* Pods-detective-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
-		88AFBFC41C382520A996F3F4 /* libPods-detective-dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-detective-dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA0B89126988095F077CB6D /* Pods-detective-detectiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-detectiveTests.debug.xcconfig"; path = "Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests.debug.xcconfig"; sourceTree = "<group>"; };
+		91B03DC303CF259E4E548F2C /* libPods-똑똑.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-똑똑.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64C736D01D6B6BEE7BA9F97 /* Pods-detective-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-dev.debug.xcconfig"; path = "Target Support Files/Pods-detective-dev/Pods-detective-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "detective/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B82A3EDF2CA0643700D46100 /* detective.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = detective.entitlements; path = detective/detective.entitlements; sourceTree = "<group>"; };
@@ -94,8 +96,11 @@
 		B8DAA9F62CA65610005F9941 /* RNENVConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNENVConfig.m; sourceTree = "<group>"; };
 		E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EF29AB7FC6C6865DD13F0184 /* libPods-똑똑-detectiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-똑똑-detectiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F608DA6F7118D3927B464C7C /* Pods-detective.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective.debug.xcconfig"; path = "Target Support Files/Pods-detective/Pods-detective.debug.xcconfig"; sourceTree = "<group>"; };
 		F6C76A6C2487C4CFDCB8498B /* Pods-detective.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective.release.xcconfig"; path = "Target Support Files/Pods-detective/Pods-detective.release.xcconfig"; sourceTree = "<group>"; };
+		FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.release.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.release.xcconfig"; sourceTree = "<group>"; };
+		FCE1140D982BAE560369C163 /* libPods-똑똑-dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-똑똑-dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				479AB11EC2DCD961AE6BAAD3 /* libPods-detective-detectiveTests.a in Frameworks */,
+				3DFE10465E32D3D9D21C474E /* libPods-똑똑-detectiveTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-detective.a in Frameworks */,
-				E4972E23AFDF071DC190364A /* libPods-detective.a in Frameworks */,
+				18AF85B6F73028754AFF9EB0 /* libPods-똑똑.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E5DB5A52830CE245AA703A8 /* libPods-detective-dev.a in Frameworks */,
+				3022F2D50C86CE023B2BA6A4 /* libPods-똑똑-dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,11 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */,
 				B82A3EE52CA064AA00D46100 /* UserNotifications.framework */,
 				B82A3EE72CA064AA00D46100 /* UserNotificationsUI.framework */,
-				3720AD1E87A1A1F51F0C4F24 /* libPods-detective-detectiveTests.a */,
-				88AFBFC41C382520A996F3F4 /* libPods-detective-dev.a */,
+				91B03DC303CF259E4E548F2C /* libPods-똑똑.a */,
+				EF29AB7FC6C6865DD13F0184 /* libPods-똑똑-detectiveTests.a */,
+				FCE1140D982BAE560369C163 /* libPods-똑똑-dev.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +233,12 @@
 				889935ECEE9B7BE6D34A6559 /* Pods-detective-detectiveTests.release.xcconfig */,
 				A64C736D01D6B6BEE7BA9F97 /* Pods-detective-dev.debug.xcconfig */,
 				168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */,
+				5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */,
+				FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */,
+				760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */,
+				29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */,
+				467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */,
+				6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -397,15 +407,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		23C6C46EE9E0BA069BBBF902 /* [CP-User] [RNFB] Core Configuration */ = {
@@ -436,7 +446,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-detective-detectiveTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-똑똑-detectiveTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -458,7 +468,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-detective-dev-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-똑똑-dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,15 +481,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B64DE25E0853D11336BFD9FB /* [CP] Embed Pods Frameworks */ = {
@@ -488,15 +498,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B691EE16F31D26A36C3FF94E /* [CP] Copy Pods Resources */ = {
@@ -505,15 +515,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8DAA9E72CA653EA005F9941 /* Bundle React Native code and images */ = {
@@ -547,7 +557,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-detective-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-똑똑-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -560,15 +570,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective-dev/Pods-detective-dev-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E168D8DD530D6813A1C8E1C0 /* [CP] Copy Pods Resources */ = {
@@ -577,15 +587,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-detective/Pods-detective-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-똑똑/Pods-똑똑-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -632,7 +642,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CA0B89126988095F077CB6D /* Pods-detective-detectiveTests.debug.xcconfig */;
+			baseConfigurationReference = 760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -659,7 +669,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 889935ECEE9B7BE6D34A6559 /* Pods-detective-detectiveTests.release.xcconfig */;
+			baseConfigurationReference = 29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -683,13 +693,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F608DA6F7118D3927B464C7C /* Pods-detective.debug.xcconfig */;
+			baseConfigurationReference = 5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = detective/Info.plist;
@@ -699,13 +709,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = x;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.expert;
 				PRODUCT_NAME = detective;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -715,13 +725,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6C76A6C2487C4CFDCB8498B /* Pods-detective.release.xcconfig */;
+			baseConfigurationReference = FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z59VCCA327;
 				INFOPLIST_FILE = detective/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "똑똑";
@@ -730,13 +740,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = x;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ddokddok.expert;
 				PRODUCT_NAME = detective;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -899,7 +909,7 @@
 		};
 		B8DAA9EE2CA653EA005F9941 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A64C736D01D6B6BEE7BA9F97 /* Pods-detective-dev.debug.xcconfig */;
+			baseConfigurationReference = 467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -940,7 +950,7 @@
 		};
 		B8DAA9EF2CA653EA005F9941 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */;
+			baseConfigurationReference = 6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

@@ -9,7 +9,7 @@
   <key>PLIST_VERSION</key>
   <string>1</string>
   <key>BUNDLE_ID</key>
-  <string>com.ddokddok2.blue.dev</string>
+  <string>com.ddokddok.expert</string>
   <key>PROJECT_ID</key>
   <string>toktok-6f987</string>
   <key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
   <key>IS_SIGNIN_ENABLED</key>
   <true></true>
   <key>GOOGLE_APP_ID</key>
-  <string>1:57540010007:ios:16be2ca01ea989be2ffc52</string>
+  <string>1:57540010007:ios:0e74a10277bd4b502ffc52</string>
 </dict>
 </plist>
