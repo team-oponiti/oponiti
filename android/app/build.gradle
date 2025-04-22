@@ -130,8 +130,8 @@ android {
      create("chplay") {  
             applicationIdSuffix ".ddokddok.expert"
             dimension "flavor"
-            versionCode 3
-            versionName "1.0.0"
+            versionCode 4
+            versionName "1.0.1"
             setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         // create("dev") { 
