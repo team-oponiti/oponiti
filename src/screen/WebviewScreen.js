@@ -41,10 +41,12 @@ const WebviewTab = (props) => {
     const bottomTextRef = React.useRef(null);
     const webviewRef = React.useRef(null);
     var canGoBackRef = React.useRef(false);
+    var cancelGoBackRef = React.useRef(true);
+
     var [viewRefresh, setViewRefresh] = React.useState(false);
     var [webLoading, setWebLoading] = React.useState(true);
     var [overrideUrl, setOverrideUrl] = React.useState(null);
-    const [canback, setCanback] = React.useState(true);
+    const [canback, _setCanback] = React.useState(true);
 
     const [language, changeLanguage] = useGlobalLanguage()
     const [canScroll, setCanScroll] = React.useState(true);
@@ -59,6 +61,10 @@ const WebviewTab = (props) => {
 
     const [currentAppLifeState,] = useGlobalAppLifeState()
 
+    const setCanback = (value)=> {
+        cancelGoBackRef.current = value
+        _setCanback(value)
+    }
 
     const insets = useSafeAreaInsets()
     var data = {}
@@ -415,7 +421,8 @@ const WebviewTab = (props) => {
                 return
             }
             var handleBackButtonClick = function () {
-                if (!canback) {
+                if (!cancelGoBackRef.current) {
+                    BackHandler.exitApp() 
                     return
                 }
                 if (canGoBackRef.current) {
@@ -447,7 +454,10 @@ const WebviewTab = (props) => {
     }
     useEffect(() => {
         let tx = async () => {
-
+            setTimeout(()=>{
+                setHideWebView(false)
+                setDidLoadFCM(true)
+            }, 5000)
             try {
                 const fcmToken = await messaging().getToken();
                 global.pushToken = fcmToken
@@ -663,7 +673,7 @@ const WebviewTab = (props) => {
             <SafeAreaView />
 
 
-        {(webLoading) ? <LoadingIndicatorView /> : null} 
+        
 
             <KeyboardAvoidingView
                 style={[
@@ -696,12 +706,11 @@ const WebviewTab = (props) => {
                     onNavigationStateChange={onNavigationStateChange}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                     onLoadStart={() => setWebLoading(true)}
-                    onLoadEnd={() => setWebLoading(false)}
-                    onLoad={() => {
-                        setTimeout(() => {
-                            setHideWebView(false)
-                        }, 200)
+                    onLoadEnd={() => {
+                        setWebLoading(false)
+                        setHideWebView(false) 
                     }}
+                    
                     allowFileAccess={true}
                     allowFileAccessFromFileURLs={true}
                     allowUniversalAccessFromFileURLs={true}
