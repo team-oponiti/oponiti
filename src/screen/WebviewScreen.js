@@ -42,11 +42,14 @@ const WebviewTab = (props) => {
     const bottomTextRef = React.useRef(null);
     const webviewRef = React.useRef(null);
     var canGoBackRef = React.useRef(false);
+    var canelGoBackRef = React.useRef(true);
+
+    
     var [viewRefresh, setViewRefresh] = React.useState(false);
     var [webLoading, setWebLoading] = React.useState(true);
     var [overrideUrl, setOverrideUrl] = React.useState(null);
 
-    const [canBack, setCanback] = React.useState(true);
+    const [canBack, _setCanback] = React.useState(true);
 
     const [language, changeLanguage] = useGlobalLanguage()
     const [canScroll, setCanScroll] = React.useState(true);
@@ -60,8 +63,11 @@ const WebviewTab = (props) => {
     const [globalRefresh, setGlobalRefresh] = useGlobalRefresh()
 
     const [currentAppLifeState,] = useGlobalAppLifeState()
-
-
+    
+    const setCanback = (b) => {
+        canelGoBackRef.current = b
+        _setCanback(b)
+    }
     const insets = useSafeAreaInsets()
     var data = {}
     var params = {}
@@ -420,8 +426,9 @@ const WebviewTab = (props) => {
                 return
             }
             var handleBackButtonClick = function () {
-                if (!canBack) {
-                    return
+                if (!canelGoBackRef.current) {
+                    BackHandler.exitApp()
+                    return true
                 }
                 if (canGoBackRef.current) {
                     webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
@@ -451,7 +458,10 @@ const WebviewTab = (props) => {
     }
     useEffect(() => {
         let tx = async () => {
-
+            setTimeout(()=> {
+                setDidLoadFCM(true)
+                setHideWebView(false)
+            }, 5000)
             try {
                 const fcmToken = await messaging().getToken();
                 global.pushToken = fcmToken
@@ -676,10 +686,8 @@ const WebviewTab = (props) => {
                     logo={require("../asset/images/logo.png")} />
 
             </View> : null}
-            <SafeAreaView />
-
-
-            {webLoading ? <LoadingIndicatorView /> : null}
+            <SafeAreaView /> 
+            {/* {webLoading ? <LoadingIndicatorView /> : null} */}
 
             <KeyboardAvoidingView
                 style={[
@@ -712,12 +720,11 @@ const WebviewTab = (props) => {
                  onNavigationStateChange={onNavigationStateChange}
                  onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                  onLoadStart={() => setWebLoading(true)}
-                 onLoadEnd={() => setWebLoading(false)}
-                 onLoad={() => {
-                     setTimeout(() => {
-                         setHideWebView(false)
-                     }, 200)
+                 onLoadEnd={() => {
+                    setWebLoading(false)
+                    setHideWebView(false)
                  }}
+                
                  allowFileAccess={true}
                  allowFileAccessFromFileURLs={true}
                  allowUniversalAccessFromFileURLs={true}
