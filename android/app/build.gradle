@@ -123,7 +123,7 @@ android {
              create("chplay") { 
             applicationIdSuffix ".app"
             dimension "flavor"
-            versionCode 4
+            versionCode 6
             versionName "1.0.0"
             setProperty("archivesBaseName", "RE" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         }
