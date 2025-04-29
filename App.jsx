@@ -341,7 +341,7 @@ const App = () => {
             <NavigationContainer key="dashboard">
                 <Stack.Navigator
                   screenOptions={{
-                    gestureEnabled: false
+                    gestureEnabled: true
                 }}
                 initialRouteName={isLogin ? "Dashboard" : "Login"}>
                     <Stack.Screen name="Login" component={WebviewScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />

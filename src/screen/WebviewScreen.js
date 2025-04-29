@@ -655,7 +655,7 @@ const WebviewTab = (props) => {
                     startInLoadingState={false}
                     injectedJavaScript={fakeBridge}
                     injectedJavaScriptBeforeContentLoaded={fakeBridge}
-                    allowsBackForwardNavigationGestures
+                    allowsBackForwardNavigationGestures={false}
                     onNavigationStateChange={onNavigationStateChange} 
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                     onLoadStart={() => setWebLoading(true)}
