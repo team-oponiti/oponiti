@@ -4,6 +4,7 @@ import { NativeModules, Platform} from 'react-native';
 import { requestLocation } from "./functions"; 
 import { request, PERMISSIONS, openSettings , checkLocationAccuracy, requestLocationAccuracy, check, checkMultiple} from 'react-native-permissions';
 import AsyncStorage from "@react-native-community/async-storage"
+import { Linking } from 'react-native';
 
   
 export const anxData = (webview, data) => {
@@ -23,6 +24,17 @@ export const anxData = (webview, data) => {
         resultData({msg: data, error: true})
     }
     switch (data.name) {
+        case "open-expert":
+            Linking.canOpenURL("ddokddokbiz://").then((ok)=> {
+                if (ok) {
+                    Linking.openURL("ddokddokbiz://")
+                   thenValue(true)
+               } else {
+                   catchValue("canot open expert app")
+               }
+            }).catch(catchValue);
+           
+            break;
         case "setStorageData":
             if (data.params.value == null) {
                 AsyncStorage.removeItem(data.params.key).then(thenValue).catch(catchValue);

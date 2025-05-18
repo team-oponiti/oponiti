@@ -221,7 +221,8 @@ if (window.appBridge == null) {
     }, getStorageData: function(key){
       return this.createDataTask("getStorageData", {key}) 
     }, openExpert: function(key){
-      window.WebViewBridge.send(JSON.stringify({type:"open-expert"})) 
+       return this.createDataTask("open-expert")
+      //window.WebViewBridge.send(JSON.stringify({type: "open-expert"})) 
     }
   }; 
  if (window.kma == null) {  

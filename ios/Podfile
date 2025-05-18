@@ -73,7 +73,8 @@ target '똑똑' do
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
         config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.6' 
+        config.build_settings['ENABLE_BITCODE'] = 'NO' 
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.6'
       end
     end
     
