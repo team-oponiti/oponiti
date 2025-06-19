@@ -457,7 +457,7 @@ const WebviewTab = (props) => {
             setTimeout(()=>{
                 setHideWebView(false)
                 setDidLoadFCM(true)
-            }, 5000)
+            }, 10000)
             try {
                 const fcmToken = await messaging().getToken();
                 global.pushToken = fcmToken
