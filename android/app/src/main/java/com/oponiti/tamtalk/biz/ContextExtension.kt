@@ -11,73 +11,61 @@ import java.util.*
 fun Context.getHashKey(): String? {
     var str: String? = null
     try {
-        for (
-            sig in this.packageManager.getPackageInfo(
-                this.packageName,
-                PackageManager.GET_SIGNATURES
-            ).signatures
-        ) {
-            var localMessageDigest: MessageDigest
-            MessageDigest.getInstance("SHA1").also { localMessageDigest = it }
-                .update(sig.toByteArray())
-            str = String(Base64.encode(localMessageDigest.digest(), 0))
+        val info =
+                this.packageManager.getPackageInfo(this.packageName, PackageManager.GET_SIGNATURES)
+        info.signatures?.let { signatures ->
+            for (sig in signatures) {
+                val md = MessageDigest.getInstance("SHA1")
+                md.update(sig.toByteArray())
+                str = Base64.encodeToString(md.digest(), Base64.NO_WRAP)
+            }
         }
-    } catch (e: java.lang.Exception) {
-    }
-    return str!!.replace("\n", "")
+    } catch (e: Exception) {}
+    return str?.replace("\n", "")
 }
 
 fun Context.getSHA1(): String? {
     var str: String? = null
     try {
-        for (
-            sig in this.packageManager.getPackageInfo(
-                this.packageName,
-                PackageManager.GET_SIGNATURES
-            ).signatures
-        ) {
-            var localMessageDigest: MessageDigest
-            MessageDigest.getInstance("SHA-1").also { localMessageDigest = it }
-                .update(sig.toByteArray())
-            str = byte2HexFormatted(
-                localMessageDigest.digest()
-            )
+        val info =
+                this.packageManager.getPackageInfo(this.packageName, PackageManager.GET_SIGNATURES)
+        info.signatures?.let { signatures ->
+            for (sig in signatures) {
+                var localMessageDigest: MessageDigest
+                MessageDigest.getInstance("SHA-1")
+                        .also { localMessageDigest = it }
+                        .update(sig.toByteArray())
+                str = byte2HexFormatted(localMessageDigest.digest())
+            }
         }
-    } catch (e: Exception) {
-    }
+    } catch (e: Exception) {}
     return str!!.replace("\n", "")
 }
 
 fun Context.getSHA256(): String? {
     var str: String? = null
     try {
-        for (
-        sig in this.packageManager.getPackageInfo(
-            this.packageName,
-            PackageManager.GET_SIGNATURES
-        ).signatures
-        ) {
-            var localMessageDigest: MessageDigest
-            MessageDigest.getInstance("SHA-256").also { localMessageDigest = it }
-                .update(sig.toByteArray())
-            str = byte2HexFormatted(
-                localMessageDigest.digest()
-            )
+        val info =
+                this.packageManager.getPackageInfo(this.packageName, PackageManager.GET_SIGNATURES)
+        info.signatures?.let { signatures ->
+            for (sig in signatures) {
+                var localMessageDigest: MessageDigest
+                MessageDigest.getInstance("SHA-256")
+                        .also { localMessageDigest = it }
+                        .update(sig.toByteArray())
+                str = byte2HexFormatted(localMessageDigest.digest())
+            }
         }
-    } catch (e: Exception) {
-    }
+    } catch (e: Exception) {}
     return str!!.replace("\n", "")
 }
 
-private fun byte2HexFormatted(arr: ByteArray): String? {
+fun byte2HexFormatted(arr: ByteArray): String? {
     val localStringBuilder = StringBuilder(arr.size * 2)
     for (i in arr.indices) {
         var str: String
         var j: Int
-        if (Integer.toHexString(arr[i].toInt()).also { str = it }.length.also {
-            j = it
-        } == 1
-        ) {
+        if (Integer.toHexString(arr[i].toInt()).also { str = it }.length.also { j = it } == 1) {
             str = "0$str"
         }
         if (j > 2) {
