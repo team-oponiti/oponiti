@@ -260,8 +260,7 @@ const App = () => {
     const checkCookie = async () => {
         var cookie = {}
         var lastToken = ""
-        try {
-            lastToken = await getLastToken();
+        try { 
             cookie = await CookieManager.get(domain, true)
             let x2 = jsonCookiesToCookieString(cookie)
             let x = await CookieManager.setFromResponse(domain, x2)
@@ -296,29 +295,23 @@ const App = () => {
             consumerSecret,
             serviceUrlSchemeIOS,
             disableNaverAppAuthIOS: true,
-          });
-        // Settings.setAppID('820978288984618');
-        // Settings.initializeSDK();
+          }); 
         createChannel()
        } catch(e){}
-       
-   getLastToken().then(()=> {
-        requestPermission().then(()=> {
-                    registerAppWithFCM()
-                    getResource().then(() => { 
-                        setDidLoadResource(true);
-                    })
-            })
-   })
-       
-           
-       
-
-        setTimeout(() => {
-            if (loading) {
-                setLoading(false)
-            }
-        }, 500)
+        
+    getLastToken().then(()=> {
+            requestPermission().then(()=> {
+                        registerAppWithFCM()
+                        getResource().then(() => { 
+                             setDidLoadResource(true);
+                        })
+                })
+    }) 
+        // setTimeout(() => {
+        //     if (loading) {
+        //         setLoading(false)
+        //     }
+        // }, 500)
 
         let sub = AppState.addEventListener('change', _handleAppStateChange);
         return () => {

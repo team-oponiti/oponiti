@@ -311,6 +311,9 @@ const WebviewTab = (props) => {
             else if (message.type == "clearCookie") {
                 CookieManager.clearAll()
             } else if (message.type == "set-token") {
+                if ( message.data != "NONE") {
+                    return
+                }
                 global.userToken = message.data
                 saveLastToken(message.data)
             } else if (message.type == "logout") {
