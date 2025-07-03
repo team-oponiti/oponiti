@@ -61,7 +61,7 @@ export const onMessage = (message) => {
 export const saveLastToken = async (token) => {
     global.userToken = token
     try {
-        await AsyncStorage.setItem('usertoken', token || "");
+        await AsyncStorage.setItem('usertoken', String(token));
     } catch (error) {
     }
 }
@@ -307,9 +307,7 @@ export const getDeviceInfoPM = () => {
 
 const tryGetToken = async () => {
     try {
-        if (global.userToken == null) {
-            global.userToken = await getLastToken() || ""
-        }
+        global.userToken = await getLastToken() || ""
     } catch {
     }
 
@@ -386,7 +384,7 @@ export const getDeviceInfo = async (webview) => {
         deviceModel: model,
         timeZone: timeZone
     }
-    console.log(data)
+ 
     try {
         if (webview != null) {
             let script = ` 
@@ -483,8 +481,7 @@ export const createChannel = () => {
         },
         (created) => console.log(`createChannel returned '${created}'`)  
       );
-   }catch(e){
-
+   }catch(e){ 
     console.log("ALER!!!!")
     console.log(e)
    }

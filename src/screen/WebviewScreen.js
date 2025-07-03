@@ -1,6 +1,6 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking, Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity } from 'react-native';
+import { BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking, Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity, Keyboard } from 'react-native';
 import { useIsFocused, useNavigation, useScrollToTop } from '@react-navigation/native';
 import CookieManager from '@react-native-cookies/cookies';
 import { WebView } from "react-native-webview";
@@ -457,7 +457,7 @@ const WebviewTab = (props) => {
             setTimeout(()=>{
                 setHideWebView(false)
                 setDidLoadFCM(true)
-            }, 10000)
+            }, 20000)
             try {
                 const fcmToken = await messaging().getToken();
                 global.pushToken = fcmToken
@@ -537,9 +537,9 @@ const WebviewTab = (props) => {
             } 
           });
           
-        const unsubscribe2 = messaging().onMessage(async remoteMessage => {
-            // setGlobalRefresh(1)
-        });
+        // const unsubscribe2 = messaging().onMessage(async remoteMessage => {
+        //     // setGlobalRefresh(1)
+        // });
 
 
             Linking.getInitialURL().then((url) => {
@@ -576,7 +576,7 @@ const WebviewTab = (props) => {
           
         
         return () => { 
-            unsubscribe2 && unsubscribe2()
+            // unsubscribe2 && unsubscribe2()
             unsubscribe3 && unsubscribe3()
             event && event.remove && event.remove()
         }; 
@@ -647,7 +647,7 @@ const WebviewTab = (props) => {
     let [isHideWebView, setHideWebView] = useState(isSpecial)
 
 
-
+    console.log("Headers", header)
     if (viewRefresh) {
         return <View style={{ backgroundColor: "gray" }}></View>
     }
@@ -709,8 +709,7 @@ const WebviewTab = (props) => {
                     onLoadEnd={() => {
                         setWebLoading(false)
                         setHideWebView(false) 
-                    }}
-                    
+                    }} 
                     allowFileAccess={true}
                     allowFileAccessFromFileURLs={true}
                     allowUniversalAccessFromFileURLs={true}

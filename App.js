@@ -7,7 +7,7 @@
  */
 
 import React, { Node, useCallback, useEffect, useRef, useState } from 'react'
-import { AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid } from 'react-native';
+import { AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid, TextInput } from 'react-native';
 import { domain } from "./src/define/webviewUri"
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -70,7 +70,8 @@ const requestNotificationPermission = async () => {
 
 
 async function requestPermission() {
-    if (Platform.OS === 'android') {
+   try {
+     if (Platform.OS === 'android') {
         await requestNotificationPermission()
     }
     const granted = await messaging().requestPermission({
@@ -81,13 +82,16 @@ async function requestPermission() {
         provisional: false,
         sound: true,
     });
-
+    console.log("permission", granted)
     try {
         const fcmToken = await messaging().getToken();
-        global.pushToken = fcmToken
+        global.pushToken = fcmToken 
+        console.log("fcmToken", fcmToken)
+
     } catch (e) {
         console.log("FCM", e)
     }
+   } catch(e){}
 
 }
 
@@ -102,10 +106,13 @@ async function registerAppWithFCM() {
     }
 
 
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-        console.log('Message handled in the background!', remoteMessage);
-    });
+    // messaging().setBackgroundMessageHandler(async remoteMessage => {
+    //     console.log('Message handled in the background!', remoteMessage);
+    // });
 
+    //  messaging().onMessage(async remoteMessage => {
+    //         console.log("remoteMessage", remoteMessage)
+    // })
     messaging().subscribeToTopic('noti').then(() => console.log('Subscribed to topic!'));
     messaging().subscribeToTopic('detective').then(() => console.log('Subscribed to topic!'));
 
@@ -117,6 +124,8 @@ const App = () => {
 
     const [loading, setLoading] = useState(true);
     const [isLogin, setLogin] = useState(false);
+    const [idLoadResource, setDidLoadResource] = useState(false);
+
     const appState = React.useRef(AppState.currentState);
     const timeSetLife = React.useRef(null);
     const [, updateState] = React.useState();
@@ -226,6 +235,7 @@ const App = () => {
 
     const getResource = async () => {
         try {
+            getDeviceInfo(null)
             setLanguage(await getLanguage())
         } catch (e) {
             console.log("errrorrrrr  ----------" + e)
@@ -279,7 +289,8 @@ const App = () => {
     }
 
     useEffect(() => {
-        NaverLogin.initialize({
+       try {
+         NaverLogin.initialize({
             appName,
             consumerKey,
             consumerSecret,
@@ -289,26 +300,16 @@ const App = () => {
         // Settings.setAppID('820978288984618');
         // Settings.initializeSDK();
         createChannel()
-        getResource().then(async () => {
+       } catch(e){}
 
-            await requestPermission()
+       requestPermission().then(()=> {
             registerAppWithFCM()
-            // setupOneSignal()
-
-            // if (Platform.OS == "android") {
-            //     setTimeout(() => {
-            //         setLoading(false)
-            //         if (isLogin) {
-            //              requestLocaitonPermision()
-            //         }
-            //     }, 2000)
-            // } else {
-            //     setLoading(false)
-            //     if (isLogin) {
-            //          requestLocaitonPermision()
-            //     }
-            // }
-        })
+            getResource().then(() => { 
+                setDidLoadResource(true);
+            })
+       })
+           
+       
 
         setTimeout(() => {
             if (loading) {
@@ -468,15 +469,15 @@ const App = () => {
 
     
 
-
+  
     return (
 
         <View style={styles.flexContainer}>
 
             <View style={[styles.flexContainer]}>
-                {renderApp()}
+                {idLoadResource && renderApp()}
             </View>
-
+            {/* <TextInput value={global.fcmToken}></TextInput> */}
         </View>
 
     )

@@ -99,8 +99,7 @@ if (window.appBridge == null) {
         window.WebViewBridge.send(JSON.stringify({type:"task",id:uuid, name: taskName, params: params})) 
         return promis
       },
-    setUserToken: function (value) {
-      setCookie('test', "2", 1000); 
+    setUserToken: function (value) { 
       window.WebViewBridge.send(JSON.stringify({type:"set-token",data:value}))
     },
     openCart: function(){
@@ -207,7 +206,7 @@ if (window.appBridge == null) {
     },getTimeZone: function(){
       return window.kma.timeZone || window.giaynhap.timeZone
     },getUserToken: function(){
-      return getcookie("USER_TOKEN")
+      return window.kma.userToken
     },getOSVersion: function(){ 
       return window.kma.osVersion || window.giaynhap.osVersion
     },openAppSetting: function(){ 
