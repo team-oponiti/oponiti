@@ -286,9 +286,9 @@ const WebviewTab = (props) => {
                 } else if (message.data == "loginSuccess") {
                     setTimeout(() => {
                         setHookIsLogin(true)
-                        if (message.token != null) {
-                            saveLastToken(message.token)
-                        }
+                        // if (message.token != null) {
+                        //     saveLastToken(message.token)
+                        // }
                         if (canGoBackRef.current) {
                             webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
                         } else if (!disableHandleBackPress && hasNavigation) {
@@ -314,7 +314,7 @@ const WebviewTab = (props) => {
                 global.userToken = message.data
                 saveLastToken(message.data)
             } else if (message.type == "logout") {
-                global.userToken = ""
+                global.userToken = "NONE"
                 appProps.logout && appProps.logout()
                 setTimeout(() => {
                     setHookIsLogin(false)
@@ -609,11 +609,9 @@ const WebviewTab = (props) => {
         APP_LATITUDE: appInfo.lat,
         APP_LONGITUDE: appInfo.lng,
         USER_TOKEN: global.userToken + "",
-
+        AUTH: global.userToken,
     }
-    if (Platform.OS == "android") {
-        //   header["Cookie"] = global.cookie
-    }
+  
     let appAgent = "["
     for (var x in header) {
         appAgent += x + "@!@" + header[x] + ","

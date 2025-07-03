@@ -4,7 +4,7 @@ import React, { Node, useCallback, useEffect, useRef, useState } from 'react';
  
 import {NativeModules, TouchableOpacity,  Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid } from 'react-native';
 
-import AsyncStorage from "@react-native-community/async-storage"
+import AsyncStorage from '@react-native-community/async-storage'
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
 
@@ -61,7 +61,7 @@ export const onMessage = (message) => {
 export const saveLastToken = async (token) => {
     global.userToken = token
     try {
-        await AsyncStorage.setItem('usertoken', String(token));
+        await AsyncStorage.setItem('usertoken', token + "");
     } catch (error) {
     }
 }
@@ -70,7 +70,7 @@ export const getLastToken = async () => {
     
     try {
         let token = await AsyncStorage.getItem('usertoken');
-        global.userToken = token
+        global.userToken = token ?? "EMPTY"
         return token
     } catch (error) {
     }
@@ -307,7 +307,7 @@ export const getDeviceInfoPM = () => {
 
 const tryGetToken = async () => {
     try {
-        global.userToken = await getLastToken() || ""
+        global.userToken = await getLastToken() ?? ""
     } catch {
     }
 

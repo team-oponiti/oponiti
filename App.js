@@ -207,7 +207,7 @@ const App = () => {
 
     const logout = async () => {
         setLogin(false)
-        saveLastToken("")
+        saveLastToken("NONE")
         // try {
         //     if (await GoogleSignin.isSignedIn()) {
         //         await GoogleSignin.signOut();
@@ -301,13 +301,16 @@ const App = () => {
         // Settings.initializeSDK();
         createChannel()
        } catch(e){}
-
-       requestPermission().then(()=> {
-            registerAppWithFCM()
-            getResource().then(() => { 
-                setDidLoadResource(true);
+       
+   getLastToken().then(()=> {
+        requestPermission().then(()=> {
+                    registerAppWithFCM()
+                    getResource().then(() => { 
+                        setDidLoadResource(true);
+                    })
             })
-       })
+   })
+       
            
        
 
