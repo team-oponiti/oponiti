@@ -373,7 +373,7 @@ const WebviewTab = (props) => {
               Share.share(
                     {
                         title: param.title,
-                        message: [param.text , param.url ].join("\n"),   
+                        message: param.text ,   
                         url: param.url
                     }
             ).then(()=>console.log("share success")).catch((e)=> {
