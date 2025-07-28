@@ -370,10 +370,10 @@ const WebviewTab = (props) => {
             if (param.url == null && param.text == null) {
                 return;
               } 
-              Share.share(
+               Share.share(
                     {
                         title: param.title,
-                        message: param.text ,   
+                        message: [param.text , param.url ].join("\n"),  
                         url: param.url
                     }
             ).then(()=>console.log("share success")).catch((e)=> {
@@ -679,7 +679,7 @@ const WebviewTab = (props) => {
                  {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v)=>setIsEnableInputBox(v)}/>: <SafeAreaView /> }
                   
              </KeyboardAvoidingView>
-            
+            {Platform.OS == "android" ?   <View  style ={{height: insets.bottom}}/> : nul}
         </View>
 
     );

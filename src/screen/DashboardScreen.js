@@ -192,7 +192,8 @@ const Dashboard = (props) => {
     };
 
     return (
-        <Tab.Navigator
+        <View  style={styles.flexContainer} >
+            <Tab.Navigator
             lazy={true}
             barStyle={{backgroundColor: '#FFFFFF'}}
             style={styles.flexContainer}
@@ -224,8 +225,8 @@ const Dashboard = (props) => {
                 },
                 tabBarStyle: {
                     paddingTop: 0,
-                    paddingBottom: Math.min(21, insets.bottom),
-                    height: 65 + Math.min(21, insets.bottom),
+                    paddingBottom: insets.bottom,
+                    height: 65 + insets.bottom,
                     paddingLeft: 0, 
                     paddingRight: 0,
                 },
@@ -265,6 +266,7 @@ const Dashboard = (props) => {
             }
                 )}
         </Tab.Navigator>
+        </View>
     );
 };
 export default Dashboard;
