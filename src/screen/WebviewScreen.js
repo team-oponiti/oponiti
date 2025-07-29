@@ -695,7 +695,7 @@ const WebviewTab = (props) => {
                     logo={require("../asset/images/logo.png")} />
 
             </View> : null}
-            <View style ={{height: insets.top, backgroundColor:'white'}} /> 
+            <View style ={{height: insets.top, backgroundColor: forceColor || 'white'}} /> 
             {/* {webLoading ? <LoadingIndicatorView /> : null} */}
 
             <KeyboardAvoidingView
@@ -763,7 +763,7 @@ const WebviewTab = (props) => {
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
-               <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
+              {  (!(isHideWebView || !didLoadFcm)) && <View style ={{height: insets.bottom, backgroundColor:'white'}} /> }
         </View>
 
     );
