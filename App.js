@@ -9,6 +9,7 @@
 import React, { Node, useCallback, useEffect, useRef, useState } from 'react'
 import { AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, Animated, Text, Easing , StyleSheet, View, Dimensions, PermissionsAndroid } from 'react-native';
 import { domain } from "./src/define/webviewUri"
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -465,21 +466,22 @@ const App = () => {
         return renderLogin()
 
     }
-
-
-    return (
-
-        <View style={styles.flexContainer}>
-
-            <View style={[styles.flexContainer]}>
+ 
+    return ( 
+         <View style={[styles.flexContainer]}>
                 {renderApp()}
-            </View>
-
-        </View>
-
+        </View> 
     )
-
+     
 };
+
+const MainApp = () => {
+     return ( 
+        < SafeAreaProvider style={styles.flexContainer}> 
+            <App></App>
+        </ SafeAreaProvider> 
+    )
+}
 
 const styles = StyleSheet.create({
     flexContainer: {
@@ -488,4 +490,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default App;
+export default MainApp;

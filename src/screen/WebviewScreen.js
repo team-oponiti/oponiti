@@ -37,6 +37,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { appPrimaryColor } from '../define/config';
 import { BottomTextBox } from './BottomTextBox';
 import ErrorWebviewScreen from './ErrorWebviewScreen';
+import { downloadAndHandleFile } from '../common/download';
 
 const WebviewTab = (props) => {
     const bottomTextRef = React.useRef(null);
@@ -205,7 +206,13 @@ const WebviewTab = (props) => {
         let message = onMessage(data)
 
         
-        if (message.type == "open-expert") {
+       
+
+
+        if (message.type == "download") { 
+          downloadAndHandleFile(message.data)
+        }
+        else if (message.type == "open-expert") {
             Linking.openURL("ddokddokbiz://")
         } else if (message.type == "navigate") {
             global.data = message.params
@@ -643,6 +650,7 @@ const WebviewTab = (props) => {
     }
 
     useEffect(() => {
+       
         if (force) {
             return
         }
@@ -651,6 +659,7 @@ const WebviewTab = (props) => {
         setTimeout(() => {
             setViewRefresh(false)
         }, 100)
+       
         //webviewRef.current && webviewRef.current.reload()
     }, [language, hookLogin]);
 
@@ -686,7 +695,7 @@ const WebviewTab = (props) => {
                     logo={require("../asset/images/logo.png")} />
 
             </View> : null}
-            <SafeAreaView /> 
+            <View style ={{height: insets.top, backgroundColor:'white'}} /> 
             {/* {webLoading ? <LoadingIndicatorView /> : null} */}
 
             <KeyboardAvoidingView
@@ -754,7 +763,7 @@ const WebviewTab = (props) => {
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
-
+               <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
         </View>
 
     );

@@ -106,6 +106,9 @@ if (window.appBridge == null) {
     openCart: function(){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"cart"}))
     },
+     downloadFile: function(file){
+      window.WebViewBridge.send(JSON.stringify({type:"download",data: file}))
+    },
     loginSuccess:function(token){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"loginSuccess",token: token}))
     },
