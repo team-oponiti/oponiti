@@ -201,8 +201,8 @@ const Dashboard = (props) => {
                 },
                 tabBarStyle: {
                     paddingTop: 0,
-                    paddingBottom: Math.min(21, insets.bottom),
-                    height: 65 + Math.min(21, insets.bottom),
+                    paddingBottom:  insets.bottom,
+                    height: 65 + insets.bottom,
                     paddingLeft: 4, 
                     paddingRight: 4,
                 },

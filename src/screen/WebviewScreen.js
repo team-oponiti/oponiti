@@ -626,7 +626,7 @@ const WebviewTab = (props) => {
                   {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v)=>setIsEnableInputBox(v)}/>: <SafeAreaView /> }
                   
       </KeyboardAvoidingView>
- 
+                     {Platform.OS == "android" ?   <View  style ={{height: insets.bottom}}/> : nul}
         </View>
 
     );
