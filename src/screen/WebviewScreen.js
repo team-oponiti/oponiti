@@ -36,6 +36,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { appPrimaryColor } from '../define/config';
 import { BottomTextBox } from './BottomTextBox';
 import ErrorWebviewScreen from './ErrorWebviewScreen';
+import { downloadAndHandleFile } from '../common/download';
 
 const WebviewTab = (props) => {
     const bottomTextRef = React.useRef(null);
@@ -201,7 +202,9 @@ const WebviewTab = (props) => {
         const { data } = event.nativeEvent;
         console.log("=========> event", data)
         let message = onMessage(data)
-        if (message.type == "navigate") {
+        if (message.type == "download") { 
+            downloadAndHandleFile(global.data)
+        }  else  if (message.type == "navigate") {
             global.data = message.params
             navigation.navigate({ name: message.data, merge: true });
         }
@@ -672,7 +675,7 @@ const WebviewTab = (props) => {
                     logo={require("../asset/images/logo.png")} />
 
             </View> : null}
-            <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
+            <View style ={{height: insets.top, backgroundColor:'white'}} /> 
 
             <KeyboardAvoidingView
                 style={[
@@ -738,7 +741,8 @@ const WebviewTab = (props) => {
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
-             <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
+
+            {!isHideWebView && <View style ={{height: insets.bottom, backgroundColor:'white'}} /> }
         </View>
 
     );
