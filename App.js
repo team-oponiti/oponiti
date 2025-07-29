@@ -13,6 +13,7 @@ import { domain } from "./src/define/webviewUri"
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
     getLastBade,
@@ -466,19 +467,19 @@ const App = () => {
     
 
   
-    return (
-
-        <View style={styles.flexContainer}>
-
-            <View style={[styles.flexContainer]}>
+    return ( <View style={[styles.flexContainer]}>
                 {idLoadResource && renderApp()}
-            </View>
-            {/* <TextInput value={global.fcmToken}></TextInput> */}
-        </View>
-
-    )
+            </View>   )
 
 };
+
+const MainApp = () => {
+     return ( 
+        < SafeAreaProvider style={styles.flexContainer}> 
+            <App></App>
+        </ SafeAreaProvider> 
+    )
+}
 
 const styles = StyleSheet.create({
     flexContainer: {
@@ -487,4 +488,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default App;
+export default MainApp;

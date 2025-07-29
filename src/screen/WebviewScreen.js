@@ -651,7 +651,7 @@ const WebviewTab = (props) => {
 
     console.log("Headers", header)
     if (viewRefresh) {
-        return <View style={{ backgroundColor: "gray" }}></View>
+        return <View style={{ backgroundColor: "white" }}></View>
     }
     return (
         <View
@@ -672,10 +672,7 @@ const WebviewTab = (props) => {
                     logo={require("../asset/images/logo.png")} />
 
             </View> : null}
-            <SafeAreaView />
-
-
-        
+            <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
 
             <KeyboardAvoidingView
                 style={[
@@ -741,7 +738,7 @@ const WebviewTab = (props) => {
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             </KeyboardAvoidingView>
-
+             <View style ={{height: insets.bottom, backgroundColor:'white'}} /> 
         </View>
 
     );

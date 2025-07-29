@@ -109,6 +109,9 @@ if (window.appBridge == null) {
     loginSuccess:function(token){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"loginSuccess",token: token}))
     },
+    downloadFile: function(file){
+      window.WebViewBridge.send(JSON.stringify({type:"download",data: file}))
+    },
     openLogin: function(){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"login"}))
     },
