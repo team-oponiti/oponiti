@@ -54,6 +54,8 @@ const WebviewTab = (props) => {
     const [globalRefresh, setGlobalRefresh ] = useGlobalRefresh()
     const [currentAppLifeState, ] = useGlobalAppLifeState()
     var [_enableWebHistory, _setEnableWebhistory] = React.useState(false);
+  const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+    const [_keyboardHeight, setKeyboardHeight] = useState(0)
 
     const setEnableWebhistory = (value) => {
         refHistory.current = value
@@ -96,6 +98,16 @@ const WebviewTab = (props) => {
         appProps = props
     }
 
+   
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
+    
+        return () => {
+          showSubscription.remove()
+          hideSubscription.remove()
+        }
+    }, [])
     useEffect(()=> {
         if (globalRefresh > 0 && hookLogin) {
             webviewRef.current && webviewRef.current.injectJavaScript("window.needUpdateMessageBadge && window.needUpdateMessageBadge()")
