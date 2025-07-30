@@ -609,14 +609,16 @@ const WebviewTab = (props) => {
              }  
                {isHideWebView ? renderLoading() : null}
          
-            <KeyboardAvoidingView
+            {/* <KeyboardAvoidingView
             style= {[styles.flexContainer, {backgroundColor: isSpecial? appPrimaryColor : "white"}]}
       behavior={Platform.select({ ios: "padding", android: null })}
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0 , android: 0 })} 
-      >  
-           <SafeAreaView />
+      >   */}
+           {/* <SafeAreaView /> */}
+
+            <View  style ={{height:  insets.top }}/>
             {webLoading ? <LoadingIndicatorView/> : null}
            
               
@@ -678,8 +680,8 @@ const WebviewTab = (props) => {
                  
                  {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v)=>setIsEnableInputBox(v)}/>: <SafeAreaView /> }
                   
-             </KeyboardAvoidingView>
-            {Platform.OS == "android" ?   <View  style ={{height: insets.bottom}}/> : nul}
+             {/* </KeyboardAvoidingView> */}
+            { insets.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight)}}/>}
         </View>
 
     );
