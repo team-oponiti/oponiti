@@ -149,7 +149,6 @@ export const BottomTextBox = forwardRef(({webview,isEnable,onChange}, ref) => {
         </View>
       </TouchableOpacity>
       
-    </View>
-    <SafeAreaView/>
+    </View> 
     </View>
 })

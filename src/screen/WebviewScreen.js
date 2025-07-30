@@ -1,6 +1,6 @@
  
 import React, {useCallback, useEffect, useState} from 'react';
-import {BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking,  Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity} from 'react-native';
+import {BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking,  Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity, Keyboard, useWindowDimensions} from 'react-native';
 import {useIsFocused, useNavigation, useScrollToTop} from '@react-navigation/native';
 import CookieManager from '@react-native-cookies/cookies';
 import {WebView} from "react-native-webview";
@@ -54,7 +54,7 @@ const WebviewTab = (props) => {
     const [globalRefresh, setGlobalRefresh ] = useGlobalRefresh()
 
     const [currentAppLifeState, ] = useGlobalAppLifeState()
-
+    const windowSize = useWindowDimensions()
 
     const insets = useSafeAreaInsets()
     var data = {}
@@ -85,6 +85,24 @@ const WebviewTab = (props) => {
     } else {
         data = {href: props.href}
         appProps = props
+    }
+
+     const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+    const [_keyboardHeight, setKeyboardHeight] = useState(0)
+
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
+    
+        return () => {
+          showSubscription.remove()
+          hideSubscription.remove()
+        }
+    }, [])
+
+    const _updateKeyboardData = (e, isVisible) => {
+        setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+        setKeyboardVisible(isVisible)
     }
 
     useEffect(()=> {
@@ -551,30 +569,30 @@ const WebviewTab = (props) => {
         <View
             style={[
             
-                styles.flexContainer,
+                styles.flexContainer, 
                 {backgroundColor: forceColor ||  ((isSpecial ) ? appPrimaryColor : "white")}
             ]}> 
             {
                 (isSpecial || forceColor !=  null) ? <StatusBar backgroundColor={forceColor || appPrimaryColor}/> : null
              }   
- <SafeAreaView  />
-             
-             
+  <View style={{height: insets.top}}/> 
+
+ 
             {webLoading ? <LoadingIndicatorView/> : null}  
            {isHideWebView ? renderLoading() : null}
-            <KeyboardAvoidingView
+            {/* <KeyboardAvoidingView
              style={[
             
                 styles.flexContainer,
                 {backgroundColor: forceColor ||  ((isSpecial ) ? appPrimaryColor : "white")}
             ]}
-      behavior={Platform.select({ ios: "padding", android: null })}
+      behavior={Platform.select({ ios: "padding", android: 'height' })}
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })} 
-      >  
+      >   */} 
                 <WebView
-                  style={{ backgroundColor: forceColor || ( (isSpecial)? appPrimaryColor : "white"), opacity: isHideWebView ? 0 : 1 }}
+                  style={[ styles.flexContainer, { backgroundColor: forceColor || ( (isSpecial)? appPrimaryColor : "white"), opacity: isHideWebView ? 0 : 1 }]}
                     scrollEnabled= {canScroll}
                     useWebKit
                     cacheEnabled={true}
@@ -586,6 +604,7 @@ const WebviewTab = (props) => {
                     renderLoading={() => {
                         <View></View>
                     }}
+                    contentInset={0}
                     startInLoadingState={false}
                     injectedJavaScriptBeforeContentLoaded={fakeBridge}
                     allowsBackForwardNavigationGestures
@@ -625,8 +644,9 @@ const WebviewTab = (props) => {
                 />
                   {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v)=>setIsEnableInputBox(v)}/>: <SafeAreaView /> }
                   
-      </KeyboardAvoidingView>
-                     {Platform.OS == "android" ?   <View  style ={{height: insets.bottom}}/> : nul}
+      {/* </KeyboardAvoidingView> */}
+
+                 { insets.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight)}}/>}
         </View>
 
     );

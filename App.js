@@ -7,7 +7,7 @@
  */
 
 import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, SafeAreaView, KeyboardAvoidingView, StatusBar, StyleSheet, View, Dimensions, PermissionsAndroid} from 'react-native';
+import {AppState, Image, Platform,   StyleSheet, View, Dimensions, PermissionsAndroid, useWindowDimensions} from 'react-native';
 import {domain} from "./src/define/webviewUri"
  
 import {NavigationContainer} from '@react-navigation/native';
@@ -38,6 +38,7 @@ import { useGlobalAppLifeState, useGlobalBade, useGlobalLanguage } from "./src/c
 import * as urlconfigs from "./src/define/webviewUri"
 import { appPrimaryColor } from './src/define/config';
 import WebViewWithBackButton from './src/screen/WebViewWithBackButton';
+import { SafeAreaProvider , SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 if (Platform.OS == "android") {
     var Stack = createNativeStackNavigator();
 } else {
@@ -114,7 +115,8 @@ const App = () => {
     const [,setLanguage] = useGlobalLanguage();
     const [, setBadge] = useGlobalBade()
     const [, setLifeState] = useGlobalAppLifeState()
-
+    const inset = useSafeAreaInsets()
+ 
     const openMain = () => {
         setLogin(true)
     }
@@ -358,13 +360,13 @@ const App = () => {
     
     return (
        
-            <View style= {styles.flexContainer}>
+    <View style= {styles.flexContainer}>
            
-         <View style={[styles.flexContainer]}>
+        
                 {renderApp()}
-            </View> 
-    
-            </View>
+            <View style={{height: inset.bottom > 100 ? 0 :  inset.bottom}}/> 
+
+    </View>
        
     )
 
@@ -376,5 +378,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff"
     }
 });
-
-export default App;
+const MainApp = () => {
+     return ( 
+        < SafeAreaProvider style={styles.flexContainer}> 
+            <App></App>
+        </ SafeAreaProvider> 
+    )
+}
+export default MainApp;
