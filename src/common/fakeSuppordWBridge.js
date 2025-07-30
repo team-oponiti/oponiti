@@ -225,6 +225,7 @@ if (window.appBridge == null) {
       return this.createDataTask("getStorageData", {key}) 
     }
   }; 
+
  if (window.kma == null) {  
   window.kma = window.giaynhap || {}
  }  
@@ -242,7 +243,7 @@ if (window.navigator != null) {
     window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
   }
 };
- 
+  
 }
 
 function __guidGenerator() {
@@ -251,6 +252,5 @@ function __guidGenerator() {
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
-
  
 `

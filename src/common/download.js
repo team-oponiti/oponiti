@@ -69,7 +69,7 @@ export const downloadAndHandleFile = async (fileUrl) => {
         console.warn('❌ iOS download failed:', res.statusCode);
       }
     } catch (err) {
-      console.error('❌ iOS error:', err);
+      console.error('❌ iOS error:', err, fileUrl);
     }
   }
 };

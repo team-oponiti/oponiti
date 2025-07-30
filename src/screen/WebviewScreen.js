@@ -203,7 +203,7 @@ const WebviewTab = (props) => {
         console.log("=========> event", data)
         let message = onMessage(data)
         if (message.type == "download") { 
-            downloadAndHandleFile(global.data)
+            downloadAndHandleFile(message.data)
         }  else  if (message.type == "navigate") {
             global.data = message.params
             navigation.navigate({ name: message.data, merge: true });
@@ -423,7 +423,6 @@ const WebviewTab = (props) => {
 
         // first
         useEffect(() => {
-
             if (!force) {
                 return
             }
