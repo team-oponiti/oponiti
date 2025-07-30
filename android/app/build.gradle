@@ -132,7 +132,7 @@ android {
             getIsDefault().set(true)
             applicationIdSuffix ".tamtalk"
             dimension "flavor"
-            versionCode 23
+            versionCode 24
             versionName "1.0.6"
             setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 

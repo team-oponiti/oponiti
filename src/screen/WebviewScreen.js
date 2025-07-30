@@ -99,7 +99,7 @@ const WebviewTab = (props) => {
     }
 
    
-    useEffect(() => {
+      useEffect(() => {
         const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
         const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
     
@@ -108,6 +108,12 @@ const WebviewTab = (props) => {
           hideSubscription.remove()
         }
     }, [])
+
+    const _updateKeyboardData = (e, isVisible) => {
+        setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+        setKeyboardVisible(isVisible)
+    }
+
     useEffect(()=> {
         if (globalRefresh > 0 && hookLogin) {
             webviewRef.current && webviewRef.current.injectJavaScript("window.needUpdateMessageBadge && window.needUpdateMessageBadge()")
