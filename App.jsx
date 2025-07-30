@@ -12,7 +12,7 @@ import {AppState, Image, Platform, StyleSheet, View, Dimensions, PermissionsAndr
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
     getLastBade,
@@ -120,7 +120,7 @@ const App = () => {
     const [language, setLanguate] = useGlobalLanguage()
     const [, setBadge] = useGlobalBade()
     const [, setLifeState] = useGlobalAppLifeState()
-
+    const inset = useSafeAreaInsets()
     const openMain = () => {
         setLogin(true)
     }
@@ -384,13 +384,12 @@ const App = () => {
     }
 
     return (
-        <SafeAreaProvider>
-            
-         <View style={[styles.flexContainer]}>
+    
+         <View style={styles.flexContainer}>
                 {renderApp()}
+                <View style={{height: inset.bottom > 100 ? 0 :  inset.bottom}}/> 
             </View> 
-        
-        </SafeAreaProvider>
+      
     )
 
 };
@@ -401,5 +400,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff"
     }
 });
-
-export default App;
+        
+const MainApp = () => {
+     return ( 
+        < SafeAreaProvider style={styles.flexContainer}> 
+            <App></App>
+        </ SafeAreaProvider> 
+    )
+}
+export default MainApp;
