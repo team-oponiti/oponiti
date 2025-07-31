@@ -1,6 +1,6 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking, Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity } from 'react-native';
+import { BackHandler, Dimensions, Image, KeyboardAvoidingView, Linking, Text, Platform, SafeAreaView, StatusBar, View, Share, TouchableOpacity, Keyboard } from 'react-native';
 import { useIsFocused, useNavigation, useScrollToTop } from '@react-navigation/native';
 import CookieManager from '@react-native-cookies/cookies';
 import { WebView } from "react-native-webview";
@@ -70,6 +70,25 @@ const WebviewTab = (props) => {
         _setCanback(b)
     }
     const insets = useSafeAreaInsets()
+
+    const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+    const [_keyboardHeight, setKeyboardHeight] = useState(0)
+
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
+    
+        return () => {
+          showSubscription.remove()
+          hideSubscription.remove()
+        }
+    }, [])
+
+    const _updateKeyboardData = (e, isVisible) => {
+        setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+        setKeyboardVisible(isVisible)
+    }
+
     var data = {}
     var params = {}
     var appProps = {}
@@ -698,7 +717,7 @@ const WebviewTab = (props) => {
             <View style ={{height: insets.top, backgroundColor: forceColor || 'white'}} /> 
             {/* {webLoading ? <LoadingIndicatorView /> : null} */}
 
-            <KeyboardAvoidingView
+            {/* <KeyboardAvoidingView
                 style={[
 
                     styles.flexContainer,
@@ -708,7 +727,7 @@ const WebviewTab = (props) => {
                 enabled
                 contentContainerStyle={{ flex: 1 }}
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
-            >
+            > */}
              {
                  didLoadFcm &&  <WebView 
                  style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
@@ -762,8 +781,8 @@ const WebviewTab = (props) => {
              }
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
-            </KeyboardAvoidingView>
-              {  (!(isHideWebView || !didLoadFcm)) && <View style ={{height: insets.bottom, backgroundColor:'white'}} /> }
+            {/* </KeyboardAvoidingView> */}
+              {  (!(isHideWebView || !didLoadFcm)) &&  (insets.bottom > 10 ? <View  style ={{height: + Math.max(  insets.bottom , _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />) }
         </View>
 
     );
