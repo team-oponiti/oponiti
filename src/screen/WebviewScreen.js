@@ -61,7 +61,8 @@ const WebviewTab = (props) => {
     const [globalRefresh, setGlobalRefresh] = useGlobalRefresh()
 
     const [currentAppLifeState,] = useGlobalAppLifeState()
-
+           const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+    const [_keyboardHeight, setKeyboardHeight] = useState(0)
     const setCanback = (value)=> {
         cancelGoBackRef.current = value
         _setCanback(value)
@@ -97,7 +98,20 @@ const WebviewTab = (props) => {
         data = { href: props.href }
         appProps = props
     }
+  useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
+    
+        return () => {
+          showSubscription.remove()
+          hideSubscription.remove()
+        }
+    }, [])
 
+    const _updateKeyboardData = (e, isVisible) => {
+        setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+        setKeyboardVisible(isVisible)
+    }
     useEffect(() => {
         if (globalRefresh > 0 && hookLogin) {
             webviewRef.current && webviewRef.current.injectJavaScript("window.needUpdateMessageBadge()")
@@ -676,7 +690,7 @@ const WebviewTab = (props) => {
             </View> : null}
             <View style ={{height: insets.top, backgroundColor:'white'}} /> 
 
-            <KeyboardAvoidingView
+            {/* <KeyboardAvoidingView
                 style={[
 
                     styles.flexContainer,
@@ -686,7 +700,7 @@ const WebviewTab = (props) => {
                 enabled
                 contentContainerStyle={{ flex: 1 }}
                 keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
-            >
+            > */}
                 {
                     didLoadFcm && <WebView
                     style={{ backgroundColor: forceColor ||  "white", opacity: isHideWebView ? 0 : 1 }}
@@ -739,9 +753,10 @@ const WebviewTab = (props) => {
 }
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
-            </KeyboardAvoidingView>
+            {/* </KeyboardAvoidingView> */}
 
-            {!isHideWebView && <View style ={{height: insets.bottom, backgroundColor:'white'}} /> }
+                       {  (!isHideWebView) &&  (insets.bottom > 10 ? <View  style ={{height: + Math.max(  insets.bottom , _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />) }
+
         </View>
 
     );
