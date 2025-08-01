@@ -677,7 +677,7 @@ const WebviewTab = (props) => {
                 { backgroundColor: forceColor ||  "white" }
             ]}>
             {
-                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} /> : null
+                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} barStyle={'dark-content'} /> : null
             }
 
             {isHideWebView ? <View style={{ width: "100%", height: "100%" }}>
