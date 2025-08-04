@@ -703,7 +703,7 @@ const WebviewTab = (props) => {
                 { backgroundColor: forceColor ||   "white"}
             ]}>
             {
-                (isSpecial || forceColor != null) ? <StatusBar backgroundColor={forceColor || 'white'} /> : null
+                (isSpecial || forceColor != null) ? <StatusBar barStyle ={'dark-content'} backgroundColor={forceColor || 'white'} /> : null
             }
 
             {(isHideWebView || !didLoadFcm) ? <View style={{ width: "100%", height: "100%" }}>
@@ -782,7 +782,7 @@ const WebviewTab = (props) => {
                 {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v) => setIsEnableInputBox(v)} /> : <SafeAreaView />}
 
             {/* </KeyboardAvoidingView> */}
-              {  (!(isHideWebView || !didLoadFcm)) &&  (insets.bottom > 10 ? <View  style ={{height: + Math.max(  insets.bottom , _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />) }
+              {  (!(isHideWebView || !didLoadFcm)) &&  (insets.bottom > 10 ? <View  style ={{height:   Math.max(  insets.bottom , insets.bottom + _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />) }
         </View>
 
     );
