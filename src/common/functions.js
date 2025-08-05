@@ -5,7 +5,7 @@
 import React from 'react';
 import { NativeModules, Platform, Text, TouchableOpacity, View, PermissionsAndroid, Clipboard} from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+// import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
 
 // import * as KakaoKit from '@react-native-seoul/kakao-login'
@@ -26,7 +26,7 @@ import messages from "./messages"
 import {android_client_id, ios_client_id, web_client_id} from "../define/config";
  
 import PushNotification, {Importance} from "react-native-push-notification";
-import { openSettings, PERMISSIONS, request } from 'react-native-permissions';
+import  rpermission from 'react-native-permissions';
 
 const iconSize = 20
 const normalColor = "#9e9e9e"
@@ -180,28 +180,28 @@ export const socialLogin = async (type, webviewRef) => {
         //     excuteString("callbackLoginFail(`" + e + "`)")
         // }
     } else if (type == "G") { // Google
-        GoogleSignin.configure({
-            "webClientId": "317564366281-fhielplqjml2ue2fhhe1m82djfo01jve.apps.googleusercontent.com", 
-            scopes: ['email', 'profile']
-        });
+        // GoogleSignin.configure({
+        //     "webClientId": "317564366281-fhielplqjml2ue2fhhe1m82djfo01jve.apps.googleusercontent.com", 
+        //     scopes: ['email', 'profile']
+        // });
 
-        try {
-            await GoogleSignin.hasPlayServices();
-            const userInfo = await GoogleSignin.signIn();
+        // try {
+        //     await GoogleSignin.hasPlayServices();
+        //     const userInfo = await GoogleSignin.signIn();
 
-            var token = userInfo.idToken;
-            var info = ""
-            if (userInfo.user != null) {
-                console.log(userInfo)
-                info = `id:${userInfo.user.id}@@@email:${userInfo.user.email}@@@name:${userInfo.user.name}@@@photo:${userInfo.user.photo}`
-            }
-            setTimeout(() => {
-                excuteString("callbackLoginSuccess(\"" + type + "\",`" + token + "`,`" + info + "`)")
-            }, 400);
-        } catch (e) {
-            console.log(e)
-            excuteString("callbackLoginFail(`" + e + "`)")
-        }
+        //     var token = userInfo.idToken;
+        //     var info = ""
+        //     if (userInfo.user != null) {
+        //         console.log(userInfo)
+        //         info = `id:${userInfo.user.id}@@@email:${userInfo.user.email}@@@name:${userInfo.user.name}@@@photo:${userInfo.user.photo}`
+        //     }
+        //     setTimeout(() => {
+        //         excuteString("callbackLoginSuccess(\"" + type + "\",`" + token + "`,`" + info + "`)")
+        //     }, 400);
+        // } catch (e) {
+        //     console.log(e)
+        //     excuteString("callbackLoginFail(`" + e + "`)")
+        // }
     } else if (type == "Z") {// zalo
         //  try {
         //      const data = await ZaloKit.login(ZaloKit.Constants.AUTH_VIA_APP_OR_WEB);
@@ -551,11 +551,11 @@ export async function requestLocaitonPermision() {
     //    return  await PermissionsAndroid.request(
     //         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
     //       )
-     var permission =   PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-        return await request(permission) 
+     var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+        return await rpermission.request(permission) 
     } else {
-        var permission =   PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-        return await request(permission) 
+        var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+        return await rpermission.request(permission) 
         
     }
     

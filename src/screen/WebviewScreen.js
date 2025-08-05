@@ -54,29 +54,6 @@ const WebviewTab = (props) => {
     var [overrideUrl, setOverrideUrl] = React.useState(null);
     const inset = useSafeAreaInsets()
 
-     const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
-    const [_keyboardHeight, setKeyboardHeight] = useState(0)
-
-    useEffect(() => {
-        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
-        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
-    
-        return () => {
-          showSubscription.remove()
-          hideSubscription.remove()
-        }
-    }, [])
-
-    const _updateKeyboardData = (e, isVisible) => {
-        // if (e.endCoordinates?.height > 100) {
-            setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
-            setKeyboardVisible(isVisible)
-        // }  else {
-            //    setKeyboardHeight(0)
-            // setKeyboardVisible(false)
-        // }
-    }
-
     var data = {}
     var params = {}
     var appProps = {}
@@ -447,7 +424,7 @@ const WebviewTab = (props) => {
                 })
             }
             
-      
+            return ()=>{}
 
         }, [force])
 
@@ -486,9 +463,9 @@ const WebviewTab = (props) => {
 
             }.bind(canGoBackRef)
 
-            BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+           let event =  BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-                BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+               event.remove()
             };
 
 
@@ -503,14 +480,12 @@ const WebviewTab = (props) => {
             if (data != null) {
                 global.appData = data
             }
-        } catch (e) {
-            alert("123", e)
+        } catch (e) { 
         } 
+         return ()=>{}
     }, [])
 
-    useEffect(() => {
-    
-    }, [data.href, props.route?.params?.isLogin])
+ 
     let appInfo = global.appData || getDeviceInfoPM() || {}
 
     console.log("refresh: \() " + language, language)
@@ -560,24 +535,25 @@ const WebviewTab = (props) => {
     useEffect(() => { 
         if (!force) {
             setNeedRefresh(true)
-            return
+             return ()=>{}
         }
         setFirstLoad(true)
         setViewRefresh(true)
         setTimeout(() => {
             setViewRefresh(false)
         }, 100)
+         return ()=>{}
         //webviewRef.current && webviewRef.current.reload()
     }, [language, hookLogin, timeStampx]);
 
     var source = {uri: overrideUrl || data.href, headers: header}
     
     const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
+    const lockBack = source.uri.indexOf(home) >= 0 || source.uri.indexOf(info) >= 0 || source.uri.indexOf(search) >= 0 || source.uri.indexOf(health) >= 0 || source.uri.indexOf(profile) >= 0
+
     if (viewRefresh) {
         return <View style={{backgroundColor: "gray"}}></View>
     }
-
-    const lockBack = source.uri.indexOf(home) >= 0 || source.uri.indexOf(info) >= 0 || source.uri.indexOf(search) >= 0 || source.uri.indexOf(health) >= 0 || source.uri.indexOf(profile) >= 0
     return ( 
         <View
             style={styles.flexContainer}>
@@ -594,8 +570,7 @@ const WebviewTab = (props) => {
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })} 
-      >   */}
-      <Text>{_keyboardHeight} {_isKeyboardVisible ? "SHOW" : "HIDE"}</Text>
+      >   */} 
                 <WebView
                     key= {source.uri}
                     useWebKit
@@ -644,7 +619,7 @@ const WebviewTab = (props) => {
                     originWhitelist={["zalo://", "https://*", "http://*", "file://*", "sms://*", "tel://*", "mail://*", "tel:","mail:","mailto:","maps:","map:","geo:"]}
                 />
             {/* </KeyboardAvoidingView> */}
-                { inset.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight - inset.bottom), backgroundColor: 'blue'}}/>}
+                {/* { inset.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight ), backgroundColor: 'blue'}}/>} */}
         </View>
 
     );

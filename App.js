@@ -7,7 +7,7 @@
  */
 
 import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, StatusBar, StyleSheet, View, Text} from 'react-native';
+import {AppState, Image, Platform, StatusBar, StyleSheet, View, Text, Keyboard} from 'react-native';
 import {domain} from "./src/define/webviewUri"
 // import { Settings } from 'react-native-fbsdk-next';
 
@@ -30,7 +30,7 @@ import {
 } from "./src/common/functions"
 
 import { request, PERMISSIONS } from 'react-native-permissions';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+// import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import DashboardScreen from './src/screen/DashboardScreen';
 import WebviewScreen from './src/screen/WebviewScreen';
 import CookieManager from "@react-native-cookies/cookies";
@@ -126,6 +126,30 @@ const App: () => Node = () => {
     const openMain = () => {
         setLogin(true)
     }
+
+
+         const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+        const [_keyboardHeight, setKeyboardHeight] = useState(0)
+    
+        useEffect(() => {
+            const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+            const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
+        
+            return () => {
+              showSubscription.remove()
+              hideSubscription.remove()
+            }
+        }, [])
+    
+        const _updateKeyboardData = (e, isVisible) => {
+            // if (e.endCoordinates?.height > 100) {
+                setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+                setKeyboardVisible(isVisible)
+            // }  else {
+                //    setKeyboardHeight(0)
+                // setKeyboardVisible(false)
+            // }
+        }
     
     const _handleAppStateChange = (nextAppState) => {
 
@@ -169,9 +193,9 @@ const App: () => Node = () => {
      
         saveLastToken("")
         try {
-            if (await GoogleSignin.isSignedIn()) {
-                await GoogleSignin.signOut();
-            }
+            // if (await GoogleSignin.isSignedIn()) {
+            //     await GoogleSignin.signOut();
+            // }
             setLogin(false)
         } catch {
         }
@@ -343,7 +367,7 @@ const App: () => Node = () => {
     return <View style={styles.flexContainer}>
         <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
         {renderApp()}
-          {inset.bottom > 10 &&  <View style={{height: inset.bottom, backgroundColor: 'red'}}/> }
+          {inset.bottom > 10 &&  <View style={{height: inset.bottom + _keyboardHeight, backgroundColor: 'white'}}/> }
     </View>
 
 };
