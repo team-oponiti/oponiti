@@ -168,9 +168,9 @@ useEffect(() => {
    
   }
 
-  Linking.addEventListener('url',handleEventLink); 
+  let event =  Linking.addEventListener('url',handleEventLink); 
   return ()=> {
-    Linking.removeEventListener('url',handleEventLink)
+     event.remove()
   };
 }, [])
 
@@ -260,13 +260,14 @@ useEffect(() => {
                     height: 90 ,
                     paddingLeft: 4, 
                     paddingRight: 4,
+                    display: 'block' 
             } : {
               hpaddingTop: 8,
                     paddingBottom: 24,
                     height: 90 ,
                     paddingLeft: 4, 
                     paddingRight: 4,
-              display: 'none' 
+               display: 'none' 
             },
 
           }}

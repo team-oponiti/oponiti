@@ -3,7 +3,7 @@
 
 // import ZaloKit from 'react-native-zalo-kit';
 import React from 'react';
-import { NativeModules, Platform, Text, TouchableOpacity, View, Linking, PermissionsAndroid, Clipboard} from 'react-native';
+import { NativeModules, Platform, Text, TouchableOpacity, View, PermissionsAndroid, Clipboard} from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
@@ -13,8 +13,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 
 import * as DeviceInfo from "react-native-device-info"  
-
-import { request, PERMISSIONS, openSettings , checkLocationAccuracy, requestLocationAccuracy} from 'react-native-permissions';
+ 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from "./styles"
 import ProgressBar from "react-native-animated-progress"
@@ -27,6 +26,7 @@ import messages from "./messages"
 import {android_client_id, ios_client_id, web_client_id} from "../define/config";
  
 import PushNotification, {Importance} from "react-native-push-notification";
+import { openSettings, PERMISSIONS, request } from 'react-native-permissions';
 
 const iconSize = 20
 const normalColor = "#9e9e9e"
@@ -297,7 +297,7 @@ export const getDeviceInfoPM = () => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getDeviceId()
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
@@ -373,7 +373,7 @@ export const getDeviceInfo = async (webview) => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getUniqueId()
+        deviceID = DeviceInfo.getDeviceId()
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
@@ -542,14 +542,17 @@ export const jsonCookiesToCookieString = (json) => {
 export async function requestLocaitonPermision() {
     console.log("requestLocaitonPermision")
     if (Platform.OS == "android") {
-         await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS);
-
-    }
+        await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS, 
+          )
+    }   
    try {
     if (Platform.OS == "android") {
-       return  await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
-          )
+    //    return  await PermissionsAndroid.request(
+    //         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
+    //       )
+     var permission =   PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+        return await request(permission) 
     } else {
         var permission =   PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
         return await request(permission) 
@@ -559,7 +562,8 @@ export async function requestLocaitonPermision() {
    } catch (e) {
     
    }
-}   
+
+}
 
 export const openSetting = async (webviewRef) => {  
 

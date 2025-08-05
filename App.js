@@ -46,7 +46,7 @@ if (Platform.OS == "android") {
 }
 
 async function requestPermission(refresh) { 
-Platform.OS == 'android' && await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS)
+// Platform.OS == 'android' && await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS)
   const granted = await messaging().requestPermission({
     alert: true,
     announcement: false,
@@ -64,7 +64,7 @@ Platform.OS == 'android' && await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS
   } 
  try {
     await requestLocaitonPermision()
-    location = await requestLocation() 
+    let location = await requestLocation() 
     if (location.lat != null) {
         refresh && refresh(new Date().getTime())
     }
@@ -283,10 +283,11 @@ const App: () => Node = () => {
             }
         }, 2300)
 
-        AppState.addEventListener('change', _handleAppStateChange);
+        let event =  AppState.addEventListener('change', _handleAppStateChange);
         return () => {
-            AppState.removeEventListener('change', _handleAppStateChange);
+            // AppState.removeEventListener('change', _handleAppStateChange);
             // OneSignal.clearHandlers();
+            event.remove()
         };
     }, []);
 

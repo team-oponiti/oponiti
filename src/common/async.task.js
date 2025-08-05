@@ -48,9 +48,9 @@ export const anxData = (webview, data) => {
         case "getLocationPermission":
             
             try {
-                var permission = (Platform.OS == "android") ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-                request( permission ) 
-                check(permission).then(thenValue).catch(catchValue)
+                // var permission = (Platform.OS == "android") ? PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+                // request( permission ) 
+                // check(permission).then(thenValue).catch(catchValue)
             } catch(e){
                 catchValue(e)
             }
