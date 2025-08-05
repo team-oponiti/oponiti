@@ -198,8 +198,8 @@ const WebviewTab = (props) => {
             if (message.data == null || message.data.length == 0){
                 return
             }
-            if (Linking.canOpenURL("dheal://healmate")) {
-                Linking.openURL("dheal://healmate")
+            if (Linking.canOpenURL("heal://healmate")) {
+                Linking.openURL("heal://healmate")
             } else if (message.data != null){
                 Linking.openURL(message.data)
             }
@@ -466,7 +466,7 @@ const WebviewTab = (props) => {
 
            let event =  BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-           event.remove()
+                event.remove()
             };
 
 
@@ -489,7 +489,7 @@ const WebviewTab = (props) => {
 
     console.log("refresh: \() " + language, language)
     let header = {
-        APP_NAME: "HEALMATE_USER",
+        APP_NAME: "HEALMATE DOCTOR",
         APP_OS_NAME: appInfo.osName,
         APP_OS_TYPE: appInfo.osType,
         APP_VERSION_CODE: appInfo.appVersionCode,

@@ -26,6 +26,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:980487197898:android:8ee66e1cf596b489011033",
+        "android_client_info": {
+          "package_name": "com.healmatedoc.prod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:980487197898:android:dd536806a8b3f1e9011033",
         "android_client_info": {
           "package_name": "com.helmate.prod"

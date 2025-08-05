@@ -31,9 +31,9 @@ export default function QrcodeScreen(props){
   useEffect(() => {
  
     
-      BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+      let event = BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
       return () => {
-          BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+         event.remove()
       };
 
   }, []);

@@ -7,36 +7,34 @@
  */
 
 import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, StatusBar, StyleSheet, View, Text, Keyboard} from 'react-native';
-import {domain} from "./src/define/webviewUri"
-// import { Settings } from 'react-native-fbsdk-next';
+import {AppState, Image, Platform, StatusBar, StyleSheet, View,Text, Keyboard} from 'react-native';
+import {domain, login} from "./src/define/webviewUri" 
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createNativeStackNavigator} from 'react-native-screens/native-stack';
-// import analytics from '@react-native-firebase/analytics';
-import { SafeAreaProvider , useSafeAreaInsets} from 'react-native-safe-area-context';
-
+import {createNativeStackNavigator} from 'react-native-screens/native-stack'; 
+import LoginScreen from './src/screen/LoginScreen'
 import {
     getLastBade,
     getLastToken,
+    getRefreshToken,
     getSaveCookie,
     jsonCookiesToCookieString,
     saveLastToken, setBade, 
     requestLocaitonPermision,getLanguage,
     requestLocation,
     createChannel,
-    getRefreshToken
+    syncDeviceId
 } from "./src/common/functions"
 
 import { request, PERMISSIONS } from 'react-native-permissions';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import DashboardScreen from './src/screen/DashboardScreen';
 import WebviewScreen from './src/screen/WebviewScreen';
-import CookieManager from "@react-native-cookies/cookies";
-// import {login} from "react-native-zalo-kit";
+import CookieManager from "@react-native-cookies/cookies"; 
 import messaging from '@react-native-firebase/messaging';
-import { useGlobalLanguage, useGlobalTimeStamp } from './src/common/globalState';
+import { useGlobalLanguage } from './src/common/globalState';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 if (Platform.OS == "android") {
@@ -45,8 +43,7 @@ if (Platform.OS == "android") {
     var Stack = createStackNavigator();
 }
 
-async function requestPermission(refresh) { 
-// Platform.OS == 'android' && await request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS)
+async function requestPermission() {
   const granted = await messaging().requestPermission({
     alert: true,
     announcement: false,
@@ -62,19 +59,19 @@ async function requestPermission(refresh) {
   } catch (e) {
     console.log("FCM", e)
   } 
- try {
-    await requestLocaitonPermision()
-    let location = await requestLocation() 
-    if (location.lat != null) {
-        refresh && refresh(new Date().getTime())
-    }
- } catch(e) {
+//  try {
+//     await requestLocaitonPermision()
+//     location = await requestLocation() 
+//  } catch(e) {
 
- }
+//  }
 }
 
 
 async function registerAppWithFCM() {
+    try {
+        await  request(PERMISSIONS.ANDROID.POST_NOTIFICATIONS)
+    } catch (e){}
     try {
       if (!messaging().isDeviceRegisteredForRemoteMessages) {
         await messaging().registerDeviceForRemoteMessages();
@@ -115,41 +112,34 @@ async function registerAppWithFCM() {
  
 
 const App: () => Node = () => {
-    const [timeStampx, setTimestamp] = useGlobalTimeStamp()
 
     const [loading, setLoading] = useState(true);
     const [isLogin, setLogin] = useState(false);
     const appState = React.useRef(AppState.currentState);
     const [, updateState] = React.useState();
     const [language, setAppLanguage] = useGlobalLanguage()
-      const inset = useSafeAreaInsets()
+    const insets = useSafeAreaInsets()
+    const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
+    const [_keyboardHeight, setKeyboardHeight] = useState(0)
     const openMain = () => {
         setLogin(true)
     }
 
-
-         const [_isKeyboardVisible, setKeyboardVisible] = useState(false)
-        const [_keyboardHeight, setKeyboardHeight] = useState(0)
+     useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
     
-        useEffect(() => {
-            const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
-            const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
-        
-            return () => {
-              showSubscription.remove()
-              hideSubscription.remove()
-            }
-        }, [])
-    
-        const _updateKeyboardData = (e, isVisible) => {
-            // if (e.endCoordinates?.height > 100) {
-                setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
-                setKeyboardVisible(isVisible)
-            // }  else {
-                //    setKeyboardHeight(0)
-                // setKeyboardVisible(false)
-            // }
+        return () => {
+          showSubscription.remove()
+          hideSubscription.remove()
         }
+    }, [])
+
+    const _updateKeyboardData = (e, isVisible) => {
+        setKeyboardHeight(isVisible ? e.endCoordinates?.height : 0)
+        setKeyboardVisible(isVisible)
+    }
+
     
     const _handleAppStateChange = (nextAppState) => {
 
@@ -233,8 +223,8 @@ const App: () => Node = () => {
         var cookie = {}
         var lastToken = ""
         try {
-            getRefreshToken();
-            lastToken = await getLastToken(); 
+            var refreshToken = await getRefreshToken();
+            lastToken = await getLastToken();
             cookie = await CookieManager.get(domain, true)
             let x2 = jsonCookiesToCookieString(cookie)
             let x = await CookieManager.setFromResponse(domain, x2)
@@ -262,26 +252,22 @@ const App: () => Node = () => {
     }
 
     const appLog = async () => {
-        try {
-           
-         } catch (e) {
-           console.log(e)
-         }
+       
     }
     useEffect(() => {
-    //    try {
-    //     Settings.setAppID('330463519160091');
-    //     Settings.initializeSDK();
-    //    } catch(e){
+       try {
+        Settings.setAppID('330463519160091');
+        Settings.initializeSDK();
+       } catch(e){
 
-    //    }
+       }
 
        appLog()
 
         getResource().then(async () => {
             
             try {
-                await requestPermission(setTimestamp)
+                await requestPermission()
                 registerAppWithFCM()
             } catch (e){}
             // setupOneSignal()
@@ -302,27 +288,28 @@ const App: () => Node = () => {
         })
 
         setTimeout(() => {
-            if (loading) {
-                setLoading(false)
-            }
+            syncDeviceId().then(()=> {
+                if (loading) {
+                    setLoading(false)
+                }
+            })
+            
         }, 2300)
 
         let event =  AppState.addEventListener('change', _handleAppStateChange);
         return () => {
-            // AppState.removeEventListener('change', _handleAppStateChange);
-            // OneSignal.clearHandlers();
             event.remove()
         };
     }, []);
 
-    useEffect(async () => {
-        try {
-            let cookie = await CookieManager.get(domain, true)
-            console.log("eeee1", cookie)
-        } catch (e) {
-            console.log("eeee", e)
-        }
+    useEffect(  () => {
         
+        if (login != true) {
+            return
+        }
+        if (!loading) {
+            //  requestLocaitonPermision()
+        }
     }, [])
 
     const renderLoading = useCallback(() => {
@@ -335,7 +322,7 @@ const App: () => Node = () => {
             alignItems: 'center',
             backgroundColor: "#00C271"
         }]}>
-            
+            <StatusBar barStyle={'dark-content'} backgroundColor="#00C271"/>
             <Image style={{width: 118, height: 135,resizeMode: 'contain',}} source={require("./src/asset/images/logo_text.png")}></Image>
              <Text style={{color:'white', position : "absolute", "bottom": 52}}>좋은 암요양병원 찾기</Text>
              
@@ -343,31 +330,48 @@ const App: () => Node = () => {
     }, [])
 
     const renderDashboard = useCallback(() => {
-        return (
+        return (  
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Dashboard">
                     <Stack.Screen name="Dashboard" component={DashboardScreen} options={{headerShown: false}} initialParams={{appProps: appProps, isLogin}}/>
                     <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{appProps: appProps, isLogin}}
                                   options={{headerShown: false}}/>
                 </Stack.Navigator>
-            </NavigationContainer>
+            </NavigationContainer> 
         )
     }, [appProps, isLogin])
 
-    if (loading) {
-            return renderLoading()
-      }
 
-    const renderApp = () => {   
+    const renderLogin = useCallback(() => {
       
-        return renderDashboard()
-//
-    }
+        return ( <View style={styles.flexContainer}>
+            <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
+          <NavigationContainer  key="login">
+            <Stack.Navigator initialRouteName="Login" >
+              <Stack.Screen name="Login" component={LoginScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
+              <Stack.Screen name="WebviewScreen" component={WebviewScreen} initialParams={{ appProps: appProps }} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          </NavigationContainer>
+          </View> )
+      }, [appProps])
 
-    return <View style={styles.flexContainer}>
-        <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
-        {renderApp()}
-          {inset.bottom > 10 &&  <View style={{height: inset.bottom + _keyboardHeight, backgroundColor: 'white'}}/> }
+    if (loading) {
+        return renderLoading()
+    }
+    const renderApp = () => {
+    
+      if (!isLogin) {
+        return renderLogin()
+      }
+        return renderDashboard()
+
+    }
+ 
+    return <View style={styles.flexContainer}> 
+        {
+             renderApp()  
+        }
+        <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} />
     </View>
 
 };
@@ -385,4 +389,5 @@ const MainApp = () => {
         </ SafeAreaProvider> 
     )
 }
+
 export default MainApp;

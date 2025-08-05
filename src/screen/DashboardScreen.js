@@ -1,14 +1,14 @@
 /* eslint-disable quotes */
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Image, Text, View, TouchableOpacity, Linking, Platform} from 'react-native';
+import {BackHandler, Image, Text, View, TouchableOpacity, Linking} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from "../common/styles"
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import WebviewScreen from "../screen/WebviewScreen"
-import {home, search, health, profile, community, info} from "../define/webviewUri" 
+import {home, request, news, review, profile, community} from "../define/webviewUri" 
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import messaging from '@react-native-firebase/messaging';import { getText, getLanguage } from "../common/functions"
+import messaging from '@react-native-firebase/messaging';import { getText, getLanguage, getDidHandleInit, setDidHandleInit } from "../common/functions"
 
 import { useGlobalBade, useGlobalLanguage, useGlobalTabbar } from "../common/globalState"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -25,23 +25,29 @@ const mainTabs = [
     },
 
     {
-        name: "Search",
-        icon: "search",
-        href: search,
+        name: "Request",
+        icon: "requests",
+        href: request,
     },
+
     {
       name: "Community",
-      icon: "Community",
+      icon: "community",
       href: community,
-  },
+  }, 
     {
-        name: "Info",
-        icon: "info",
-        href: info,
+        name: "News",
+        icon: "news",
+        href: news,
     }, 
+    // {
+    //     name: "Review",
+    //     icon: "review",
+    //     href: review
+    // }, 
     {
-        name: "Profile",
-        icon: "profile",
+        name: "Me",
+        icon: "me",
         href: profile
     }
   ]
@@ -51,21 +57,25 @@ const  icons = {
       normal: require("../asset/images/ic_home.png"),
       active: require("../asset/images/ic_home_active.png"),
   },
-  "Search": {
-      normal: require("../asset/images/ic_search.png"),
-      active: require("../asset/images/ic_search_active.png"),
+  "Request": {
+      normal: require("../asset/images/ic_request.png"),
+      active: require("../asset/images/ic_request_active.png"),
   },
-  "Community":  {
+  "Community": {
     normal: require("../asset/images/ic_community.png"),
     active: require("../asset/images/ic_community_active.png"),
   },
-  "Info": {
-      normal: require("../asset/images/ic_info.png"),
-      active: require("../asset/images/ic_info_active.png"),
+  "News": {
+      normal: require("../asset/images/ic_news.png"),
+      active: require("../asset/images/ic_news_active.png"),
   }, 
-  "Profile": {
-      normal: require("../asset/images/ic_account.png"),
-      active: require("../asset/images/ic_account_active.png"),
+  "Review": {
+      normal: require("../asset/images/ic_review.png"),
+      active: require("../asset/images/ic_review_active.png"),
+  },
+  "Me": {
+      normal: require("../asset/images/ic_me.png"),
+      active: require("../asset/images/ic_me_active.png"),
   }
 }
 
@@ -77,7 +87,7 @@ const Dashboard = (props) => {
     const [showTabbar, setShowTabbar] = useGlobalTabbar()
 
     var navigation = useNavigation();
-    const insets = useSafeAreaInsets();
+    const insets = useSafeAreaInsets()
 
     function handleBackButtonClick() {
         BackHandler.exitApp()
@@ -137,25 +147,21 @@ useEffect(() => {
   } 
   });
 
-  // const unsubscribe = dynamicLinks().onLink(handleDynamicLink); 
-  // dynamicLinks()
-  // .getInitialLink()
-  // .then(link =>  handleDynamicLink(link));
-  
-  // return () => unsubscribe(); 
-
-  Linking.getInitialURL().then((url) => {
-    if (url) {
-      Linking.canOpenURL(url).then((supported) => {
-        if (supported) {
-          handleDynamicLink(url)
-        }
-      }); 
-    }
-  })
-  .catch((err) => {
-    console.warn('An error occurred', err);
-  });
+  if (!getDidHandleInit()) { 
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        Linking.canOpenURL(url).then((supported) => {
+          if (supported) {
+            handleDynamicLink(url)
+          }
+        }); 
+      }
+    })
+    .catch((err) => {
+      console.warn('An error occurred', err);
+    });
+    setDidHandleInit(true)
+  }
 
   
   const handleEventLink = (event)=> {
@@ -168,10 +174,11 @@ useEffect(() => {
    
   }
 
-  let event =  Linking.addEventListener('url',handleEventLink); 
+   let event = Linking.addEventListener('url',handleEventLink); 
   return ()=> {
-     event.remove()
+    event.remove()
   };
+
 }, [])
 
 
@@ -186,21 +193,29 @@ useEffect(() => {
     }
  
     return (
-        <Tab.Navigator 
+      <Tab.Navigator
       lazy={true}
       // barStyle={{ backgroundColor: '#ffffff', height: 80 }}
       style={styles.flexContainer}
       backBehavior={"none"}
       initialRouteName= {"Home"}
       screenOptions={({ route }) => ({
-        tabBarLabel: ({ focused, color, size }) => { 
-          return <Text numberOfLines={1} style={{ 
-            fontSize: 13,
-            // marginBottom: 24,
+        tabBarLabel: ({ focused, color, size }) => {
+          
+          return <Text numberOfLines={1} style={{
+            fontSize: 13, 
             fontWeight: '500',
             color : !focused ? "#777777": color
           }}>{getText(route.name,language)}</Text>
         },
+        tabBarStyle: {
+               paddingTop: 8,
+                    paddingBottom: 24,
+                    height: 90 ,
+                    paddingLeft: 4, 
+                    paddingRight: 4,
+                },
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName; 
           
@@ -212,65 +227,58 @@ useEffect(() => {
             }}>
               <Image source={iconName} style={{
             width: 26,
-            height: 26, 
-            marginBottom: 0,
-            marginTop: 8
+            height: 26,
+            
+            marginBottom: 8,
+            marginTop: 12
 
           }}></Image>
             </View>
           )
         },
-         tabBarStyle: {
-                    paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
-          },
-          // tabBarHideOnKeyboard: true
       })}
  
-      tabBarOptions={{ 
+      tabBarOptions={{
         flexContainer:1,
         activeBackgroundColor: 'white',
         inactiveBackgroundColor: 'white',
         activeTintColor: '#00C271',
         labelStyle: {   
-          fontSize: 13,
+          fontSize: 14,
           fontStyle: "normal",
           padding: 0
         },
         
         
-        swipeEnabled: true,
-        // tabBarVisible: false,
-      
+        tabStyle: { 
+          backgroundColor: '#fff',
+        }, 
+
       }}
     >
       {appData.map((m, index) =>{
          
 
         return <Tab.Screen
-      
-          options={{headerShown: false,
+          
+        options={{headerShown: false,
 
-            tabBarStyle: showTabbar ? {  
-              paddingTop: 8,
+          tabBarStyle: showTabbar ? {
+             paddingTop: 8,
                     paddingBottom: 24,
                     height: 90 ,
                     paddingLeft: 4, 
                     paddingRight: 4,
-                    display: 'block' 
-            } : {
-              hpaddingTop: 8,
+          } :{
+            paddingTop: 8,
                     paddingBottom: 24,
                     height: 90 ,
                     paddingLeft: 4, 
                     paddingRight: 4,
-               display: 'none' 
-            },
+            display: 'none'
+          },
 
-          }}
+        }}
           name={m.name}
           component={WebviewScreen}
           initialParams={{ ...m.props, activeTab: activeTabEvent }} />
@@ -278,6 +286,7 @@ useEffect(() => {
           })}
           
     </Tab.Navigator>
+
 
         
     );

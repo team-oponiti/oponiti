@@ -116,7 +116,7 @@ if (window.appBridge == null) {
       window.WebViewBridge.send(JSON.stringify({type:"writelocal",data:value}))
     },
     setUserToken: function (value) {
-      window.giaynhap.userToken = value
+      setCookie('test', "2", 1000); 
       window.WebViewBridge.send(JSON.stringify({type:"set-token",data:value}))
     },
     openCart: function(){
@@ -166,7 +166,7 @@ if (window.appBridge == null) {
     //  window.WebViewBridge.send(JSON.stringify({type:"clearCookie",data:""}))
     },socialLogin: function(type){
       window.WebViewBridge.send(JSON.stringify({type:"socialLogin",data:type}))
-    },log: function(){  
+    },log: function(){ 
       window.WebViewBridge.send(JSON.stringify({type:"log",data:JSON.stringify(arguments)}))
     }, refresh: function(){ 
       window.WebViewBridge.send(JSON.stringify({type:"refresh",data:""}))
@@ -195,6 +195,7 @@ if (window.appBridge == null) {
     },getTimeZone: function(){
       return window.kma.timeZone || window.giaynhap.timeZone
     },getUserToken: function(){
+      appBridge.log(window.giaynhap.userToken)
       return window.giaynhap.userToken
     },getOSVersion: function(){ 
       return window.kma.osVersion || window.giaynhap.osVersion
@@ -212,19 +213,21 @@ if (window.appBridge == null) {
     openActivity(url) {
       window.WebViewBridge.send(JSON.stringify({type:"open-activity",data: url})) 
     },
-    openDoctorApp(url) {
+    openUserApp(url) {
       window.WebViewBridge.send(JSON.stringify({type:"open-app",data: url})) 
     },
-    navigateTo(url, params) {
-      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: url, params: params})) 
+    navigateTo(url, param) {
+      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: url, params: param})) 
     }, setDisplayBottomNavigation(value) {
       window.WebViewBridge.send(JSON.stringify({type:"hide-navigation",data: value})) 
     },getRefreshToken: function(){
       return window.giaynhap.refreshToken
-    }, setRefreshToken: function (value) { 
+    },setRefreshToken: function (value) { 
       window.giaynhap.refreshToken = value
       window.WebViewBridge.send(JSON.stringify({type:"set-refresh",data:value}))
     },
+
+   
   }; 
  if (window.kma == null) {  
   window.kma = window.giaynhap || {}
@@ -258,16 +261,12 @@ if (window.navigator != null) {
     }
   };
 }
-
-
+ 
 
 function __guidGenerator() {
   var S4 = function() {
       return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
-
- 
- 
+} 
 `

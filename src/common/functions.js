@@ -3,7 +3,7 @@
 
 // import ZaloKit from 'react-native-zalo-kit';
 import React from 'react';
-import { NativeModules, Platform, Text, TouchableOpacity, View, PermissionsAndroid, Clipboard} from 'react-native';
+import { NativeModules, Platform, Text, TouchableOpacity, View, Linking, PermissionsAndroid, Clipboard} from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage"
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Constants, getApplicationHashKey, login} from 'react-native-zalo-kit'
@@ -13,7 +13,8 @@ import AsyncStorage from "@react-native-community/async-storage"
 import {appleAuth} from '@invertase/react-native-apple-authentication';
 
 import * as DeviceInfo from "react-native-device-info"  
- 
+
+import rpermission from 'react-native-permissions';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from "./styles"
 import ProgressBar from "react-native-animated-progress"
@@ -26,7 +27,6 @@ import messages from "./messages"
 import {android_client_id, ios_client_id, web_client_id} from "../define/config";
  
 import PushNotification, {Importance} from "react-native-push-notification";
-import  rpermission from 'react-native-permissions';
 
 const iconSize = 20
 const normalColor = "#9e9e9e"
@@ -77,7 +77,7 @@ export const onMessage = (message) => {
 export const saveLastToken = async (token) => {
     global.userToken = token
     try {
-        await AsyncStorage.setItem('usertoken', token || "");
+        await AsyncStorage.setItem('usertoken2', token || "");
     } catch (error) {
     }
 }
@@ -85,17 +85,18 @@ export const saveLastToken = async (token) => {
 export const getLastToken = async () => {
 
     try {
-        let token = await AsyncStorage.getItem('usertoken');
+        let token = await AsyncStorage.getItem('usertoken2');
         global.userToken = token
         return token
     } catch (error) {
     }
 }
 
+
 export const saveRefreshToken = async (token) => {
     global.refreshToken = token
     try {
-        await AsyncStorage.setItem('refresh_token', token || "");
+        await AsyncStorage.setItem('refreshtoken', token || "");
     } catch (error) {
     }
 }
@@ -103,7 +104,7 @@ export const saveRefreshToken = async (token) => {
 export const getRefreshToken = async () => {
 
     try {
-        let token = await AsyncStorage.getItem('refresh_token');
+        let token = await AsyncStorage.getItem('refreshtoken');
         global.refreshToken = token
         return token
     } catch (error) {
@@ -282,7 +283,11 @@ export const requestLocation = () => {
     })
 
 }
+var AppDeviceID  = ""
 
+export const syncDeviceId = async ()=>{
+  AppDeviceID = await DeviceInfo.getUniqueId()
+}
 export const getDeviceInfoPM = () => {
 
     var name = ""
@@ -297,7 +302,7 @@ export const getDeviceInfoPM = () => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getDeviceId()
+        deviceID = AppDeviceID
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
@@ -373,7 +378,7 @@ export const getDeviceInfo = async (webview) => {
         appVersion = DeviceInfo.getVersion()
         buildNumber = DeviceInfo.getBuildNumber()
         osVerison = DeviceInfo.getSystemVersion()
-        deviceID = DeviceInfo.getDeviceId()
+        deviceID = AppDeviceID
         model = DeviceInfo.getModel()
     } catch (e) {
         alert(e)
@@ -452,10 +457,10 @@ export const getDeviceInfo = async (webview) => {
 }
 
 export const getText = (text, lang) => {
-    //if (messages[lang] == null) {
+   // if (messages[lang] == null) {
         return messages["ko"][text]  || text
   //  }
-    //return messages[lang][text] || text
+   // return messages[lang][text] || text
 }
 
 export const setLanguage = async (language) => {
@@ -473,13 +478,14 @@ export const convertLanguage = (language) => {
     if (language == null){
         return "ko"
     }
-   if (language.startsWith("en")) {
+    
+       if (language.startsWith("en")) {
         return "en"  
-    } else if (language.startsWith("ko")) {
-    return "ko"
-    } else {
-    return "en"
-    }
+      } else if (language.startsWith("ko")) {
+        return "ko"
+      }   else {
+        return "en"
+      }
 }
 
 
@@ -541,29 +547,21 @@ export const jsonCookiesToCookieString = (json) => {
 
 export async function requestLocaitonPermision() {
     console.log("requestLocaitonPermision")
-    if (Platform.OS == "android") {
-        await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS, 
-          )
-    }   
+      rpermission.request(rpermission.PERMISSIONS.ANDROID.POST_NOTIFICATIONS);
    try {
     if (Platform.OS == "android") {
-    //    return  await PermissionsAndroid.request(
-    //         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
-    //       )
-     var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-        return await rpermission.request(permission) 
+       return  await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
+          )
     } else {
-        var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+        var permission = rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
         return await rpermission.request(permission) 
-        
     }
     
    } catch (e) {
     
    }
-
-}
+}   
 
 export const openSetting = async (webviewRef) => {  
 
@@ -587,7 +585,7 @@ export const createChannel = () => {
            channelName: "App Notification", 
            channelDescription: "App Custom Notification", 
            playSound: true, 
-          // soundName: "sound.wav", 
+           soundName: "sound.wav", 
            importance: Importance.HIGH,  
            vibrate: true,  
          },
@@ -598,4 +596,12 @@ export const createChannel = () => {
      console.log("ALER!!!!")
      console.log(e)
     }
+ }
+ var didHandleInit = false
+ export const setDidHandleInit = (value) => {
+    didHandleInit = value
+ }
+
+ export const getDidHandleInit = () => {
+    return didHandleInit
  }

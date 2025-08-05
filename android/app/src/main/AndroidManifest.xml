@@ -39,30 +39,22 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-         <intent-filter android:autoVerify="true">
-                    <action android:name="android.intent.action.VIEW" />
-                    <category android:name="android.intent.category.DEFAULT" />
-                    <category android:name="android.intent.category.BROWSABLE" /> 
-            <data android:host="expert.ddokddok.co" android:scheme="https"/>
-        </intent-filter>
-            
-            <intent-filter>
-                    <action android:name="android.intent.action.VIEW" />
-                    <category android:name="android.intent.category.DEFAULT" />
-                    <category android:name="android.intent.category.BROWSABLE" /> 
-            <data android:scheme="ddoke"/>
-        </intent-filter>
-        
-        
-            <intent-filter>
-                    <action android:name="android.intent.action.VIEW" />
-                    <category android:name="android.intent.category.DEFAULT" />
-                    <category android:name="android.intent.category.BROWSABLE" /> 
-            <data android:scheme="ddokddokbiz"/>
-        </intent-filter>
-        
+        </intent-filter> 
+             <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" /> 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" /> 
+               <data
+                    android:host="hospital.healmate.kr"
+                    android:scheme="https"/>
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/> 
+            <data android:scheme="dheal"
+              android:host="healmate" /> 
+            </intent-filter> 
       </activity>
     </application>
 </manifest>
