@@ -9,12 +9,12 @@ export default {
         Me:"Me",
         "buttonError": "Try again",
         "titleError": "Please check the internet",
-        "messageError": "Please check your internet\nOr reload  app again."
+        "messageError": "Please check your internet\nOr reload Table on app again."
     }, 
     ko_KR: {
         Community: "커뮤니티",
         Home: "홈", 
-        Request: "상담/후기 ",
+        Request: "상담관리",
         News: "병원소식",
         Review: "후기관리",
         Me:"병원정보",
@@ -25,7 +25,7 @@ export default {
     ko: {
         Community: "커뮤니티",
         Home: "홈", 
-        Request: "상담/후기 ",
+        Request: "상담관리",
         News: "병원소식",
         Review: "후기관리",
         Me:"병원정보",
@@ -41,6 +41,6 @@ export default {
         Me:"Me",
         "buttonError": "Try again",
         "titleError": "Please check the internet",
-        "messageError": "Please check your internet\nOr reload app again."
+        "messageError": "Please check your internet\nOr reload Table on app again."
     }
 }

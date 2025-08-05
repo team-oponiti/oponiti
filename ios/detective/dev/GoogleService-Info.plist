@@ -2,29 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>API_KEY</key>
-	<string>AIzaSyAERHjP3EbY2qSc4_HwMvsFTykPdVlm7WE</string>
-	<key>GCM_SENDER_ID</key>
-	<string>980487197898</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.healmatedoc.prod</string>
-	<key>PROJECT_ID</key>
-	<string>helmate-5b345</string>
-	<key>STORAGE_BUCKET</key>
-	<string>helmate-5b345.appspot.com</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:980487197898:ios:5e519bce4a711939011033</string>
+  <key>API_KEY</key>
+  <string>AIzaSyCh6tM9yJdto7vd6yJ5RAYlWedb1ZS2Rz0</string>
+  <key>GCM_SENDER_ID</key>
+  <string>470711025314</string>
+  <key>PLIST_VERSION</key>
+  <string>1</string>
+  <key>BUNDLE_ID</key>
+  <string>com.hanbang.docdev</string>
+  <key>PROJECT_ID</key>
+  <string>hanbang-49a1f</string>
+  <key>STORAGE_BUCKET</key>
+  <string>hanbang-49a1f.firebasestorage.app</string>
+  <key>IS_ADS_ENABLED</key>
+  <false></false>
+  <key>IS_ANALYTICS_ENABLED</key>
+  <false></false>
+  <key>IS_APPINVITE_ENABLED</key>
+  <true></true>
+  <key>IS_GCM_ENABLED</key>
+  <true></true>
+  <key>IS_SIGNIN_ENABLED</key>
+  <true></true>
+  <key>GOOGLE_APP_ID</key>
+  <string>1:470711025314:ios:c83135ff979e66936da1fb</string>
 </dict>
 </plist>

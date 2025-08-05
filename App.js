@@ -35,6 +35,7 @@ import CookieManager from "@react-native-cookies/cookies";
 import messaging from '@react-native-firebase/messaging';
 import { useGlobalLanguage } from './src/common/globalState';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { appPrimaryColor } from './src/define/config';
 
 
 if (Platform.OS == "android") {
@@ -312,19 +313,16 @@ const App: () => Node = () => {
         }
     }, [])
 
-    const renderLoading = useCallback(() => {
-        if (Platform.os == "ios") {
-            return <View></View>
-        }
+    const renderLoading = useCallback(() => { 
         return <View style={[styles.flexContainer, {
             justifyContent: 'center',
             alignContent: 'center',
             alignItems: 'center',
-            backgroundColor: "#00C271"
+            backgroundColor: appPrimaryColor
         }]}>
-            <StatusBar barStyle={'dark-content'} backgroundColor="#00C271"/>
-            <Image style={{width: 118, height: 135,resizeMode: 'contain',}} source={require("./src/asset/images/logo_text.png")}></Image>
-             <Text style={{color:'white', position : "absolute", "bottom": 52}}>좋은 암요양병원 찾기</Text>
+            <StatusBar barStyle={'dark-content'} backgroundColor={appPrimaryColor}/>
+            <Image style={{width: 160, height: 158,resizeMode: 'contain',}} source={require("./src/asset/images/logo_text.png")}></Image>
+             <Text style={{color:'white', position : "absolute", "bottom": 52}}>교통사고 한방병원 찾기</Text>
              
         </View>
     }, [])

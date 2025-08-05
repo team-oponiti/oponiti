@@ -12,6 +12,7 @@ import messaging from '@react-native-firebase/messaging';import { getText, getLa
 
 import { useGlobalBade, useGlobalLanguage, useGlobalTabbar } from "../common/globalState"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { appPrimaryColor } from '../define/config';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,21 +31,21 @@ const mainTabs = [
         href: request,
     },
 
-    {
-      name: "Community",
-      icon: "community",
-      href: community,
-  }, 
+  //   {
+  //     name: "Community",
+  //     icon: "community",
+  //     href: community,
+  // }, 
     {
         name: "News",
         icon: "news",
         href: news,
     }, 
-    // {
-    //     name: "Review",
-    //     icon: "review",
-    //     href: review
-    // }, 
+    {
+        name: "Review",
+        icon: "review",
+        href: review
+    }, 
     {
         name: "Me",
         icon: "me",
@@ -174,7 +175,7 @@ useEffect(() => {
    
   }
 
-   let event = Linking.addEventListener('url',handleEventLink); 
+  let event = Linking.addEventListener('url',handleEventLink); 
   return ()=> {
     event.remove()
   };
@@ -195,7 +196,7 @@ useEffect(() => {
     return (
       <Tab.Navigator
       lazy={true}
-      // barStyle={{ backgroundColor: '#ffffff', height: 80 }}
+      barStyle={{ backgroundColor: '#ffffff', height: 80 }}
       style={styles.flexContainer}
       backBehavior={"none"}
       initialRouteName= {"Home"}
@@ -203,19 +204,12 @@ useEffect(() => {
         tabBarLabel: ({ focused, color, size }) => {
           
           return <Text numberOfLines={1} style={{
-            fontSize: 13, 
+            fontSize: 13,
+            marginBottom: 0,
             fontWeight: '500',
             color : !focused ? "#777777": color
           }}>{getText(route.name,language)}</Text>
         },
-        tabBarStyle: {
-               paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
-                },
-        tabBarHideOnKeyboard: true,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName; 
           
@@ -229,8 +223,8 @@ useEffect(() => {
             width: 26,
             height: 26,
             
-            marginBottom: 8,
-            marginTop: 12
+            marginBottom: 0,
+            marginTop: 7
 
           }}></Image>
             </View>
@@ -242,14 +236,21 @@ useEffect(() => {
         flexContainer:1,
         activeBackgroundColor: 'white',
         inactiveBackgroundColor: 'white',
-        activeTintColor: '#00C271',
+        activeTintColor: appPrimaryColor,
         labelStyle: {   
           fontSize: 14,
           fontStyle: "normal",
           padding: 0
         },
         
-        
+       
+        style: {
+           paddingTop: 8,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
+        },
         tabStyle: { 
           backgroundColor: '#fff',
         }, 
@@ -263,18 +264,18 @@ useEffect(() => {
           
         options={{headerShown: false,
 
-          tabBarStyle: showTabbar ? {
+          tabBarStyle: showTabbar ?{
              paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
           } :{
-            paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
+             paddingTop: 8,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
             display: 'none'
           },
 

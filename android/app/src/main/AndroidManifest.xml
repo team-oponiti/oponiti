@@ -37,24 +37,27 @@
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
         <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter> 
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
              <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" /> 
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" /> 
+                <category android:name="android.intent.category.BROWSABLE" />
+
                <data
-                    android:host="hospital.healmate.kr"
+                    android:host="hospital.hanbangmate.com"
                     android:scheme="https"/>
             </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/> 
-            <data android:scheme="dheal"
-              android:host="healmate" /> 
-            </intent-filter> 
+                <category android:name="android.intent.category.BROWSABLE"/>
+               
+            <data android:scheme="hbang"
+              android:host="hanbang" /> 
+            </intent-filter>
       </activity>
     </application>
 </manifest>

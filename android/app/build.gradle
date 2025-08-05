@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-         applicationId "com.healmatedoc.prod"
+        applicationId "com.hanbang.docdev"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -129,9 +129,9 @@ android {
     //     }
      create("chplay") {   
             dimension "flavor"
-             versionCode 7
+             versionCode 1
             versionName "1.0.0"
-            setProperty("archivesBaseName", "healmate_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+            setProperty("archivesBaseName", "hanbang_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         // create("dev") { 
         //     getIsDefault().set(true)
