@@ -11,15 +11,8 @@ const {BadgeModule} = NativeModules;
 export const setBadge = (value) => {
     if (Platform.OS == "ios") {
         PushNotificationIOS.setApplicationIconBadgeNumber( value * 1)
-    } else { 
+    } else {
+        console.log("set badge ", BadgeModule.setBadge)
         BadgeModule.setBadge(value * 1)
-    }
-}
-
-export const clearBadge = () => {
-    if (Platform.OS == "ios") {
-        PushNotificationIOS.setApplicationIconBadgeNumber(0)
-    } else { 
-     BadgeModule.clearBadge()
     }
 }

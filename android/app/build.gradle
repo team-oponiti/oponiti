@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com"
+        applicationId "com.healmate.prod"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -93,7 +93,7 @@ android {
     }
     signingConfigs {
         debug {
-              storeFile file('release.keystore')
+            storeFile file('release.keystore')
             storePassword 'android'
             keyAlias 'androidkeystore'
             keyPassword 'android'
@@ -127,12 +127,11 @@ android {
     //         versionName "1.0.6"
     //         setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
     //     }
-     create("chplay") {  
-            applicationIdSuffix ".ddokddok.expert"
+     create("chplay") {   
             dimension "flavor"
             versionCode 9
             versionName "1.0.1"
-            setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+            setProperty("archivesBaseName", "healmate" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         // create("dev") { 
         //     getIsDefault().set(true)

@@ -59,6 +59,8 @@ export function useGlobalState(globalState) {
 global.languageState = new GlobalState(global.language)
 global.tabBadeState = new GlobalState(global.tabBade)
 global.isLogin = new GlobalState(global.isLogin)
+global.timeStamp = new GlobalState(0)
+global.showTabbar = new GlobalState(true)
 
 export function useGlobalLanguage() {
     const [, setState2] = useState();
@@ -129,58 +131,49 @@ export function useGlobalLogin() {
 }
 
 
-
-global.notiUpdate = new GlobalState(0)
-
-
-export function useGlobalRefresh() {
+export function useGlobalTimeStamp() {
     const [, setState2] = useState();
-    const state = global.notiUpdate.getValue();
+    const state = global.timeStamp.getValue();
 
     function reRender(newState) {
         setState2({});
     }
 
     useEffect(() => {
-        global.notiUpdate.subscribe(reRender);
+        global.timeStamp.subscribe(reRender);
 
         return () => {
-            global.notiUpdate.unsubscribe(reRender);
+            global.timeStamp.unsubscribe(reRender);
         }
     })
 
     function setState(newState) {
-        global.notiUpdate.setValue(newState);
+        global.timeStamp.setValue(newState);
     }
 
     return [state, setState];
 }
 
-
-
-
-global.appCurrentState = new GlobalState('')
-
-
-export function useGlobalAppLifeState() {
+export function useGlobalTabbar() {
     const [, setState2] = useState();
-    const state = global.appCurrentState.getValue();
+    const state = global.showTabbar.getValue();
 
     function reRender(newState) {
         setState2({});
     }
 
     useEffect(() => {
-        global.appCurrentState.subscribe(reRender);
+        global.showTabbar.subscribe(reRender);
 
         return () => {
-            global.appCurrentState.unsubscribe(reRender);
+            global.showTabbar.unsubscribe(reRender);
         }
     })
 
     function setState(newState) {
-        global.appCurrentState.setValue(newState);
+        global.showTabbar.setValue(newState);
     }
 
     return [state, setState];
 }
+

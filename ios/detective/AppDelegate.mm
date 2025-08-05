@@ -1,8 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-#import <Firebase.h>
-#import <RNKakaoLogins.h>
+#import <Firebase.h> 
 #import <React/RCTLinkingManager.h>
 #import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
 
@@ -49,26 +48,11 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
- dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-      dispatch_async(dispatch_get_main_queue(), ^(void){
-        if ([RNKakaoLogins isKakaoTalkLoginUrl:url]) {
-          [RNKakaoLogins handleOpenUrl: url];
-        }
-      });
-  });
-
-//  if ([[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options]) {
-//    return YES;
-//  }
-//
+ 
   if ([RCTLinkingManager application:application openURL:url options:options]) {
     return YES;
   }
-  
-  if ([url.scheme isEqualToString:@"ddokexpertauth"]) {
-     return [[NaverThirdPartyLoginConnection getSharedInstance] application:application openURL:url options:options];
-   }
-   
+ 
   return NO;
 }
 

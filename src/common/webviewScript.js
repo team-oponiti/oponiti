@@ -6,26 +6,14 @@ setTimeout(()=>{
     var childArray = Array.prototype.slice.call(children); 
     childArray.forEach(function(child){ child.parentNode.removeChild(child); }) ;
     var meta = document.createElement('meta'); 
-   // meta.setAttribute('content', 'width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=0'); 
-  //  meta.setAttribute('name', 'viewport');
-   // head.appendChild(meta);
+    meta.setAttribute('content', 'width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=0'); 
+    meta.setAttribute('name', 'viewport');
+    head.appendChild(meta);
     var style = document.createElement('style')
     style.type = 'text/css';
     var css = \`
     html,div {
-     
-    }
-    html {
-      height: -webkit-fill-available;
-      -webkit-text-size-adjust: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-    }
-    body {
-      min-height: -webkit-fill-available; 
-      -webkit-text-size-adjust: none; 
+      scroll-behavior: smooth;
     }
 
     select,
@@ -52,7 +40,7 @@ function rn_check_web(){
   var childArray = Array.prototype.slice.call(children); 
   childArray.forEach(function(child){ child.parentNode.removeChild(child); }) ;
   var meta = document.createElement('meta'); 
-  meta.setAttribute('content', 'width=device-width, maximum-scale=2.0, initial-scale=1, user-scalable=0'); 
+  meta.setAttribute('content', 'width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=0'); 
   meta.setAttribute('name', 'viewport');
   head.appendChild(meta);
   var style = document.createElement('style')
@@ -75,12 +63,7 @@ function rn_check_web(){
       style.appendChild(document.createTextNode(css));
   }
   head.appendChild(style);
-
-  head.appendChild('aaaa');
-
 };
-
-}, 200)
 
 `
 

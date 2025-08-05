@@ -22,8 +22,9 @@ platform :ios, 15.6
 prepare_react_native_project!
 
 setup_permissions([
-  'Camera',
-  'Microphone'
+  'LocationAccuracy',
+  'LocationAlways',
+  'LocationWhenInUse'
 ])
 
 
@@ -33,7 +34,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target '똑똑' do
+target 'healmate' do
   config = use_native_modules!
 
   pod 'Firebase', :modular_headers => true
@@ -41,7 +42,6 @@ target '똑똑' do
   pod 'GoogleUtilities', :modular_headers => true
   pod 'FirebaseCore', :modular_headers => true 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
-  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
 
 

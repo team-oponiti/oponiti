@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "57540010007",
-    "project_id": "toktok-6f987",
-    "storage_bucket": "toktok-6f987.firebasestorage.app"
+    "project_number": "980487197898",
+    "project_id": "helmate-5b345",
+    "storage_bucket": "helmate-5b345.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57540010007:android:7b4dde2cae38d6812ffc52",
+        "mobilesdk_app_id": "1:980487197898:android:a5bb6b18e1687666011033",
         "android_client_info": {
-          "package_name": "com.ddokddok.app"
+          "package_name": "com.healmate.prod"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
+          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57540010007:android:f706c004574aa4432ffc52",
+        "mobilesdk_app_id": "1:980487197898:android:dd536806a8b3f1e9011033",
         "android_client_info": {
-          "package_name": "com.ddokddok.blue.test"
+          "package_name": "com.helmate.prod"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
+          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
         }
       ],
       "services": {
@@ -45,34 +45,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57540010007:android:1d4d0e19ab99de022ffc52",
+        "mobilesdk_app_id": "1:980487197898:android:551896915afb1c10011033",
         "android_client_info": {
-          "package_name": "com.ddokddok.expert"
+          "package_name": "com.helmatedoc.prod"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:57540010007:android:ab37b66020a07b8d2ffc52",
-        "android_client_info": {
-          "package_name": "com.ddokddok2.blue.dev"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBDFcddh6iPBQiaCD0SOvulifBD0TPPFKU"
+          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
         }
       ],
       "services": {

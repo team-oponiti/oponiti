@@ -1,13 +1,12 @@
 export default `(function (window) {
- 
+  window.promiseReadData = null;
+
   if (window.WebViewBridge) {
     return;
   }
-
   if (window.dataTask == null) {
     window.dataTask = {}
   }
-
   var rnWebview = window.ReactNativeWebView
   var doc = window.document;
   doc.addEventListener("message", message => {
@@ -99,9 +98,26 @@ if (window.appBridge == null) {
         window.WebViewBridge.send(JSON.stringify({type:"task",id:uuid, name: taskName, params: params})) 
         return promis
       },
-    setUserToken: function (value) {  
+      onReadedData: function(data) { 
+        window.promiseReadData.resolve(data)
+        window.promiseReadData = null
+      },
+    readLocalData: function() {
+      if (window.promiseReadData != null) {
+        window.promiseReadData.reject()
+      }
+      var promis = new Promise(function(resolve, reject) {
+        window.promiseReadData = {resolve, reject} 
+      }) 
+      window.WebViewBridge.send(JSON.stringify({type:"readlocal",data:{}}))
+      return promis;
+    },
+    writeLocalData: function (value) {
+      window.WebViewBridge.send(JSON.stringify({type:"writelocal",data:value}))
+    },
+    setUserToken: function (value) {
+      window.giaynhap.userToken = value
       window.WebViewBridge.send(JSON.stringify({type:"set-token",data:value}))
-      window.giaynhap.userToken = value 
     },
     openCart: function(){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"cart"}))
@@ -109,49 +125,35 @@ if (window.appBridge == null) {
     loginSuccess:function(token){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"loginSuccess",token: token}))
     },
-    downloadFile: function(file){
-      window.WebViewBridge.send(JSON.stringify({type:"download",data: file}))
-    },
     openLogin: function(){
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"login"}))
     },
-    navigateTo: function(name, data){
-      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: name, params: data}))
+    getLocationPermission: function() {
+      return this.createDataTask("getLocationPermission")
+    },
+    getLocation: function() {
+      return this.createDataTask("getLocation")
     },
     clearCache: function(){ 
       setCookie('test', "1", 1000); 
       return true
     },
-    setEnableInputBox: function(value) {
-      window.WebViewBridge.send(JSON.stringify({type:"setEnableInputBox",data: value,params:{}}))
-    },
-    showTextBox: function(value){
-      window.WebViewBridge.send(JSON.stringify({type:"showTextBox",data:value}))
-    }, 
-    hideKeyboard: function() { 
-      window.WebViewBridge.send(JSON.stringify({type:"hideKeyboard"}))
-    },
     badgeMain: function(value){
       window.WebViewBridge.send(JSON.stringify({type:"badge-main",data:value}))
     },
     badgeTab: function(tab,value){
+    
       window.WebViewBridge.send(JSON.stringify({type:"badge-tab",data:{tab,value}}))
     },
     close: function (data) {
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"close",params: data}))
     },
-    startMain: function () {
+    startMain: function (url) {
       setCookie('test', "2", 1000); 
-      window.WebViewBridge.send(JSON.stringify({type:"open",data:"main",cookie: document.cookie}))
-    },
-     exitApp: function () {  
-      window.WebViewBridge.send(JSON.stringify({type:"open",data:"exitapp",cookie: document.cookie}))
+      window.WebViewBridge.send(JSON.stringify({type:"open",data:"main",cookie: document.cookie, url: url}))
     },
     qrCode: function (groupId, token) {
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"qrScane",params:{groupId, token}}))
-    },
-    setAppBGColor: function (color) {
-      window.WebViewBridge.send(JSON.stringify({type:"setColor",data: color }))
     },
     logout: function () {
       setCookie('test', "3", 1000); 
@@ -164,12 +166,9 @@ if (window.appBridge == null) {
     //  window.WebViewBridge.send(JSON.stringify({type:"clearCookie",data:""}))
     },socialLogin: function(type){
       window.WebViewBridge.send(JSON.stringify({type:"socialLogin",data:type}))
-    },log: function(){ 
+    },log: function(){  
       window.WebViewBridge.send(JSON.stringify({type:"log",data:JSON.stringify(arguments)}))
-    },openLink: function(url){
-      window.WebViewBridge.send(JSON.stringify({type:"openLink",data: url}))
-    } 
-    , refresh: function(){ 
+    }, refresh: function(){ 
       window.WebViewBridge.send(JSON.stringify({type:"refresh",data:""}))
     }, getAppName: function(){ 
       return window.kma.appName || window.giaynhap.appName 
@@ -185,47 +184,48 @@ if (window.appBridge == null) {
       return window.kma.lat || window.giaynhap.lat 
     },getLongitude: function(){
       return window.kma.lng || window.giaynhap.lng 
-    }, allowBack: function(){
-      window.WebViewBridge.send(JSON.stringify({type:"allowBack"}))
-    },cancelBack: function(){
-      window.WebViewBridge.send(JSON.stringify({type:"cancelBack"}))
-    },
-    setEnableScroll: function(value){
-      window.WebViewBridge.send(JSON.stringify({type:"disableScroll",data: value}))
-    },  
-    getLocationPermission: function() {
-      return this.createDataTask("getLocationPermission")
-    },
-    getLocation: function() {
-      return this.createDataTask("getLocation")
-    },
-    getDeviceID: function(){
+    },getDeviceID: function(){
       return window.kma.deviceId || window.giaynhap.deviceId 
     },getFcmToken: function(){
-      return window.kma.pushToken || window.giaynhap.pushToken || "NoToken"
+      return window.kma.pushToken || window.giaynhap.pushToken || "Khong duoc"
     },getLanguage: function(){
-      return window.kma.language || window.giaynhap.language || 'ko'
+      return window.kma.language || window.giaynhap.language || 'vi'
     },getCountryCode: function(){
       return window.kma.country  || window.giaynhap.country
     },getTimeZone: function(){
       return window.kma.timeZone || window.giaynhap.timeZone
     },getUserToken: function(){
-      return window.kma.userToken || window.giaynhap.userToken 
+      return window.giaynhap.userToken
     },getOSVersion: function(){ 
       return window.kma.osVersion || window.giaynhap.osVersion
     },openAppSetting: function(){ 
       window.WebViewBridge.send(JSON.stringify({type:"open",data:"setting",cookie: document.cookie}))
-    },clearBadge: function(){ 
-      window.WebViewBridge.send(JSON.stringify({type:"clear-badge"}))
-    },triggerSend: function(){ 
-      window.WebViewBridge.send(JSON.stringify({type:"trigger-send"}))
-    }, setStorageData: function(key, value){
-      return this.createDataTask("setStorageData", {key, value})
-    }, getStorageData: function(key){
-      return this.createDataTask("getStorageData", {key}) 
-    }
+    },  setEnableScroll: function(value){
+      window.WebViewBridge.send(JSON.stringify({type:"disableScroll",data: value}))
+    },
+    setTimestamp(value){
+      window.WebViewBridge.send(JSON.stringify({type:"set-time-stamp",data:value}))
+    },
+    setListenBackAction(value){
+      window.WebViewBridge.send(JSON.stringify({type:"listent-back",data:value}))
+    },
+    openActivity(url) {
+      window.WebViewBridge.send(JSON.stringify({type:"open-activity",data: url})) 
+    },
+    openDoctorApp(url) {
+      window.WebViewBridge.send(JSON.stringify({type:"open-app",data: url})) 
+    },
+    navigateTo(url, params) {
+      window.WebViewBridge.send(JSON.stringify({type:"navigate",data: url, params: params})) 
+    }, setDisplayBottomNavigation(value) {
+      window.WebViewBridge.send(JSON.stringify({type:"hide-navigation",data: value})) 
+    },getRefreshToken: function(){
+      return window.giaynhap.refreshToken
+    }, setRefreshToken: function (value) { 
+      window.giaynhap.refreshToken = value
+      window.WebViewBridge.send(JSON.stringify({type:"set-refresh",data:value}))
+    },
   }; 
-
  if (window.kma == null) {  
   window.kma = window.giaynhap || {}
  }  
@@ -234,23 +234,40 @@ if (window.appBridge == null) {
 }  
 
 if (window.navigator != null) {
-  window.navigator.share = function(param)  {
-    window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
+    window.navigator.share = function(param)  {
+      window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
+    };
+    if ( window.navigator.clipboard != null) {
+      window.navigator.clipboard.writeText =  function(param)  {
+        window.WebViewBridge.send(JSON.stringify({type:"copy-text",data:param}))
+      }
+    } else {
+      window.navigator.clipboard =  {writeText : function(param)  {
+        window.WebViewBridge.send(JSON.stringify({type:"copy-text",data:param}))
+      }}
+    } 
+  } else {
+    window.navigator = {
+      share: function(param)  {
+      window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
+    }, 
+    clipboard: {
+      writeText: function(param)  {
+        window.WebViewBridge.send(JSON.stringify({type:"copy-text",data:param}))
+      }, 
+    }
   };
-} else {
-  window.navigator = {
-    share: function(param)  {
-    window.WebViewBridge.send(JSON.stringify({type:"share",data:param}))
-  }
-};
-  
 }
+
+
 
 function __guidGenerator() {
   var S4 = function() {
-      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+      return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
+
+ 
  
 `

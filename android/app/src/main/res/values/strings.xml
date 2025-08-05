@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">똑똑</string>
-    <string name="kakao_app_key">0135a68454e79158e6ef1f8fb42f49ac</string> 
+    <string name="app_name">힐메이트</string>
+    <string name="facebook_app_id">330463519160091</string>
+    <string name="fb_login_protocol_scheme">fb330463519160091</string>
+    <string name="appID">2932162286998315956</string>
+    <string name="zaloscheme">zalo-2932162286998315956</string>
 </resources>

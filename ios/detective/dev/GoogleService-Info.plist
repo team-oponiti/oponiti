@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
   <key>API_KEY</key>
-  <string>AIzaSyDaQRQEA2G1W6sEvXYMu7RJeJW49_RbYUI</string>
+  <string>AIzaSyAERHjP3EbY2qSc4_HwMvsFTykPdVlm7WE</string>
   <key>GCM_SENDER_ID</key>
-  <string>57540010007</string>
+  <string>980487197898</string>
   <key>PLIST_VERSION</key>
   <string>1</string>
   <key>BUNDLE_ID</key>
-  <string>com.ddokddok2.blue.dev</string>
+  <string>com.healmate.prod</string>
   <key>PROJECT_ID</key>
-  <string>toktok-6f987</string>
+  <string>helmate-5b345</string>
   <key>STORAGE_BUCKET</key>
-  <string>toktok-6f987.firebasestorage.app</string>
+  <string>helmate-5b345.appspot.com</string>
   <key>IS_ADS_ENABLED</key>
   <false></false>
   <key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
   <key>IS_SIGNIN_ENABLED</key>
   <true></true>
   <key>GOOGLE_APP_ID</key>
-  <string>1:57540010007:ios:16be2ca01ea989be2ffc52</string>
+  <string>1:980487197898:ios:23d133243b4cf9ae011033</string>
 </dict>
 </plist>
