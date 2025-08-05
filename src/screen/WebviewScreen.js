@@ -755,7 +755,7 @@ const WebviewTab = (props) => {
 
             {/* </KeyboardAvoidingView> */}
 
-                       {  (!isHideWebView) &&  (insets.bottom > 10 ? <View  style ={{height: + Math.max(  insets.bottom , _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />) }
+                       {  (!isHideWebView) &&  (insets.bottom > 10 ? <View  style ={{height:   Math.max(  insets.bottom , insets.bottom + _keyboardHeight)}}/> : <View style ={{height: insets.bottom, backgroundColor:'white'}} />)  }
 
         </View>
 
