@@ -384,9 +384,8 @@ const WebviewTab = (props) => {
         }
     }
     // check back
-    var force = false
-    try {
-        force = useIsFocused()
+    var force = false 
+    force = useIsFocused()
         useEffect(() => {
             if (force) {
                 if (needRefresh) {
@@ -428,10 +427,12 @@ const WebviewTab = (props) => {
 
         }, [force])
 
-        // first
+    //     // first
         useEffect(() => {
            if (!force) {
-                return
+                return ()=>{
+
+                }
             } 
             var handleBackButtonClick = function () {
                /* if (this.current) {
@@ -465,23 +466,21 @@ const WebviewTab = (props) => {
 
            let event =  BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-               event.remove()
+           event.remove()
             };
 
 
         }, [navigation, force]);
 
-    } catch (e) {
-
-    }
-    useEffect(async () => {
-        try { 
+ 
+    useEffect(  () => {
+        const fn = async ()=> {
             let data = await getDeviceInfo(webviewRef.current)
             if (data != null) {
                 global.appData = data
             }
-        } catch (e) { 
-        } 
+        }
+        fn()
          return ()=>{}
     }, [])
 
