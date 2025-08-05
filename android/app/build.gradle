@@ -131,7 +131,7 @@ android {
             dimension "flavor"
             versionCode 13
             versionName "1.0.0"
-            setProperty("archivesBaseName", "healmate_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+            setProperty("archivesBaseName", "healmate" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         // create("dev") { 
         //     getIsDefault().set(true)
