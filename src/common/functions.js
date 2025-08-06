@@ -24,7 +24,7 @@ import jwt_decode from 'jwt-decode';
 // import PushNotificationIOS from '@react-native-community/push-notification-ios';
 // import messaging from '@react-native-firebase/messaging';
 import messages from "./messages"
-import {android_client_id, ios_client_id, web_client_id} from "../define/config";
+import {android_client_id, appPrimaryColor, ios_client_id, web_client_id} from "../define/config";
  
 import PushNotification, {Importance} from "react-native-push-notification";
 
@@ -57,7 +57,7 @@ export const getItem = (icon, title, type = false) => {
 
 export const LoadingIndicatorView = () => {
     return (<View style={{position: "relative", top: 0, left: 0, width: "100%", height: 2}}>
-            <ProgressBar useNativeDriver={true} progress={100} height={2} backgroundColor="#00C271"/>
+            <ProgressBar useNativeDriver={true} progress={100} height={2} backgroundColor={appPrimaryColor}/>
         </View>);
 }
 

@@ -34,7 +34,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.317564366281-ms5npue2o3im7ofcvipg5h89t2noh6vr</string>
+				<string>ggg</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,7 +44,7 @@
 			<string>facebook</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb330463519160091</string>
+				<string>fbbbb</string>
 			</array>
 		</dict>
 		<dict>
@@ -56,17 +56,17 @@
 			<string>zalo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>zalo-2932162286998315956</string>
+				<string>zzzz</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>healmate</string>
+			<string>hbang</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dheal</string>
+				<string>hbang</string>
 			</array>
 		</dict>
 	</array>

@@ -277,11 +277,13 @@ const WebviewTab = (props) => {
                 // if (canGoBackRef.current) {
                 //     webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
                 // } else 
-                if ( hasNavigation && navigation.canGoBack()) {
+                setTimeout(()=> {
+                    if ( hasNavigation && navigation.canGoBack()) {
                     navigation.goBack && navigation.goBack()
                 } else {
                     appProps.goBack && appProps.goBack()
                 }
+                }, 300)
             } else if (message.data == "cart") {
                 if (!hookLogin) {
                     navigation.push("WebviewScreen", {data: {href: login}, appProps: appProps})
@@ -324,10 +326,10 @@ const WebviewTab = (props) => {
             setFirstLoad(true)
             setHookIsLogin(false)
             saveLastToken("")
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Dashboard' }]
-            })
+            // navigation.reset({
+            //     index: 0,
+            //     routes: [{ name: 'Dashboard' }]
+            // })
         } else if (message.type == "socialLogin") {
             socialLogin(message.data, webviewRef)
         } else if (message.type == "log") {
@@ -559,7 +561,7 @@ const WebviewTab = (props) => {
                  <View style ={{height: inset.top, backgroundColor:   'white'}} /> 
             {webLoading ? <LoadingIndicatorView/> : null} 
              
-            {/* <KeyboardAvoidingView
+            <KeyboardAvoidingView
              style={[
             
                 styles.flexContainer,
@@ -569,7 +571,7 @@ const WebviewTab = (props) => {
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })} 
-      >   */} 
+      >   
                 <WebView
                     key= {source.uri}
                     useWebKit
@@ -617,7 +619,7 @@ const WebviewTab = (props) => {
                     userAgent={"Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.2 Mobile/15E148 Safari/604.1 " + appAgent}
                     originWhitelist={["zalo://", "https://*", "http://*", "file://*", "sms://*", "tel://*", "mail://*", "tel:","mail:","mailto:","maps:","map:","geo:"]}
                 />
-            {/* </KeyboardAvoidingView> */}
+            </KeyboardAvoidingView>
                 {/* { inset.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight ), backgroundColor: 'blue'}}/>} */}
         </View>
 

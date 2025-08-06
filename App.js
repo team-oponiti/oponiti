@@ -7,7 +7,7 @@
  */
 
 import React, {Node, useCallback, useEffect, useState} from 'react'
-import {AppState, Image, Platform, StatusBar, StyleSheet, View,Text, Keyboard} from 'react-native';
+import {AppState, Image, Platform, StatusBar, StyleSheet, View,Text, Keyboard, SafeAreaView} from 'react-native';
 import {domain, login} from "./src/define/webviewUri" 
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -342,8 +342,7 @@ const App: () => Node = () => {
 
     const renderLogin = useCallback(() => {
       
-        return ( <View style={styles.flexContainer}>
-            <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
+        return ( <View style={styles.flexContainer}> 
           <NavigationContainer  key="login">
             <Stack.Navigator initialRouteName="Login" >
               <Stack.Screen name="Login" component={LoginScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
@@ -366,11 +365,12 @@ const App: () => Node = () => {
     }
  
     return <View style={styles.flexContainer}> 
+      <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
         {
              renderApp()  
         }
-                 {insets.bottom > 10 &&  <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} /> }
-
+                 { Platform.OS == "android" &&insets.bottom > 10 &&  <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} /> }
+        <SafeAreaView/>
     </View>
 
 };
