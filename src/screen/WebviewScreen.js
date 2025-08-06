@@ -193,7 +193,13 @@ const WebviewTab = (props) => {
         if (message.type == "hide-navigation") { 
             setShowTabbar(message.data)
         } else if (message.type == "set-refresh") { 
-            saveRefreshToken(message.data)
+            if (message.data == "") {
+                    saveRefreshToken("")
+                    saveLastToken("")
+            } else {
+                 saveRefreshToken(message.data)
+            }
+           
         } else if (message.type == "open-app") { 
             if (message.data == null || message.data.length == 0){
                 return
@@ -277,11 +283,13 @@ const WebviewTab = (props) => {
                 // if (canGoBackRef.current) {
                 //     webviewRef.current && webviewRef.current.goBack && webviewRef.current.goBack();
                 // } else 
-                if ( hasNavigation && navigation.canGoBack()) {
+                setTimeout(()=>{
+                    if ( hasNavigation && navigation.canGoBack()) {
                     navigation.goBack && navigation.goBack()
                 } else {
                     appProps.goBack && appProps.goBack()
                 }
+                }, 200)
             } else if (message.data == "cart") {
                 if (!hookLogin) {
                     navigation.push("WebviewScreen", {data: {href: login}, appProps: appProps})
