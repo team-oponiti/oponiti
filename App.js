@@ -369,7 +369,8 @@ const App: () => Node = () => {
         {
              renderApp()  
         }
-        <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} />
+                 {insets.bottom > 10 &&  <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} /> }
+
     </View>
 
 };
