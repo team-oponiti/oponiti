@@ -332,10 +332,6 @@ const WebviewTab = (props) => {
             setFirstLoad(true)
             setHookIsLogin(false)
             saveLastToken("")
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Dashboard' }]
-            })
         } else if (message.type == "socialLogin") {
             socialLogin(message.data, webviewRef)
         } else if (message.type == "log") {
