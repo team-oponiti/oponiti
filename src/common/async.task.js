@@ -8,6 +8,8 @@ import rpermision from 'react-native-permissions';
 export const anxData = (webview, data) => {
  
     const resultData = (out) => {
+
+        console.log("resolve", out)
       webview.injectJavaScript("window.appBridge && window.appBridge.onDataFromTask(`"+JSON.stringify({
         ...out,
         id: data.id
@@ -18,6 +20,7 @@ export const anxData = (webview, data) => {
         resultData({data: data, error: false})
     }
     const catchValue = (data)=> { 
+        console.log("task error", data)
         resultData({error: true})
     }
     switch (data.name) {

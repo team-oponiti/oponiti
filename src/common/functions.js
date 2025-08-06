@@ -551,7 +551,7 @@ export async function requestLocaitonPermision() {
     //    return  await PermissionsAndroid.request(
     //         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, 
     //       )
-     var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+     var permission =   rpermission.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
         return await rpermission.request(permission) 
     } else {
         var permission =   rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
@@ -567,7 +567,7 @@ export async function requestLocaitonPermision() {
 
 export const openSetting = async (webviewRef) => {  
 
-    openSettings() 
+    rpermission.openSettings() 
 }
 
 
