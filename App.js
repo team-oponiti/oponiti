@@ -124,7 +124,7 @@ const App: () => Node = () => {
     const openMain = () => {
         setLogin(true)
     }
-
+    
      useEffect(() => {
         const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
         const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
@@ -371,7 +371,7 @@ const App: () => Node = () => {
         {
              renderApp()  
         }
-        <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} />
+          {insets.bottom > 10 &&  <View style ={{height:  Math.max(0, _keyboardHeight) + insets.bottom, backgroundColor: 'white'}} /> }
     </View>
 
 };
