@@ -344,8 +344,7 @@ const App: () => Node = () => {
 
     const renderLogin = useCallback(() => {
       
-        return ( <View style={styles.flexContainer}>
-            <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
+        return ( <View style={styles.flexContainer}> 
           <NavigationContainer  key="login">
             <Stack.Navigator initialRouteName="Login" >
               <Stack.Screen name="Login" component={LoginScreen} initialParams={{ appProps: appProps, data: { href: login } }} options={{ headerShown: false }} />
@@ -368,6 +367,7 @@ const App: () => Node = () => {
     }
  
     return <View style={styles.flexContainer}> 
+      <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
         {
              renderApp()  
         }
