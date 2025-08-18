@@ -36,15 +36,16 @@ const mainTabs = [
   //     icon: "community",
   //     href: community,
   // }, 
-    {
-        name: "News",
-        icon: "news",
-        href: news,
-    }, 
+    
     {
         name: "Review",
         icon: "review",
         href: review
+    }, 
+    {
+        name: "News",
+        icon: "news",
+        href: news,
     }, 
     {
         name: "Me",
