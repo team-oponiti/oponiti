@@ -96,7 +96,9 @@ const Dashboard = (props) => {
     };
     
     const handleDynamicLink = (link)=> {
-        navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps }); 
+        if (link.url &&  link.url.startsWith("https://tamtalk.com")) {
+            navigation.push("WebviewScreen", { data: { href: link.url }, appProps: appProps }); 
+        } 
       };
 
 
@@ -225,8 +227,8 @@ const Dashboard = (props) => {
                 },
                 tabBarStyle: {
                     paddingTop: 0,
-                    paddingBottom: 0,
-                    height: 65 ,
+                    paddingBottom: insets.bottom,
+                    height: 65 + insets.bottom ,
                     paddingLeft: 0, 
                     paddingRight: 0,
                 },

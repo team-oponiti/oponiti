@@ -387,7 +387,8 @@ const App = () => {
     
          <View style={styles.flexContainer}>
                 {renderApp()}
-                <View style={{height: inset.bottom > 100 ? 0 :  inset.bottom}}/> 
+
+                {Platform.OS == 'android' && <View style={{height: inset.bottom > 100 ? 0 :  inset.bottom}}/> }
             </View> 
       
     )
