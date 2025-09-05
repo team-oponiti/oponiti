@@ -41,8 +41,8 @@ const mainTabs = [
         name: "Review",
         icon: "review",
         href: review
-    }, 
-    {
+    },  
+     {
         name: "News",
         icon: "news",
         href: news,
