@@ -366,8 +366,7 @@ const App: () => Node = () => {
 
     }
  
-    return <View style={styles.flexContainer}> 
-      <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
+    return <View style={styles.flexContainer}>  
         {
              renderApp()  
         }
@@ -386,6 +385,7 @@ const styles = StyleSheet.create({
 const MainApp = () => {
      return ( 
         < SafeAreaProvider style={styles.flexContainer}> 
+             <StatusBar barStyle={'dark-content'} backgroundColor="#FFFFFF"/>
             <App></App>
         </ SafeAreaProvider> 
     )

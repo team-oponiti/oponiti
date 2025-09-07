@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
-import {BackHandler, KeyboardAvoidingView, Linking, Platform, Text, View, Share, Keyboard} from 'react-native';
+import {BackHandler, KeyboardAvoidingView, Linking, Platform, Text, View, Share, Keyboard, StatusBar} from 'react-native';
 import {Link, useIsFocused, useNavigation, useScrollToTop} from '@react-navigation/native';
 import CookieManager from '@react-native-cookies/cookies';
 import {WebView} from "react-native-webview";
@@ -376,7 +376,7 @@ const WebviewTab = (props) => {
             } 
               Share.share(
                     {
-                        title: param.title,
+                        title: pxaram.title,
                         message: [param.text , param.url ].join("\n"),   
                         url: param.url
                     }
@@ -559,7 +559,7 @@ const WebviewTab = (props) => {
     }
     return ( 
         <View
-            style={styles.flexContainer}>
+            style={styles.flexContainer}> 
                  <View style ={{height: inset.top, backgroundColor:   'white'}} /> 
             {webLoading ? <LoadingIndicatorView/> : null} 
              
