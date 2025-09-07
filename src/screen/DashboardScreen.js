@@ -262,7 +262,7 @@ useEffect(() => {
          
 
         return <Tab.Screen
-          
+          key={index}
         options={{headerShown: false,
 
           tabBarStyle: showTabbar ?{

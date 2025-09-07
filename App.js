@@ -9,6 +9,7 @@
 import React, {Node, useCallback, useEffect, useState} from 'react'
 import {AppState, Image, Platform, StatusBar, StyleSheet, View,Text, Keyboard, SafeAreaView} from 'react-native';
 import {domain, login} from "./src/define/webviewUri" 
+import { firebase } from '@react-native-firebase/app';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -129,7 +130,7 @@ const App: () => Node = () => {
      useEffect(() => {
         const showSubscription = Keyboard.addListener('keyboardDidShow', e => _updateKeyboardData(e, true))
         const hideSubscription = Keyboard.addListener('keyboardDidHide', e => _updateKeyboardData(e, false))
-    
+        firebase
         return () => {
           showSubscription.remove()
           hideSubscription.remove()
@@ -256,6 +257,7 @@ const App: () => Node = () => {
        
     }
     useEffect(() => {
+         firebase.initializeApp();
        try {
         Settings.setAppID('330463519160091');
         Settings.initializeSDK();

@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* detectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* detectiveTests.m */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		24E8196205CE5AD79D532F79 /* libPods-healmate-detectiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19140D938AD95862198306F4 /* libPods-healmate-detectiveTests.a */; };
 		321E91BD1A9FEEBD029F2B9D /* libPods-healmate-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A78D4E6A8B72194BEEFEAF /* libPods-healmate-dev.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -18,8 +16,6 @@
 		B681E67FD8EF0E3080A02DA0 /* libPods-healmate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A21BF762428DCB185EC14C77 /* libPods-healmate.a */; };
 		B82A3EDE2CA0641000D46100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
 		B82A3F072CA089FC00D46100 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = B82A3F062CA089FC00D46100 /* sound.caf */; };
-		B8DAA9DD2CA653EA005F9941 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
-		B8DAA9DE2CA653EA005F9941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B8DAA9E22CA653EA005F9941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8DAA9E42CA653EA005F9941 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = B82A3F062CA089FC00D46100 /* sound.caf */; };
 		B8DAA9E52CA653EA005F9941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -27,6 +23,8 @@
 		B8DAA9F22CA65424005F9941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8DAA9D62CA653C0005F9941 /* GoogleService-Info.plist */; };
 		B8DAA9F72CA65613005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9F62CA65610005F9941 /* RNENVConfig.m */; };
 		B8DAA9F82CA65614005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9F62CA65610005F9941 /* RNENVConfig.m */; };
+		B8F75E162E6B5E0D002750DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F75E152E6B5E0D002750DC /* AppDelegate.swift */; };
+		B8F75E172E6B5E0D002750DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F75E152E6B5E0D002750DC /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,20 +65,17 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* detectiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = detectiveTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* detective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = detective.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = detective/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = detective/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = detective/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = detective/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = detective/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-dev.release.xcconfig"; path = "Target Support Files/Pods-detective-dev/Pods-detective-dev.release.xcconfig"; sourceTree = "<group>"; };
 		19140D938AD95862198306F4 /* libPods-healmate-detectiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-healmate-detectiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
-		467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		4D7B05F436B7B2C5F50B4EF7 /* Pods-healmate-detectiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-healmate-detectiveTests.debug.xcconfig"; path = "Target Support Files/Pods-healmate-detectiveTests/Pods-healmate-detectiveTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.debug.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.debug.xcconfig"; sourceTree = "<group>"; };
-		6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.release.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.release.xcconfig"; sourceTree = "<group>"; };
-		760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.debug.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.debug.xcconfig"; sourceTree = "<group>"; };
+		6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-dev.release.xcconfig"; path = "Target Support Files/Pods-똑똑-dev/Pods-똑똑-dev.release.xcconfig"; sourceTree = "<group>"; };
+		760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑-detectiveTests.debug.xcconfig"; path = "Target Support Files/Pods-똑똑-detectiveTests/Pods-똑똑-detectiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFBB2DFDAF1A305831E2869 /* Pods-healmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-healmate.release.xcconfig"; path = "Target Support Files/Pods-healmate/Pods-healmate.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = detective/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889935ECEE9B7BE6D34A6559 /* Pods-detective-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-detective-detectiveTests/Pods-detective-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +94,9 @@
 		B8DAA9F32CA6542F005F9941 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DAA9F52CA65610005F9941 /* RNENVConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNENVConfig.h; sourceTree = "<group>"; };
 		B8DAA9F62CA65610005F9941 /* RNENVConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNENVConfig.m; sourceTree = "<group>"; };
+		B8F75E152E6B5E0D002750DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B8F75E182E6B5E10002750DC /* healmate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "healmate-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8F75E192E6B5E10002750DC /* dev-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dev-Bridging-Header.h"; sourceTree = "<group>"; };
 		BA1ADD02F1BD65C86B80F844 /* Pods-healmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-healmate.debug.xcconfig"; path = "Target Support Files/Pods-healmate/Pods-healmate.debug.xcconfig"; sourceTree = "<group>"; };
 		DE15118EB96715B22685EAD7 /* Pods-healmate-detectiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-healmate-detectiveTests.release.xcconfig"; path = "Target Support Files/Pods-healmate-detectiveTests/Pods-healmate-detectiveTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -106,7 +104,7 @@
 		F04E1246B4ED002E0BE5FF72 /* Pods-healmate-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-healmate-dev.release.xcconfig"; path = "Target Support Files/Pods-healmate-dev/Pods-healmate-dev.release.xcconfig"; sourceTree = "<group>"; };
 		F608DA6F7118D3927B464C7C /* Pods-detective.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective.debug.xcconfig"; path = "Target Support Files/Pods-detective/Pods-detective.debug.xcconfig"; sourceTree = "<group>"; };
 		F6C76A6C2487C4CFDCB8498B /* Pods-detective.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective.release.xcconfig"; path = "Target Support Files/Pods-detective/Pods-detective.release.xcconfig"; sourceTree = "<group>"; };
-		FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.release.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.release.xcconfig"; sourceTree = "<group>"; };
+		FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.release.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,18 +157,18 @@
 			children = (
 				B82A3F062CA089FC00D46100 /* sound.caf */,
 				B82A3EDF2CA0643700D46100 /* detective.entitlements */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				B8DAA9F52CA65610005F9941 /* RNENVConfig.h */,
 				B8DAA9F62CA65610005F9941 /* RNENVConfig.m */,
-				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				B8F75E152E6B5E0D002750DC /* AppDelegate.swift */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				B8DAA9D72CA653C0005F9941 /* dev */,
 				B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */,
 				E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */,
+				B8F75E182E6B5E10002750DC /* healmate-Bridging-Header.h */,
+				B8F75E192E6B5E10002750DC /* dev-Bridging-Header.h */,
 			);
 			name = detective;
 			sourceTree = "<group>";
@@ -239,12 +237,12 @@
 				889935ECEE9B7BE6D34A6559 /* Pods-detective-detectiveTests.release.xcconfig */,
 				A64C736D01D6B6BEE7BA9F97 /* Pods-detective-dev.debug.xcconfig */,
 				168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */,
-				5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */,
-				FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */,
-				760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */,
-				29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */,
-				467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */,
-				6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */,
+				5EBF4A0B44B9B45ABE477258 /* Pods-똑똑.debug.xcconfig */,
+				FCC94CE31A4E5322A064AACE /* Pods-똑똑.release.xcconfig */,
+				760829C02EFBF53386E6EAED /* Pods-똑똑-detectiveTests.debug.xcconfig */,
+				29377E5DBAE7D69A8A1F01C3 /* Pods-똑똑-detectiveTests.release.xcconfig */,
+				467F1DC0FE4F7BCC4913ACAA /* Pods-똑똑-dev.debug.xcconfig */,
+				6A61E3E13CECDDEE78653512 /* Pods-똑똑-dev.release.xcconfig */,
 				BA1ADD02F1BD65C86B80F844 /* Pods-healmate.debug.xcconfig */,
 				7CFBB2DFDAF1A305831E2869 /* Pods-healmate.release.xcconfig */,
 				4D7B05F436B7B2C5F50B4EF7 /* Pods-healmate-detectiveTests.debug.xcconfig */,
@@ -338,7 +336,10 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1610;
+					};
+					B8DAA9D82CA653EA005F9941 = {
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -625,8 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				B8F75E162E6B5E0D002750DC /* AppDelegate.swift in Sources */,
 				B8DAA9F72CA65613005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,8 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DAA9DD2CA653EA005F9941 /* AppDelegate.mm in Sources */,
-				B8DAA9DE2CA653EA005F9941 /* main.m in Sources */,
+				B8F75E172E6B5E0D002750DC /* AppDelegate.swift in Sources */,
 				B8DAA9F82CA65614005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +728,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanbang.doc;
 				PRODUCT_NAME = detective;
+				SWIFT_OBJC_BRIDGING_HEADER = "healmate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -760,6 +760,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanbang.doc;
 				PRODUCT_NAME = detective;
+				SWIFT_OBJC_BRIDGING_HEADER = "healmate-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -838,7 +839,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -911,7 +915,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -954,6 +961,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanbang.docdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG DEV";
+				SWIFT_OBJC_BRIDGING_HEADER = "dev-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -994,6 +1002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanbang.docdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
+				SWIFT_OBJC_BRIDGING_HEADER = "dev-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

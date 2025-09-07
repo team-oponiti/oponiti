@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:470711025314:android:1ff11a46b486d5d76da1fb",
+        "android_client_info": {
+          "package_name": "com.hanbang.doc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVbVVQIVzE8-Hp9JYcCq0eQahrDwYf478"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:470711025314:android:1da6d8741b99e1e26da1fb",
         "android_client_info": {
           "package_name": "com.hanbang.docdev"
