@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com.hanbang.app"
+        applicationId "com.hanbang.doc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -131,7 +131,7 @@ android {
             dimension "flavor"
              versionCode 1
             versionName "1.0.0"
-            setProperty("archivesBaseName", "hanbang_user" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+            setProperty("archivesBaseName", "hanbang_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
         // create("dev") { 
         //     getIsDefault().set(true)
