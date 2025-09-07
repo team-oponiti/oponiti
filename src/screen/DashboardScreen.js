@@ -56,11 +56,7 @@ const  icons = {
   "Search": {
       normal: require("../asset/images/ic_search.png"),
       active: require("../asset/images/ic_search_active.png"),
-  },
-  "Community":  {
-    normal: require("../asset/images/ic_community.png"),
-    active: require("../asset/images/ic_community_active.png"),
-  },
+  }, 
   "Hospitals": {
       normal: require("../asset/images/ic_heart.png"),
       active: require("../asset/images/ic_heart_active.png"),

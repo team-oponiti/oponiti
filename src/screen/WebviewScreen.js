@@ -493,7 +493,7 @@ const WebviewTab = (props) => {
 
     console.log("refresh: \() " + language, language)
     let header = {
-        APP_NAME: "HANBANG_DOCTOR",
+        APP_NAME: "HANBANG",
         APP_OS_NAME: appInfo.osName,
         APP_OS_TYPE: appInfo.osType,
         APP_VERSION_CODE: appInfo.appVersionCode,
