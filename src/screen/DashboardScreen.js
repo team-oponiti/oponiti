@@ -1,22 +1,24 @@
 /* eslint-disable quotes */
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Image, Text, View, TouchableOpacity, Linking, Platform} from 'react-native';
+import {BackHandler, Image, Text, View, TouchableOpacity, Linking} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from "../common/styles"
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import WebviewScreen from "../screen/WebviewScreen"
 import {home, search, health, profile, community, info} from "../define/webviewUri" 
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import messaging from '@react-native-firebase/messaging';import { getText, getLanguage } from "../common/functions"
+import messaging from '@react-native-firebase/messaging';import { getText, getLanguage, getDidHandleInit, setDidHandleInit } from "../common/functions"
 
 import { useGlobalBade, useGlobalLanguage, useGlobalTabbar } from "../common/globalState"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { appPrimaryColor } from '../define/config';
 
 const Tab = createBottomTabNavigator();
 
 var activeTab = {}
 
+ 
 const mainTabs = [
     {
         name: "Home",
@@ -29,15 +31,15 @@ const mainTabs = [
         icon: "search",
         href: search,
     },
+  //   {
+  //     name: "Community",
+  //     icon: "Community",
+  //     href: community,
+  // },
     {
-      name: "Community",
-      icon: "Community",
-      href: community,
-  },
-    {
-        name: "Info",
-        icon: "info",
-        href: info,
+        name: "Hospitals",
+        icon: "hospitals",
+        href: health,
     }, 
     {
         name: "Profile",
@@ -59,9 +61,9 @@ const  icons = {
     normal: require("../asset/images/ic_community.png"),
     active: require("../asset/images/ic_community_active.png"),
   },
-  "Info": {
-      normal: require("../asset/images/ic_info.png"),
-      active: require("../asset/images/ic_info_active.png"),
+  "Hospitals": {
+      normal: require("../asset/images/ic_heart.png"),
+      active: require("../asset/images/ic_heart_active.png"),
   }, 
   "Profile": {
       normal: require("../asset/images/ic_account.png"),
@@ -77,7 +79,7 @@ const Dashboard = (props) => {
     const [showTabbar, setShowTabbar] = useGlobalTabbar()
 
     var navigation = useNavigation();
-    const insets = useSafeAreaInsets();
+    const insets = useSafeAreaInsets()
 
     function handleBackButtonClick() {
         BackHandler.exitApp()
@@ -137,25 +139,21 @@ useEffect(() => {
   } 
   });
 
-  // const unsubscribe = dynamicLinks().onLink(handleDynamicLink); 
-  // dynamicLinks()
-  // .getInitialLink()
-  // .then(link =>  handleDynamicLink(link));
-  
-  // return () => unsubscribe(); 
-
-  Linking.getInitialURL().then((url) => {
-    if (url) {
-      Linking.canOpenURL(url).then((supported) => {
-        if (supported) {
-          handleDynamicLink(url)
-        }
-      }); 
-    }
-  })
-  .catch((err) => {
-    console.warn('An error occurred', err);
-  });
+  if (!getDidHandleInit()) { 
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        Linking.canOpenURL(url).then((supported) => {
+          if (supported) {
+            handleDynamicLink(url)
+          }
+        }); 
+      }
+    })
+    .catch((err) => {
+      console.warn('An error occurred', err);
+    });
+    setDidHandleInit(true)
+  }
 
   
   const handleEventLink = (event)=> {
@@ -168,10 +166,11 @@ useEffect(() => {
    
   }
 
-  let event =  Linking.addEventListener('url',handleEventLink); 
+  let event = Linking.addEventListener('url',handleEventLink); 
   return ()=> {
-     event.remove()
+    event.remove()
   };
+
 }, [])
 
 
@@ -186,17 +185,18 @@ useEffect(() => {
     }
  
     return (
-        <Tab.Navigator 
+      <Tab.Navigator
       lazy={true}
-      // barStyle={{ backgroundColor: '#ffffff', height: 80 }}
+      barStyle={{ backgroundColor: '#ffffff', height: 80 }}
       style={styles.flexContainer}
       backBehavior={"none"}
       initialRouteName= {"Home"}
       screenOptions={({ route }) => ({
-        tabBarLabel: ({ focused, color, size }) => { 
-          return <Text numberOfLines={1} style={{ 
+        tabBarLabel: ({ focused, color, size }) => {
+          
+          return <Text numberOfLines={1} style={{
             fontSize: 13,
-            // marginBottom: 24,
+            marginBottom: 0,
             fontWeight: '500',
             color : !focused ? "#777777": color
           }}>{getText(route.name,language)}</Text>
@@ -212,65 +212,65 @@ useEffect(() => {
             }}>
               <Image source={iconName} style={{
             width: 26,
-            height: 26, 
+            height: 26,
+            
             marginBottom: 0,
-            marginTop: 8
+            marginTop: 7
 
           }}></Image>
             </View>
           )
         },
-         tabBarStyle: {
-                    paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
-          },
-          // tabBarHideOnKeyboard: true
       })}
  
-      tabBarOptions={{ 
+      tabBarOptions={{
         flexContainer:1,
         activeBackgroundColor: 'white',
         inactiveBackgroundColor: 'white',
-        activeTintColor: '#00C271',
+        activeTintColor: appPrimaryColor,
         labelStyle: {   
-          fontSize: 13,
+          fontSize: 14,
           fontStyle: "normal",
           padding: 0
         },
         
-        
-        swipeEnabled: true,
-        // tabBarVisible: false,
-      
+       
+        style: {
+           paddingTop: 8,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
+        },
+        tabStyle: { 
+          backgroundColor: '#fff',
+        }, 
+
       }}
     >
       {appData.map((m, index) =>{
          
 
         return <Tab.Screen
-      
-          options={{headerShown: false,
+          key={index}
+        options={{headerShown: false,
 
-            tabBarStyle: showTabbar ? {  
-              paddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
-                    display: 'block' 
-            } : {
-              hpaddingTop: 8,
-                    paddingBottom: 24,
-                    height: 90 ,
-                    paddingLeft: 4, 
-                    paddingRight: 4,
-               display: 'none' 
-            },
+          tabBarStyle: showTabbar ?{
+             paddingTop: 8,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
+          } :{
+             paddingTop: 8,
+            paddingBottom: 24,
+            height: 90 ,
+            paddingLeft: 4, 
+            paddingRight: 4,
+            display: 'none'
+          },
 
-          }}
+        }}
           name={m.name}
           component={WebviewScreen}
           initialParams={{ ...m.props, activeTab: activeTabEvent }} />
@@ -278,6 +278,7 @@ useEffect(() => {
           })}
           
     </Tab.Navigator>
+
 
         
     );

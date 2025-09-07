@@ -204,8 +204,8 @@ const WebviewTab = (props) => {
             if (message.data == null || message.data.length == 0){
                 return
             }
-            if (Linking.canOpenURL("dheal://healmate")) {
-                Linking.openURL("dheal://healmate")
+            if (Linking.canOpenURL("heal://healmate")) {
+                Linking.openURL("heal://healmate")
             } else if (message.data != null){
                 Linking.openURL(message.data)
             }
@@ -285,10 +285,10 @@ const WebviewTab = (props) => {
                 // } else 
                 setTimeout(()=> {
                     if ( hasNavigation && navigation.canGoBack()) {
-                        navigation.goBack && navigation.goBack()
-                    } else {
-                        appProps.goBack && appProps.goBack()
-                    }
+                    navigation.goBack && navigation.goBack()
+                } else {
+                    appProps.goBack && appProps.goBack()
+                }
                 }, 300)
             } else if (message.data == "cart") {
                 if (!hookLogin) {
@@ -470,7 +470,7 @@ const WebviewTab = (props) => {
 
            let event =  BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-           event.remove()
+                event.remove()
             };
 
 
@@ -493,7 +493,7 @@ const WebviewTab = (props) => {
 
     console.log("refresh: \() " + language, language)
     let header = {
-        APP_NAME: "HEALMATE_USER",
+        APP_NAME: "HANBANG_DOCTOR",
         APP_OS_NAME: appInfo.osName,
         APP_OS_TYPE: appInfo.osType,
         APP_VERSION_CODE: appInfo.appVersionCode,
@@ -563,7 +563,7 @@ const WebviewTab = (props) => {
                  <View style ={{height: inset.top, backgroundColor:   'white'}} /> 
             {webLoading ? <LoadingIndicatorView/> : null} 
              
-            {/* <KeyboardAvoidingView
+            <KeyboardAvoidingView
              style={[
             
                 styles.flexContainer,
@@ -573,7 +573,7 @@ const WebviewTab = (props) => {
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })} 
-      >   */} 
+      >   
                 <WebView
                     key= {source.uri}
                     useWebKit
@@ -621,7 +621,7 @@ const WebviewTab = (props) => {
                     userAgent={"Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.2 Mobile/15E148 Safari/604.1 " + appAgent}
                     originWhitelist={["zalo://", "https://*", "http://*", "file://*", "sms://*", "tel://*", "mail://*", "tel:","mail:","mailto:","maps:","map:","geo:"]}
                 />
-            {/* </KeyboardAvoidingView> */}
+            </KeyboardAvoidingView>
                 {/* { inset.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight ), backgroundColor: 'blue'}}/>} */}
         </View>
 

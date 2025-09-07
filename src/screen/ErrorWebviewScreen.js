@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 export default ErrorWebView = (props) => {
 
 
-    return <ScrollView style={{height: SCREEN_HEIGHT - 60, position:'absolute', top:0, left: 0, width: SCREEN_WIDTH,  backgroundColor: "white"}}>
+    return<ScrollView style={{height: SCREEN_HEIGHT - 60, position:'absolute', top:0, left: 0, width: SCREEN_WIDTH,  backgroundColor: "white"}}>
                 <View style={{alignItems:'center', padding: 20, paddingBottom: 200}}>
                     <View style={{height: '50%'}}></View>
                 <Image style={{width: 80, height: 80, resizeMode: 'contain'}} source={require("../asset/images/internet.png")}></Image>

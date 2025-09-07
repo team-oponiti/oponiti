@@ -3,8 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <Firebase.h> 
 #import <React/RCTLinkingManager.h>
-#import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
-
+ 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

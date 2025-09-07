@@ -2,7 +2,7 @@ import React from 'react';
 import { NativeModules, Platform} from 'react-native';
 
 import { requestLocaitonPermision, requestLocation } from "./functions"; 
-import rpermision from 'react-native-permissions';
+import rpermission from 'react-native-permissions';
  
   
 export const anxData = (webview, data) => {
@@ -27,7 +27,7 @@ export const anxData = (webview, data) => {
         
         case "getLocation": 
         try {
-            var permission = (Platform.OS == "android") ? rpermision.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : rpermision.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+            var permission = (Platform.OS == "android") ? rpermission.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
            /* request( permission ).then((status)=> { 
                 if (status == "granted") { 
                     requestLocation().then(thenValue).catch(catchValue)
@@ -51,9 +51,9 @@ export const anxData = (webview, data) => {
         case "getLocationPermission":
             
             try {
-                var permission = (Platform.OS == "android") ? rpermision.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : rpermision.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-                rpermision.request( permission ) 
-                rpermision.check(permission).then(thenValue).catch(catchValue)
+                var permission = (Platform.OS == "android") ? rpermission.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : rpermission.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+                rpermission.request( permission ) 
+                rpermission.check(permission).then(thenValue).catch(catchValue)
             } catch(e){
                 catchValue(e)
             }

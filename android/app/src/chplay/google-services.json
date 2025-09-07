@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "980487197898",
-    "project_id": "helmate-5b345",
-    "storage_bucket": "helmate-5b345.appspot.com"
+    "project_number": "470711025314",
+    "project_id": "hanbang-49a1f",
+    "storage_bucket": "hanbang-49a1f.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980487197898:android:a5bb6b18e1687666011033",
+        "mobilesdk_app_id": "1:470711025314:android:1ff11a46b486d5d76da1fb",
         "android_client_info": {
-          "package_name": "com.healmate.prod"
+          "package_name": "com.hanbang.doc"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
+          "current_key": "AIzaSyAVbVVQIVzE8-Hp9JYcCq0eQahrDwYf478"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980487197898:android:dd536806a8b3f1e9011033",
+        "mobilesdk_app_id": "1:470711025314:android:1da6d8741b99e1e26da1fb",
         "android_client_info": {
-          "package_name": "com.helmate.prod"
+          "package_name": "com.hanbang.docdev"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
+          "current_key": "AIzaSyAVbVVQIVzE8-Hp9JYcCq0eQahrDwYf478"
         }
       ],
       "services": {
@@ -45,15 +45,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980487197898:android:551896915afb1c10011033",
+        "mobilesdk_app_id": "1:470711025314:android:a7a3a06ef13867836da1fb",
         "android_client_info": {
-          "package_name": "com.helmatedoc.prod"
+          "package_name": "com.hangbang.develop"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDJcG5DhFFk1b-dDS31iR08eFlJ4ezYDXY"
+          "current_key": "AIzaSyAVbVVQIVzE8-Hp9JYcCq0eQahrDwYf478"
         }
       ],
       "services": {
