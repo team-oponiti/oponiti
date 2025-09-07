@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com.hanbang.app"
+        applicationId "com.hanbang.prod"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -45,6 +45,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:470711025314:android:31f17c2c30dc8bf86da1fb",
+        "android_client_info": {
+          "package_name": "com.hanbang.prod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVbVVQIVzE8-Hp9JYcCq0eQahrDwYf478"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:470711025314:android:a7a3a06ef13867836da1fb",
         "android_client_info": {
           "package_name": "com.hangbang.develop"
