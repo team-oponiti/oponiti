@@ -1438,8 +1438,27 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-webview (11.17.1):
+  - react-native-webview (13.16.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-nativeconfig (0.77.3)
   - React-NativeModulesApple (0.77.3):
     - glog
@@ -2212,7 +2231,7 @@ SPEC CHECKSUMS:
   react-native-geolocation: 70b8819c3a45a4613e58c2b13ba694ec1f7de3d2
   react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
   react-native-safe-area-context: 38329d95018b31d0f2461d30282ad385ebc957ae
-  react-native-webview: 162b6453d074e0b1c7025242bb7a939b6f72b9e7
+  react-native-webview: 4c1156463f8031c30ea99262317ac3d0a5940211
   React-nativeconfig: f77b4627803bf7886a1f2e96b33b8af34e583cc4
   React-NativeModulesApple: 6bfb56c8a05c9181727a4375c6fce152171c038d
   React-perflogger: 6820403fcb3daf843cb89772f2ba7b25cf7d5797
