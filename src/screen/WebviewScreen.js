@@ -379,39 +379,39 @@ const WebviewTab = (props) => {
     }
     // check back
     var force = false
-    try {
-        force = useIsFocused()
-        useEffect(() => {
-            if (force) {
 
-                if ( global.data == "refresh") {
-                    setFirstLoad(true)
-                    webviewRef.current && webviewRef.current.reload()
-                    global.data = ""
-                }
-                if ( global.data != null && global.data.startsWith("http")) {
-                    setFirstLoad(true)
-                    setOverrideUrl( global.data) 
-                }
-                const excuteString = (str) => {
-                    console.log("call js function =>>>>> "+str)
-                    webviewRef.current && webviewRef.current.injectJavaScript(str)
-                }
-             
-                console.log("data: " + global.data)
-                setTimeout(() => {
-                    excuteString("window.callbackResume && window.callbackResume('"+global.data+"')")
-                    global.data = ""
-                }, 500)
-                
-             
-                excuteString("window.callbackActiveTab && window.callbackActiveTab()")
-                params.activeTab && params.activeTab(data) 
-              
-                
+    force = useIsFocused()
+    useEffect(() => {
+        if (force) {
+
+            if ( global.data == "refresh") {
+                setFirstLoad(true)
+                webviewRef.current && webviewRef.current.reload()
+                global.data = ""
             }
+            if ( global.data != null && global.data.startsWith("http")) {
+                setFirstLoad(true)
+                setOverrideUrl( global.data) 
+            }
+            const excuteString = (str) => {
+                console.log("call js function =>>>>> "+str)
+                webviewRef.current && webviewRef.current.injectJavaScript(str)
+            }
+            
+            console.log("data: " + global.data)
+            setTimeout(() => {
+                excuteString("window.callbackResume && window.callbackResume('"+global.data+"')")
+                global.data = ""
+            }, 500)
+            
+            
+            excuteString("window.callbackActiveTab && window.callbackActiveTab()")
+            params.activeTab && params.activeTab(data) 
+            
+            
+        }
 
-        }, [force])
+    }, [force])
 
         // first
         useEffect(() => {
@@ -437,17 +437,15 @@ const WebviewTab = (props) => {
 
             } 
 
-            BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+            let handler = BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-                BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+               handler.remove()
             };
 
 
         }, [navigation, force]);
 
-    } catch (e) {
-
-    }
+   
     useEffect(()=>{
         let tx = async () => {
             try {
