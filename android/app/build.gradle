@@ -129,7 +129,7 @@ android {
     //     }
      create("chplay") {   
             dimension "flavor"
-            versionCode 3
+            versionCode 4
             versionName "1.0.0"
             setProperty("archivesBaseName", "hanbang_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
