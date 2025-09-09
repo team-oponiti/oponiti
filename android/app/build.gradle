@@ -87,7 +87,7 @@ android {
         applicationId "com.oponiti"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 17
+        versionCode 18
         versionName "1.0.5"
          missingDimensionStrategy 'react-native-camera', 'general'
     }
@@ -132,7 +132,7 @@ android {
             getIsDefault().set(true)
             applicationIdSuffix ".tamtalk"
             dimension "flavor"
-            versionCode 26
+            versionCode 28
             versionName "1.0.6"
             setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
