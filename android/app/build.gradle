@@ -131,7 +131,7 @@ android {
             getIsDefault().set(true)
             applicationIdSuffix ".biz"
             dimension "flavor"
-            versionCode 23
+            versionCode 24
             versionName "1.0.11"
             setProperty("archivesBaseName", "Prod-Detective_tt" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
