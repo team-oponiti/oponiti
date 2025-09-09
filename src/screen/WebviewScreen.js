@@ -603,8 +603,7 @@ const WebviewTab = (props) => {
                     source={source}
                     renderLoading={() => {
                         <View></View>
-                    }}
-                    contentInset={0}
+                    }} 
                     startInLoadingState={false}
                     injectedJavaScriptBeforeContentLoaded={fakeBridge}
                     allowsBackForwardNavigationGestures

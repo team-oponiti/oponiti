@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
-import {Dimensions, KeyboardAvoidingView, Linking, Platform, SafeAreaView, View, Image, Text, Button, TouchableOpacity} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {Dimensions, KeyboardAvoidingView, Linking, Platform, SafeAreaView, View, Image, Text, Button, TouchableOpacity, ScrollView} from 'react-native';
+// import { ScrollView } from 'react-native-gesture-handler';
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
