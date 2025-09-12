@@ -471,9 +471,9 @@ const WebviewTab = (props) => {
 
             }
 
-            BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+            let handler = BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-                BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+             handler.remove()
             };
 
 
@@ -735,6 +735,7 @@ const WebviewTab = (props) => {
                  useWebKit
                  cacheEnabled={true}
                  thirdPartyCookiesEnabled={true}
+                 mediaPlaybackRequiresUserAction={false}
                  allowsBackForwardNavigationGestures={canBack}
                  sharedCookiesEnabled={Platform.OS == 'android'}
                  onMessage={onMessageFromWebview}

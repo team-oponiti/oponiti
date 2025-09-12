@@ -544,7 +544,7 @@ export const createChannel = () => {
             <Text
                 style={{
                     fontSize: 20,
-                    fontWeight: 'semibold',
+                    fontWeight: '500',
                     color:"black"
                 }}
             >전문가가 필요한 순간, 똑똑</Text>
