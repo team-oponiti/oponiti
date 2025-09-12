@@ -129,7 +129,7 @@ android {
     //     }
      create("chplay") {   
             dimension "flavor"
-             versionCode 9
+             versionCode 10
             versionName "1.0.0"
             setProperty("archivesBaseName", "healmate_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
