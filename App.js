@@ -352,7 +352,7 @@ const App = () => {
             <Text
                 style={{
                     fontSize: 20,
-                    fontWeight: 'semibold'
+                    fontWeight: '500'
                 }}
             >전문가가 필요한 순간, 똑똑</Text>
             

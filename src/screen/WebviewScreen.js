@@ -461,9 +461,9 @@ const WebviewTab = (props) => {
 
             }
 
-            BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+           let handler = BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
             return function () {
-                BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+                handler.remove()
             };
 
 
