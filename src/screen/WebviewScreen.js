@@ -376,7 +376,7 @@ const WebviewTab = (props) => {
             } 
               Share.share(
                     {
-                        title: pxaram.title,
+                        title: param.title,
                         message: [param.text , param.url ].join("\n"),   
                         url: param.url
                     }
