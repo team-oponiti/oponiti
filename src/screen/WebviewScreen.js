@@ -584,7 +584,7 @@ const WebviewTab = (props) => {
                     renderLoading={() => {
                         <View></View>
                     }}
-                    
+                    mediaPlaybackRequiresUserAction={false}
                     allowsInlineMediaPlayback = {true}
                     startInLoadingState={false}
                     injectedJavaScriptBeforeContentLoaded={fakeBridge}
