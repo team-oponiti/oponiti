@@ -643,7 +643,7 @@ const WebviewTab = (props) => {
               
                 <WebView 
                 style={{ backgroundColor: isSpecial? appPrimaryColor : "white", opacity: isHideWebView ? 0 : 1  }}
-
+                mediaPlaybackRequiresUserAction={false}
                 automaticallyAdjustContentInsets = {false}
                 automaticallyAdjustsScrollIndicatorInsets=  {false}
                      scrollEnabled= {canScroll}
