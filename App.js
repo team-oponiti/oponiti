@@ -246,6 +246,7 @@ const App = () => {
     useEffect(() => {
        // Settings.setAppID('820978288984618');
        // Settings.initializeSDK();
+        
         createChannel()
         getResource().then(async () => {
             
@@ -364,7 +365,7 @@ const App = () => {
            
         
                 {renderApp()}
-            <View style={{height: inset.bottom > 100 ? 0 :  inset.bottom}}/> 
+            <View style={{height:(Platform.OS == 'ios' || inset.bottom > 100) ? 0 :  inset.bottom}}/> 
 
     </View>
        

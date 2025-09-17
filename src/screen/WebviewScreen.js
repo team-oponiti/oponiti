@@ -645,6 +645,7 @@ const WebviewTab = (props) => {
     </KeyboardAvoidingView> 
 
                { Platform.OS == "android" && insets.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight)}}/>}
+                    <SafeAreaView/>
         </View>
 
     );

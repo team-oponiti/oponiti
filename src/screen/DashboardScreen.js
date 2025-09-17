@@ -1,6 +1,6 @@
 /* eslint-disable quotes */ 
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Image, Text, View} from 'react-native';
+import {BackHandler, Image, Platform, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from "../common/styles"
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -201,8 +201,8 @@ const Dashboard = (props) => {
                 },
                 tabBarStyle: {
                     paddingTop: 0,
-                    paddingBottom: 0,
-                    height: 65 ,
+                    paddingBottom: Platform.OS == 'ios' ? insets.bottom : 0,
+                    height: 65 + (Platform.OS == 'ios' ? insets.bottom : 0),
                     paddingLeft: 4, 
                     paddingRight: 4,
                 },
