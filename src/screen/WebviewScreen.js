@@ -578,7 +578,7 @@ const WebviewTab = (props) => {
  
             {webLoading ? <LoadingIndicatorView/> : null}  
            {isHideWebView ? renderLoading() : null}
-            {/* <KeyboardAvoidingView
+             <KeyboardAvoidingView
              style={[
             
                 styles.flexContainer,
@@ -588,7 +588,7 @@ const WebviewTab = (props) => {
       enabled
       contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })} 
-      >   */} 
+      >    
                 <WebView
                   style={[ styles.flexContainer, { backgroundColor: forceColor || ( (isSpecial)? appPrimaryColor : "white"), opacity: isHideWebView ? 0 : 1 }]}
                     scrollEnabled= {canScroll}
@@ -614,6 +614,7 @@ const WebviewTab = (props) => {
                             setHideWebView(false)
                         }, 200)
                     }}
+                    mediaPlaybackRequiresUserAction={false}
                     allowFileAccess={true}
                     allowFileAccessFromFileURLs={true}
                     allowUniversalAccessFromFileURLs={true}
@@ -641,9 +642,9 @@ const WebviewTab = (props) => {
                 />
                   {isShowTextbox ? <BottomTextBox ref={bottomTextRef} webview={webviewRef.current} isEnable={isEnableInputBox} onChange={(v)=>setIsEnableInputBox(v)}/>: <SafeAreaView /> }
                   
-      {/* </KeyboardAvoidingView> */}
+    </KeyboardAvoidingView> 
 
-                 { insets.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight)}}/>}
+               { Platform.OS == "android" && insets.bottom > 10 &&  <View  style ={{height:   Math.max(0, _keyboardHeight)}}/>}
         </View>
 
     );
