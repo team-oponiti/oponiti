@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* detectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* detectiveTests.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-detective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		69DA29720094FC5270E30E4A /* libPods-detective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-detective.a */; };
 		7699B88040F8A987B510C191 /* libPods-detective-detectiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-detective-detectiveTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -20,9 +18,9 @@
 		B82A3EDE2CA0641000D46100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
 		B82A3EFE2CA064CE00D46100 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A3EFD2CA064CE00D46100 /* NotificationService.swift */; };
 		B82A3F022CA064CE00D46100 /* NotiService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B82A3EFB2CA064CE00D46100 /* NotiService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8CDEBBC2E7BFE0E0072E7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDEBBB2E7BFE0E0072E7E5 /* AppDelegate.swift */; };
+		B8CDEBBD2E7BFE0E0072E7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDEBBB2E7BFE0E0072E7E5 /* AppDelegate.swift */; };
 		B8DAA9FE2CA66442005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9FC2CA66442005F9941 /* RNENVConfig.m */; };
-		B8DAAA042CA66669005F9941 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
-		B8DAAA052CA66669005F9941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B8DAAA062CA66669005F9941 /* RNENVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DAA9FC2CA66442005F9941 /* RNENVConfig.m */; };
 		B8DAAA0A2CA66669005F9941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8DAAA0B2CA66669005F9941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
@@ -76,11 +74,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* detectiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = detectiveTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* detective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = detective.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = detective/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = detective/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = detective/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = detective/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = detective/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-detective-detectiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-detective-detectiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B5AD97B15162B008BB4060B /* Pods-detective.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective.release.xcconfig"; path = "Target Support Files/Pods-detective/Pods-detective.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +94,9 @@
 		B82A3EFD2CA064CE00D46100 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B82A3EFF2CA064CE00D46100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86A6BBA2D2C580500FE83F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8CDEBB62E7BFD610072E7E5 /* dev-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dev-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8CDEBB72E7BFD610072E7E5 /* detective-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "detective-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8CDEBBB2E7BFE0E0072E7E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8DAA9F92CA66438005F9941 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8DAA9FA2CA66438005F9941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DAA9FC2CA66442005F9941 /* RNENVConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNENVConfig.m; path = detective/RNENVConfig.m; sourceTree = "<group>"; };
@@ -167,18 +165,18 @@
 			children = (
 				B8DAA9FB2CA66438005F9941 /* dev */,
 				B82A3EDF2CA0643700D46100 /* detective.entitlements */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				B8DAA9FA2CA66438005F9941 /* Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				13B07FB71A68108700A75B9A /* main.m */,
+				B8CDEBBB2E7BFE0E0072E7E5 /* AppDelegate.swift */,
 				B8DAA9FD2CA66442005F9941 /* RNENVConfig.h */,
 				B8DAA9FC2CA66442005F9941 /* RNENVConfig.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */,
 				E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */,
+				B8CDEBB62E7BFD610072E7E5 /* dev-Bridging-Header.h */,
+				B8CDEBB72E7BFD610072E7E5 /* detective-Bridging-Header.h */,
 			);
 			name = detective;
 			sourceTree = "<group>";
@@ -363,10 +361,13 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1610;
 					};
 					B82A3EFA2CA064CE00D46100 = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					B8DAA9FF2CA66669005F9941 = {
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -659,8 +660,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				B8CDEBBD2E7BFE0E0072E7E5 /* AppDelegate.swift in Sources */,
 				B8DAA9FE2CA66442005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,8 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DAAA042CA66669005F9941 /* AppDelegate.mm in Sources */,
-				B8DAAA052CA66669005F9941 /* main.m in Sources */,
+				B8CDEBBC2E7BFE0E0072E7E5 /* AppDelegate.swift in Sources */,
 				B8DAAA062CA66669005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,7 +753,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83981662189ED5FEA03DA91B /* Pods-detective.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
@@ -775,6 +773,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.app;
 				PRODUCT_NAME = detective;
+				SWIFT_OBJC_BRIDGING_HEADER = "detective-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -785,7 +784,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4B5AD97B15162B008BB4060B /* Pods-detective.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
@@ -805,6 +803,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.app;
 				PRODUCT_NAME = detective;
+				SWIFT_OBJC_BRIDGING_HEADER = "detective-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -883,10 +882,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -959,10 +955,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1055,7 +1048,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8996D30323A24369F16D417C /* Pods-detective-dev.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
@@ -1087,6 +1079,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dev-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1097,7 +1090,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFDD0821C38423B563BA0CB2 /* Pods-detective-dev.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = detective/detective.entitlements;
@@ -1128,6 +1120,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.detectiveuser.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dev-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
