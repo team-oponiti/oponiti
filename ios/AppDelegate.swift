@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import FirebaseCore
 
 @main
 class AppDelegate: RCTAppDelegate {
@@ -10,7 +11,9 @@ class AppDelegate: RCTAppDelegate {
     self.dependencyProvider = RCTAppDependencyProvider()
  
     self.initialProps = [:]
-
+    if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+      }
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
