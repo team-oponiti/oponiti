@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* detectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* detectiveTests.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3EE63F416199CE75F2A7EDD8 /* libPods-똑똑.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D43E95DACB9B508A8380E84 /* libPods-똑똑.a */; };
 		47B263522C2565ECB5DCBA90 /* libPods-똑똑-detectiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B827D492B88DFA3DC692A237 /* libPods-똑똑-detectiveTests.a */; };
 		4D239BEFFC0273520EF0EE39 /* libPods-똑똑-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4F98A09871FFDA02E2690A /* libPods-똑똑-dev.a */; };
@@ -18,7 +17,6 @@
 		B82A3EDE2CA0641000D46100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */; };
 		B8CDEBBF2E7C00390072E7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDEBBE2E7C00390072E7E5 /* AppDelegate.swift */; };
 		B8CDEBC02E7C00390072E7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDEBBE2E7C00390072E7E5 /* AppDelegate.swift */; };
-		B8DAA9DE2CA653EA005F9941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B8DAA9E22CA653EA005F9941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8DAA9E52CA653EA005F9941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		B8DAA9E62CA653EA005F9941 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9C68B5FB66DAEDCC29BCF40 /* PrivacyInfo.xcprivacy */; };
@@ -68,7 +66,6 @@
 		13B07F961A680F5B00A75B9A /* detective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = detective.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = detective/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = detective/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = detective/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = detective/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		168B7E5059D81F4DCFFAD27A /* Pods-detective-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-detective-dev.release.xcconfig"; path = "Target Support Files/Pods-detective-dev/Pods-detective-dev.release.xcconfig"; sourceTree = "<group>"; };
 		1AA05D604E79A289ACE28D1D /* Pods-똑똑.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-똑똑.debug.xcconfig"; path = "Target Support Files/Pods-똑똑/Pods-똑똑.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +153,6 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				B8DAA9D72CA653C0005F9941 /* dev */,
 				B82A3EDD2CA0641000D46100 /* GoogleService-Info.plist */,
@@ -613,7 +609,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CDEBC02E7C00390072E7E5 /* AppDelegate.swift in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B8DAA9F72CA65613005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,7 +618,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8CDEBBF2E7C00390072E7E5 /* AppDelegate.swift in Sources */,
-				B8DAA9DE2CA653EA005F9941 /* main.m in Sources */,
 				B8DAA9F82CA65614005F9941 /* RNENVConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
