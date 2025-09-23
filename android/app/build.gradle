@@ -22,7 +22,7 @@ react {
     //   The list of variants to that are debuggable. For those we're going to
     //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
     //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
-    // debuggableVariants = ["liteDebug", "prodDebug"]
+    debuggableVariants = ["devDebug", "prodDebug"]
 
     /* Bundling */
     //   A list containing the node command and its flags. Default is just 'node'.
@@ -89,15 +89,15 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
-         missingDimensionStrategy 'react-native-camera', 'general'
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
+        // debug {
+        //     storeFile file('debug.keystore')
+        //     storePassword 'android'
+        //     keyAlias 'androiddebugkey'
+        //     keyPassword 'android'
+        // }
         release {
             storeFile file('release.keystore')
             storePassword 'android'
@@ -107,7 +107,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -119,22 +119,21 @@ android {
     }
 
     flavorDimensions "flavor" 
-      productFlavors {
-             create("chplay") { 
+    productFlavors {
+            create("chplay") { 
             applicationIdSuffix ".app"
             dimension "flavor"
             versionCode 11
             versionName "1.0.0"
             setProperty("archivesBaseName", "RE" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         }
-        // create("dev") { 
-        //     getIsDefault().set(true)
-        //     applicationIdSuffix ".blue.test"
-        //     dimension "flavor"
-        //     versionCode 1
-        //     versionName "1.0.1"
-        //     setProperty("archivesBaseName", "DDOK_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        // } 
+        create("dev") { 
+            applicationIdSuffix ".blue.dev"
+            dimension "flavor"
+            versionCode 12
+            versionName "1.0.1"
+            setProperty("archivesBaseName", "DDOK_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        } 
         
     }
 }
@@ -142,7 +141,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-     implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
+    implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
