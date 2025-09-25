@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk.biz"
     defaultConfig {
-        applicationId "com.oponiti.tamtalk"
+        applicationId "com.oponiti.tamtalk.biz"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 20
@@ -127,8 +127,6 @@ android {
             setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         }
         create("chplay") { 
-            getIsDefault().set(true)
-            applicationIdSuffix ".biz"
             dimension "flavor"
             versionCode 24
             versionName "1.0.11"
