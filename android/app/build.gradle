@@ -22,7 +22,7 @@ react {
     //   The list of variants to that are debuggable. For those we're going to
     //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
     //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
-    // debuggableVariants = ["liteDebug", "prodDebug"]
+    debuggableVariants = ["devDebug", "prodDebug"]
 
     /* Bundling */
     //   A list containing the node command and its flags. Default is just 'node'.
@@ -92,12 +92,12 @@ android {
          missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
-        debug {
-            storeFile file('release.keystore')
-            storePassword 'android'
-            keyAlias 'androidkeystore'
-            keyPassword 'android'
-        }
+        // debug {
+        //     storeFile file('release.keystore')
+        //     storePassword 'android'
+        //     keyAlias 'androidkeystore'
+        //     keyPassword 'android'
+        // }
         release {
             storeFile file('release.keystore')
             storePassword 'android'
@@ -107,7 +107,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -120,27 +120,18 @@ android {
 
     flavorDimensions "flavor" 
       productFlavors {
-    //          create("dev") { 
-    //         applicationIdSuffix ".dev"
-    //         dimension "flavor"
-    //         versionCode 12
-    //         versionName "1.0.6"
-    //         setProperty("archivesBaseName", "DEV-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-    //     }
      create("chplay") {   
             dimension "flavor"
             versionCode 17
             versionName "1.0.0"
             setProperty("archivesBaseName", "healmate" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
-        // create("dev") { 
-        //     getIsDefault().set(true)
-        //     applicationIdSuffix ".ddokddok2.blue.dev"
-        //     dimension "flavor"
-        //     versionCode 2
-        //     versionName "1.0.0"
-        //     setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        // } 
+        create("dev") { 
+            dimension "flavor"
+            versionCode 18
+            versionName "1.0.0"
+            setProperty("archivesBaseName", "dd-biz" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        } 
         
     }
 }
