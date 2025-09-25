@@ -22,7 +22,7 @@ react {
     //   The list of variants to that are debuggable. For those we're going to
     //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
     //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
-    // debuggableVariants = ["liteDebug", "prodDebug"]
+    debuggableVariants = ["devDebug", "prodDebug"]
 
     /* Bundling */
     //   A list containing the node command and its flags. Default is just 'node'.
@@ -84,7 +84,7 @@ android {
 
     namespace "com.oponiti.tamtalk"
     defaultConfig {
-        applicationId "com.oponiti"
+        applicationId "com.oponiti.tamtalk"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 18
@@ -92,12 +92,12 @@ android {
          missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
-        debug {
-            storeFile file('release.keystore')
-            storePassword 'android'
-            keyAlias 'androidkeystore'
-            keyPassword 'android'
-        }
+        // debug {
+        //     storeFile file('release.keystore')
+        //     storePassword 'android'
+        //     keyAlias 'androidkeystore'
+        //     keyPassword 'android'
+        // }
         release {
             storeFile file('release.keystore')
             storePassword 'android'
@@ -107,7 +107,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -120,17 +120,14 @@ android {
 
     flavorDimensions "flavor"
       productFlavors {
-        //     create("dev") {  
-        //     applicationIdSuffix ".dev"
-        //     dimension "flavor"
-        //     versionCode 16
-        //     versionName "1.0.5"
-        //     setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
-        // } 
-
+            create("dev") {  
+            applicationIdSuffix ".dev"
+            dimension "flavor"
+            versionCode 29
+            versionName "1.0.7"
+            setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
+        } 
            create("chplay") { 
-            getIsDefault().set(true)
-            applicationIdSuffix ".tamtalk"
             dimension "flavor"
             versionCode 28
             versionName "1.0.6"
