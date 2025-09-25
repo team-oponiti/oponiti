@@ -128,7 +128,7 @@ android {
             setProperty("archivesBaseName", "RE" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         }
         create("dev") { 
-            applicationIdSuffix ".blue.dev"
+            applicationIdSuffix ".blue.test"
             dimension "flavor"
             versionCode 12
             versionName "1.0.1"
