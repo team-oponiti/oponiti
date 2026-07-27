@@ -122,7 +122,7 @@ android {
       productFlavors {
      create("chplay") {   
             dimension "flavor"
-             versionCode 10
+             versionCode 11
             versionName "1.0.0"
             setProperty("archivesBaseName", "healmate_doctor" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
