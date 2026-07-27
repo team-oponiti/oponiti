@@ -127,10 +127,10 @@ android {
             versionName "1.0.7"
             setProperty("archivesBaseName", "DEV-Detective_BIZ" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
-           create("chplay") { 
+           create("chplay") {
             dimension "flavor"
-            versionCode 28
-            versionName "1.0.6"
+            versionCode 29
+            versionName "1.0.7"
             setProperty("archivesBaseName", "Prod-Detective_USER" + "-v" + versionCode + "(" + versionName + ")-build-${getDate()}-${applicationIdSuffix}")
         } 
     }
